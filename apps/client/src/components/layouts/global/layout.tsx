@@ -6,6 +6,7 @@ import { isCloud } from "@/lib/config.ts";
 import { SearchSpotlight } from "@/features/search/components/search-spotlight.tsx";
 import React from "react";
 import { useGetSpaceBySlugQuery } from "@/features/space/queries/space-query.ts";
+import { SpaceAiChat } from "@/features/ai-chat/components/space-ai-chat.tsx";
 
 export default function Layout() {
   const { spaceSlug } = useParams();
@@ -18,6 +19,9 @@ export default function Layout() {
       </GlobalAppShell>
       {isCloud() && <PosthogUser />}
       <SearchSpotlight spaceId={space?.id} />
+      {space?.id && spaceSlug && (
+        <SpaceAiChat spaceId={space.id} spaceSlug={spaceSlug} />
+      )}
     </UserProvider>
   );
 }
