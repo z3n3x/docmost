@@ -1,0 +1,38 @@
+name: AI Chat CI
+
+on:
+  push:
+    branches:
+      - feat/space-ai-chat
+  pull_request:
+    paths:
+      - 'apps/client/src/features/ai-chat/**'
+      - 'apps/client/src/components/layouts/global/layout.tsx'
+      - 'apps/server/src/core/ai-chat/**'
+      - 'apps/server/src/core/core.module.ts'
+      - 'apps/server/src/integrations/environment/**'
+      - '.env.example'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'nx.json'
+      - '.github/workflows/ai-chat-ci.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.15.1
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run server:build
+      - run: pnpm run client:build
