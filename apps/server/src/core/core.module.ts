@@ -15,6 +15,7 @@ import { SpaceModule } from './space/space.module';
 import { GroupModule } from './group/group.module';
 import { CaslModule } from './casl/casl.module';
 import { PageAccessModule } from './page/page-access/page-access.module';
+import { AiChatModule } from './ai-chat/ai-chat.module';
 import { DomainMiddleware } from '../common/middlewares/domain.middleware';
 import { AuditContextMiddleware } from '../common/middlewares/audit-context.middleware';
 import { ShareModule } from './share/share.module';
@@ -23,7 +24,6 @@ import { NotificationModule } from './notification/notification.module';
 import { WatcherModule } from './watcher/watcher.module';
 import { FavoriteModule } from './favorite/favorite.module';
 import { SessionModule } from './session/session.module';
-import { ClsMiddleware } from 'nestjs-cls';
 
 @Module({
   imports: [
@@ -39,6 +39,7 @@ import { ClsMiddleware } from 'nestjs-cls';
     GroupModule,
     CaslModule,
     PageAccessModule,
+    AiChatModule,
     ShareModule,
     LabelModule,
     NotificationModule,
