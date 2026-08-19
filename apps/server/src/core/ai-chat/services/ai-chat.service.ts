@@ -35,7 +35,6 @@ export interface StreamEvent {
   error?: string;
   code?: string;
   retryable?: boolean;
-  usage?: { promptTokens: number; completionTokens: number };
 }
 
 @Injectable()
@@ -122,7 +121,7 @@ export class AiChatService {
       throw new ForbiddenException('You no longer have access to this space');
     }
 
-    const messages = await this.aiChatRepo.findMessages(chatId, { 
+    const messages = await this.aiChatRepo.findMessages(chat.id, { 
       limit: 50,
       query: '',
       adminView: false,
@@ -229,7 +228,7 @@ export class AiChatService {
     });
 
     // Формируем историю сообщений для контекста
-    const recentMessages = await this.aiChatRepo.findMessages(chatId, { 
+    const recentMessages = await this.aiChatRepo.findMessages(chat.id, { 
       limit: 10,
       query: '',
       adminView: false,
@@ -345,7 +344,7 @@ export class AiChatService {
       throw new ForbiddenException('You no longer have access to this space');
     }
 
-    const messages = await this.aiChatRepo.findMessages(chatId, { 
+    const messages = await this.aiChatRepo.findMessages(chat.id, { 
       limit: limit || 50,
       query: '',
       adminView: false,
