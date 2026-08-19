@@ -10,7 +10,7 @@ import {
   Textarea,
 } from "@mantine/core";
 import { IconArrowUp, IconSparkles, IconX } from "@tabler/icons-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   createAiChat,
@@ -32,6 +32,16 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   const [loading, setLoading] = useState(false);
   const chatIdRef = useRef<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    chatIdRef.current = null;
+    abortRef.current?.abort();
+    setLoading(false);
+    setAnswer("");
+    setSources([]);
+    setError(null);
+    setMessage("");
+  }, [spaceId]);
 
   const submit = async () => {
     const content = message.trim();
