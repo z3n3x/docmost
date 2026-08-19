@@ -12,7 +12,8 @@ import {
 import { IconArrowUp, IconSparkles, IconX } from "@tabler/icons-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { askSpaceAiChat, IAiChatResponse } from "@/features/ai-chat/services/ai-chat-service";
+import { askSpaceAiChat } from "@/features/ai-chat/services/ai-chat-service";
+import type { IAiChatResponse } from "@/features/ai-chat/services/ai-chat-service";
 
 interface SpaceAiChatProps {
   spaceId: string;
@@ -23,6 +24,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState<IAiChatResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const submit = async () => {
@@ -30,12 +32,15 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     if (!value || loading) return;
 
     setLoading(true);
+    setError(null);
     setOpen(true);
 
     try {
       const result = await askSpaceAiChat(spaceId, value);
       setResponse(result);
       setMessage("");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "AI request failed");
     } finally {
       setLoading(false);
     }
@@ -59,19 +64,26 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
               <IconSparkles size={18} />
               <Text fw={600}>Ask this space</Text>
             </Group>
-            <ActionIcon variant="subtle" onClick={() => setOpen(false)} aria-label="Close AI chat">
+            <ActionIcon
+              variant="subtle"
+              onClick={() => setOpen(false)}
+              aria-label="Close AI chat"
+            >
               <IconX size={18} />
             </ActionIcon>
           </Group>
 
           <ScrollArea.Autosize mah={360}>
             {loading && <Text c="dimmed">Thinking…</Text>}
-            {!loading && response && (
+            {!loading && error && <Text c="red">{error}</Text>}
+            {!loading && !error && response && (
               <Stack gap="sm">
                 <Text style={{ whiteSpace: "pre-wrap" }}>{response.answer}</Text>
                 {response.sources.length > 0 && (
                   <Stack gap={4}>
-                    <Text size="xs" c="dimmed" fw={600}>Sources</Text>
+                    <Text size="xs" c="dimmed" fw={600}>
+                      Sources
+                    </Text>
                     {response.sources.map((source) => (
                       <Text
                         key={source.pageId}
