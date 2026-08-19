@@ -58,7 +58,7 @@ export class AiRetrievalService {
         .filter((item) => accessible.has(item.id))
         .map(async (item) => {
           const page = await this.pageRepo.findById(item.id, {
-            includeContent: false,
+            includeTextContent: true,
             includeSpace: true,
           });
 
