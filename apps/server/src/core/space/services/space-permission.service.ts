@@ -15,9 +15,12 @@ export class SpacePermissionService {
    * Проверка доступа пользователя к Space
    * Использует существующую модель membership Docmost
    */
-  async canAccessSpace(spaceId: string, userId: string): Promise<boolean> {
+  async canAccessSpace(spaceId: string, userId: string, workspaceId?: string): Promise<boolean> {
     // Проверяем существование Space
-    const space = await this.spaceRepo.findByIdOnly(spaceId);
+    const space = workspaceId 
+      ? await this.spaceRepo.findById(spaceId, workspaceId)
+      : await this.spaceRepo.findById(spaceId, '');
+    
     if (!space) {
       return false;
     }
@@ -35,15 +38,6 @@ export class SpacePermissionService {
     // Проверяем членство через группы
     const userGroupIds = await this.groupUserRepo.getUserGroupIds(userId);
     if (userGroupIds && userGroupIds.length > 0) {
-      const groupMembership = await this.spaceMemberRepo.getSpaceMemberByTypeId(
-        spaceId,
-        { groupId: userGroupIds[0] }, // Проверяем первую группу - если есть любая, доступ есть
-      );
-      
-      if (groupMembership) {
-        return true;
-      }
-      
       // Более полная проверка по всем группам
       for (const groupId of userGroupIds) {
         const groupMember = await this.spaceMemberRepo.getSpaceMemberByTypeId(
@@ -67,8 +61,8 @@ export class SpacePermissionService {
   /**
    * Проверка существования Space
    */
-  async spaceExists(spaceId: string): Promise<boolean> {
-    const space = await this.spaceRepo.findByIdOnly(spaceId);
+  async spaceExists(spaceId: string, workspaceId: string): Promise<boolean> {
+    const space = await this.spaceRepo.findById(spaceId, workspaceId);
     return !!space;
   }
 }

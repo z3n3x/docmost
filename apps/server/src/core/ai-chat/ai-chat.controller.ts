@@ -21,17 +21,32 @@ export class AiChatController {
   constructor(private readonly aiChatService: AiChatService) {}
 
   @Post('/create')
-  async create(@AuthUser() user: User, @AuthWorkspace() workspace: Workspace) {
-    return this.aiChatService.createChat(user, workspace);
+  async create(
+    @Body('spaceId') spaceId: string,
+    @AuthUser() user: User,
+    @AuthWorkspace() workspace: Workspace,
+  ) {
+    if (!spaceId) {
+      throw new BadRequestException('spaceId is required');
+    }
+    return this.aiChatService.createChat(user, workspace, { spaceId });
   }
 
   @Post('/')
   async list(
     @AuthUser() user: User,
     @AuthWorkspace() workspace: Workspace,
-    @Body() pagination?: PaginationOptions,
+    @Body('spaceId') spaceId?: string,
+    @Body('limit') limit?: number,
+    @Body('query') query?: string,
+    @Body('adminView') adminView?: boolean,
   ) {
-    return this.aiChatService.listChats(user, workspace, pagination || { limit: 20 });
+    const pagination: PaginationOptions = { 
+      limit: limit || 20,
+      query: query || '',
+      adminView: adminView || false,
+    };
+    return this.aiChatService.listChats(user, workspace, pagination, spaceId);
   }
 
   @Post('/info')
@@ -79,6 +94,22 @@ export class AiChatController {
   ) {
     // TODO: реализовать поиск по чатам
     return [];
+  }
+
+  /**
+   * Получение истории сообщений чата
+   */
+  @Post('/messages')
+  async getMessages(
+    @Body('chatId') chatId: string,
+    @AuthUser() user: User,
+    @AuthWorkspace() workspace: Workspace,
+    @Body('limit') limit?: number,
+  ) {
+    if (!chatId) {
+      throw new BadRequestException('chatId is required');
+    }
+    return this.aiChatService.getChatMessages(chatId, user, workspace, limit);
   }
 
   @Post('/upload')

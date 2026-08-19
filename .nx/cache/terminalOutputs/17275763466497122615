@@ -1,0 +1,7 @@
+
+> @docmost/base-formula@ build /workspace/packages/base-formula
+> tsc --build
+
+sh: 1: tsc: not found
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed.[39m
+[43m[30m WARN [39m[49m  Local package.json exists, but node_modules missing, did you mean to install?

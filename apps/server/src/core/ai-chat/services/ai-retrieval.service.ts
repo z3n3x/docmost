@@ -30,8 +30,9 @@ export class AiRetrievalService {
     workspaceId: string;
     spaceId?: string;
     limit?: number;
+    maxContentLength?: number;
   }): Promise<RetrievalResult[]> {
-    const { query, userId, workspaceId, spaceId, limit = 5 } = params;
+    const { query, userId, workspaceId, spaceId, limit = 5, maxContentLength = 3000 } = params;
 
     if (!query || query.trim().length === 0) {
       return [];
@@ -64,12 +65,13 @@ export class AiRetrievalService {
         });
 
         if (page) {
+          const truncatedContent = page.textContent || '';
           results.push({
             pageId: page.id,
             title: page.title || 'Untitled',
             slugId: page.slugId,
             spaceId: page.spaceId,
-            content: page.textContent || '',
+            content: truncatedContent.slice(0, maxContentLength),
             rank: item.rank || 0,
           });
         }

@@ -7,9 +7,9 @@ export interface ChatMessage {
 }
 
 export interface StreamCallback {
-  onToken: (token: string) => void;
-  onError: (error: Error) => void;
-  onComplete: (usage?: { promptTokens: number; completionTokens: number }) => void;
+  onToken: (token: string) => Promise<void>;
+  onError: (error: Error) => Promise<void>;
+  onComplete: (usage?: { promptTokens: number; completionTokens: number }) => Promise<void>;
 }
 
 @Injectable()
@@ -111,7 +111,7 @@ export class AiProviderService {
 
       callback.onComplete();
     } catch (error) {
-      if (error.name === 'AbortError') {
+      if ((error as Error).name === 'AbortError') {
         return;
       }
       callback.onError(error instanceof Error ? error : new Error(String(error)));

@@ -4,7 +4,7 @@ import { KyselyDB, KyselyTransaction } from '../../types/kysely.types';
 import { dbOrTx } from '../../utils';
 import { AiChat, AiChatMessage } from '@docmost/db/types/entity.types';
 import { PaginationOptions } from '@docmost/db/pagination/pagination-options';
-import { executeWithCursorPagination } from '@docmost/db/pagination/cursor-pagination';
+import { executeWithCursorPagination, defaultEncodeCursor, defaultDecodeCursor } from '@docmost/db/pagination/cursor-pagination';
 import { jsonArrayFrom, jsonObjectFrom } from 'kysely/helpers/postgres';
 
 @Injectable()
@@ -35,8 +35,9 @@ export class AiChatRepo {
     workspaceId: string,
     creatorId: string,
     pagination: PaginationOptions,
+    spaceId?: string,
   ): Promise<{ items: AiChat[]; hasMore: boolean }> {
-    const query = this.db
+    let query = this.db
       .selectFrom('aiChats')
       .selectAll('aiChats')
       .where('workspaceId', '=', workspaceId)
@@ -45,13 +46,34 @@ export class AiChatRepo {
       .orderBy('updatedAt', 'desc')
       .orderBy('id', 'desc');
 
-    const result = await executeWithCursorPagination(query, pagination);
-    return result;
+    if (spaceId) {
+      query = query.where('spaceId', '=', spaceId);
+    }
+
+    const result = await executeWithCursorPagination(query, {
+      perPage: pagination.limit ?? 20,
+      cursor: pagination.cursor,
+      beforeCursor: pagination.beforeCursor,
+      fields: [
+        { expression: 'updatedAt', direction: 'desc' },
+        { expression: 'id', direction: 'desc' },
+      ] as const,
+      parseCursor: (decoded) => ({
+        updatedAt: new Date(decoded.updatedAt),
+        id: decoded.id,
+      }),
+    });
+
+    return {
+      items: result.items,
+      hasMore: result.meta.hasNextPage,
+    };
   }
 
   async create(
     data: {
       workspaceId: string;
+      spaceId: string;
       creatorId: string;
       title?: string;
     },
@@ -63,6 +85,7 @@ export class AiChatRepo {
       .insertInto('aiChats')
       .values({
         workspaceId: data.workspaceId,
+        spaceId: data.spaceId,
         creatorId: data.creatorId,
         title: data.title,
       })
@@ -124,8 +147,24 @@ export class AiChatRepo {
       .orderBy('createdAt', 'asc')
       .orderBy('id', 'asc');
 
-    const result = await executeWithCursorPagination(query, pagination);
-    return result;
+    const result = await executeWithCursorPagination(query, {
+      perPage: pagination.limit ?? 20,
+      cursor: pagination.cursor,
+      beforeCursor: pagination.beforeCursor,
+      fields: [
+        { expression: 'createdAt', direction: 'asc' },
+        { expression: 'id', direction: 'asc' },
+      ] as const,
+      parseCursor: (decoded) => ({
+        createdAt: new Date(decoded.createdAt),
+        id: decoded.id,
+      }),
+    });
+
+    return {
+      items: result.items,
+      hasMore: result.meta.hasNextPage,
+    };
   }
 
   async createMessage(
@@ -195,12 +234,11 @@ export class AiChatRepo {
     await db
       .updateTable('aiChatMessages')
       .set({
-        content: db
-          .selectFrom('aiChatMessages')
-          .select((eb) =>
-            eb.fn('concat', ['content', eb.val(text)]).as('concat'),
-          )
-          .where('id', '=', messageId),
+        content: (eb) =>
+          eb.fn('concat', [
+            eb.ref('content'),
+            eb.val(text),
+          ]),
         updatedAt: new Date(),
       })
       .where('id', '=', messageId)

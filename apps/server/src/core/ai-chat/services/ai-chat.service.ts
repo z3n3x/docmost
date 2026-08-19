@@ -4,8 +4,8 @@ import { AiProviderService, ChatMessage, StreamCallback } from './ai-provider.se
 import { AiRetrievalService, RetrievalResult } from './ai-retrieval.service';
 import { User, Workspace } from '@docmost/db/types/entity.types';
 import { PaginationOptions } from '@docmost/db/pagination/pagination-options';
-import { SpacePermissionService } from '../space/space-permission.service';
-import { PageAccessService } from '../page/page-access/page-access.service';
+import { SpacePermissionService } from '../../space/services/space-permission.service';
+import { PageAccessService } from '../../page/page-access/page-access.service';
 
 export interface SendMessageParams {
   chatId?: string;
@@ -29,6 +29,7 @@ export interface StreamEvent {
   error?: string;
   code?: string;
   retryable?: boolean;
+  usage?: { promptTokens: number; completionTokens: number };
 }
 
 @Injectable()
@@ -115,7 +116,11 @@ export class AiChatService {
       throw new ForbiddenException('You no longer have access to this space');
     }
 
-    const messages = await this.aiChatRepo.findMessages(chatId, { limit: 50 });
+    const messages = await this.aiChatRepo.findMessages(chatId, { 
+      limit: 50,
+      query: '',
+      adminView: false,
+    });
     
     return { chat, messages: messages.items };
   }
@@ -221,7 +226,11 @@ export class AiChatService {
     });
 
     // Формируем историю сообщений для контекста
-    const recentMessages = await this.aiChatRepo.findMessages(chatId, { limit: 10 });
+    const recentMessages = await this.aiChatRepo.findMessages(chatId, { 
+      limit: 10,
+      query: '',
+      adminView: false,
+    });
     const messageHistory: ChatMessage[] = recentMessages.items.map(msg => ({
       role: msg.role as 'user' | 'assistant' | 'system',
       content: msg.content || '',
@@ -309,5 +318,35 @@ export class AiChatService {
    */
   async verifyPageAccess(pageId: string, userId: string): Promise<boolean> {
     return this.aiRetrievalService.canAccessPage(pageId, userId);
+  }
+
+  /**
+   * Получение истории сообщений чата
+   */
+  async getChatMessages(
+    chatId: string,
+    user: User,
+    workspace: Workspace,
+    limit?: number,
+  ): Promise<{ items: any[] }> {
+    const chat = await this.aiChatRepo.findById(chatId);
+    
+    if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
+      throw new NotFoundException('Chat not found');
+    }
+
+    // Проверяем доступ к Space чата
+    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(chat.spaceId, user.id);
+    if (!hasSpaceAccess) {
+      throw new ForbiddenException('You no longer have access to this space');
+    }
+
+    const messages = await this.aiChatRepo.findMessages(chatId, { 
+      limit: limit || 50,
+      query: '',
+      adminView: false,
+    });
+    
+    return { items: messages.items };
   }
 }
