@@ -1,0 +1,43 @@
+{
+  "run": {
+    "command": "nx run server:build",
+    "startTime": "2026-08-19T09:48:39.413Z",
+    "endTime": "2026-08-19T09:49:26.734Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@docmost/base-formula:build",
+      "target": "build",
+      "projectName": "@docmost/base-formula",
+      "hash": "1866334094802087107",
+      "startTime": "2026-08-19T09:48:39.427Z",
+      "endTime": "2026-08-19T09:48:41.720Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "@docmost/editor-ext:build",
+      "target": "build",
+      "projectName": "@docmost/editor-ext",
+      "hash": "8902444429910059571",
+      "startTime": "2026-08-19T09:48:39.427Z",
+      "endTime": "2026-08-19T09:48:41.747Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "server:build",
+      "target": "build",
+      "projectName": "server",
+      "hash": "17252968601396414635",
+      "startTime": "2026-08-19T09:48:42.000Z",
+      "endTime": "2026-08-19T09:49:26.733Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

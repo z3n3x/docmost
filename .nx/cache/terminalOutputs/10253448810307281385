@@ -1,0 +1,20 @@
+
+> @docmost/base-formula@ build /workspace/packages/base-formula
+> tsc --build
+
+[96mtsconfig.json[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m TS5102: [0mOption 'baseUrl' has been removed. Please remove it from your configuration.
+  Use '"paths": {"*": ["../editor-ext/*"]}' instead.
+
+[7m3[0m   "compilerOptions": {
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+
+[96mtsconfig.json[0m:[93m3[0m:[93m3[0m - [91merror[0m[90m TS5108: [0mOption 'moduleResolution=node10' has been removed. Please remove it from your configuration.
+
+[7m3[0m   "compilerOptions": {
+[7m [0m [91m  ~~~~~~~~~~~~~~~~~[0m
+
+
+Found 2 errors in the same file, starting at: tsconfig.json[90m:3[0m
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
+[43m[30m WARN [39m[49m  Local package.json exists, but node_modules missing, did you mean to install?

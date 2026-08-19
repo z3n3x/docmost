@@ -4,10 +4,12 @@ import { AiChatService } from './services/ai-chat.service';
 import { AiProviderService } from './services/ai-provider.service';
 import { AiRetrievalService } from './services/ai-retrieval.service';
 import { SearchModule } from '../search/search.module';
+import { SpaceModule } from '../space/space.module';
+import { AiChatRepo } from '@docmost/db/repos/ai-chat/ai-chat.repo';
 
 @Module({
-  imports: [SearchModule],
+  imports: [SearchModule, SpaceModule],
   controllers: [AiChatController],
-  providers: [AiChatService, AiProviderService, AiRetrievalService],
+  providers: [AiChatService, AiProviderService, AiRetrievalService, AiChatRepo],
 })
 export class AiChatModule {}
