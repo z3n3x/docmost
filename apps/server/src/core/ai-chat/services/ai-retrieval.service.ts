@@ -6,6 +6,14 @@ import { PagePermissionRepo } from '@docmost/db/repos/page/page-permission.repo'
 import { SearchService } from '../../search/search.service';
 import { SearchDTO } from '../../search/dto/search.dto';
 
+interface AiRetrievedPage {
+  id: string;
+  slugId: string;
+  title: string;
+  text: string;
+  highlight: string;
+}
+
 @Injectable()
 export class AiRetrievalService {
   constructor(
@@ -15,7 +23,12 @@ export class AiRetrievalService {
     private readonly pagePermissionRepo: PagePermissionRepo,
   ) {}
 
-  async retrieve(userId: string, workspaceId: string, spaceId: string, query: string) {
+  async retrieve(
+    userId: string,
+    workspaceId: string,
+    spaceId: string,
+    query: string,
+  ): Promise<AiRetrievedPage[]> {
     let results: Array<{
       id: string;
       slugId: string;
@@ -45,6 +58,8 @@ export class AiRetrievalService {
 
     if (results.length === 0) return [];
 
+    // The fallback search is intentionally a cheap candidate search. Apply
+    // Docmost's existing page permission service before loading page content.
     const pageIds = results.map((item) => item.id);
     const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
       pageIds,
@@ -58,7 +73,7 @@ export class AiRetrievalService {
         .filter((item) => accessible.has(item.id))
         .map(async (item) => {
           const page = await this.pageRepo.findById(item.id, {
-            includeTextContent: true,
+            includeContent: true,
             includeSpace: true,
           });
 
@@ -74,16 +89,14 @@ export class AiRetrievalService {
         }),
     );
 
-    return pages.filter(Boolean) as Array<{
-      id: string;
-      slugId: string;
-      title: string;
-      text: string;
-      highlight: string;
-    }>;
+    return pages.filter(Boolean) as AiRetrievedPage[];
   }
 
-  private async fallbackTextSearch(workspaceId: string, spaceId: string, query: string) {
+  private async fallbackTextSearch(
+    workspaceId: string,
+    spaceId: string,
+    query: string,
+  ) {
     const terms = query
       .toLowerCase()
       .split(/\s+/)
