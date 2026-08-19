@@ -599,6 +599,7 @@ export interface Templates {
 export interface AiChats {
   id: Generated<string>;
   workspaceId: string;
+  spaceId: string;
   creatorId: string;
   title: string | null;
   createdAt: Generated<Timestamp>;

@@ -1,151 +1,63 @@
 ```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
 # Dependencies
 node_modules/
-.pnpm-store/
-.npm/
-.yarn/
-
-# Build outputs
-dist/
-build/
-coverage/
-target/
-
-# TypeScript/JavaScript
-*.js.map
-*.ts.map
-*.d.ts
-*.min.js
-
-# Environment variables
+venv/
+.venv/
 .env
 .env.local
 .env.*
 
-# Logs
+# Build directories
+dist/
+build/
+target/
+.nyc_output/
+coverage/
+htmlcov/
+
+# Logs and temp files
 *.log
+*.tmp
+*.swp
+*.swo
 
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# IDE files
+# Editors
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
-# Python (if present)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-.coverage
-htmlcov/
-.pytest_cache/
-.mypy_cache/
-
-# Java (if present)
-*.class
-*.jar
-*.war
-*.ear
-*.war
-*.nar
-*.jnilib
-*.so
-target/
-.gradle/
-!gradle/wrapper/gradle-wrapper.jar
-
-# C/C++ (if present)
-*.o
-*.obj
-*.a
-*.lib
-*.so
-*.dll
-*.dylib
-*.exe
-*.out
-*.ilk
-*.pdb
-*.sdf
-*.suo
-*.tlog
-*.vcxproj.filters
-
-# Go (if present)
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
-*.test
-*.prof
-cover.out
-coverage.txt
-Godeps/
-
-# Ruby (if present)
-*.gem
-*.rbc
-.bundle/
-vendor/bundle/
-.rbenv-gemsets
-.rbenv-version
-.gem
-Guardfile
-.Rakefile
-
-# Rust (if present)
-*.o
-*.a
-*.rlib
-*.so
-*.dylib
-*.dll
-target/
-Cargo.lock
-
-# Node.js
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Database
-*.db
-*.db-journal
-
-# Backup files
-*~
-*.bak
-*.backup
-*.old
-*.orig
-*.rej
-*.swp
-*.swo
+# System files
+.DS_Store
+Thumbs.db
 
 # Testing
-coverage/
-.nyc_output/
-istanbul/
-.jest/
+.mypy_cache/
+.pytest_cache/
+.npm
+.yarn
 
-# Compression
+# Compressed files
 *.zip
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.7z
-*.rar
 *.gz
+*.tar
+*.tgz
 *.bz2
 *.xz
+*.7z
+*.rar
 *.zst
 *.lz4
 *.lzh
@@ -156,47 +68,8 @@ istanbul/
 *.Z
 *.lz
 *.lzo
-
-# Authentication
-id_rsa
-id_dsa
-id_ecdsa
-id_ed25519
-*.key
-*.pem
-*.crt
-*.cert
-
-# Browsers
-*.css.map
-*.js.map
-
-# Vim
-*.un~
-Session.vim
-
-# Emacs
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# Miscellaneous
-.DS_Store
-ehthumbs.db
-Icon?
-Thumbs.db
-.directory
-*.nib
-timeline.csv
-profile_cpu.pb
-profile_heap.pb
-
-# Temporary folders
-tmp/
-temp/
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```
