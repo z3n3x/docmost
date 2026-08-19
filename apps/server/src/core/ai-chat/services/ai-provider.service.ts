@@ -25,9 +25,11 @@ export class AiProviderService {
   private readonly maxTokens: number;
 
   constructor() {
+    // Docmost AI uses an OpenAI-compatible API. These defaults point at the
+    // configured local llama.cpp instance; all values can be overridden by env.
     this.apiKey = process.env.AI_API_KEY || '';
-    this.baseUrl = process.env.AI_BASE_URL || 'http://localhost:11434/v1';
-    this.model = process.env.AI_MODEL || 'llama3.1:8b';
+    this.baseUrl = process.env.AI_BASE_URL || 'http://172.16.0.171:11434/v1';
+    this.model = process.env.AI_MODEL || 'nemotron-3-nano-4b';
     this.maxTokens = parseInt(process.env.AI_MAX_TOKENS || '2048', 10);
   }
 
