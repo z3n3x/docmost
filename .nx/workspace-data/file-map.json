@@ -5,106 +5,870 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "@docmost/base-formula": [
+      "@docmost/editor-ext": [
         {
-          "file": "packages/base-formula/.gitignore",
-          "hash": "8047546030625036737"
+          "file": "packages/editor-ext/.gitignore",
+          "hash": "1078447263991461837"
         },
         {
-          "file": "packages/base-formula/LICENSE",
-          "hash": "12770854003351296173"
+          "file": "packages/editor-ext/.prettierrc",
+          "hash": "4808572120966128913"
         },
         {
-          "file": "packages/base-formula/bench/formula-bench.ts",
-          "hash": "15502839427458207844"
+          "file": "packages/editor-ext/README.md",
+          "hash": "3480915136424482097"
         },
         {
-          "file": "packages/base-formula/package.json",
-          "hash": "10790741286274161701"
+          "file": "packages/editor-ext/package.json",
+          "hash": "12105996590823568517",
+          "deps": [
+            "npm:@types/nanoid",
+            "npm:marked",
+            "npm:@tiptap/extension-list-item",
+            "npm:@tiptap/extension-ordered-list",
+            "npm:prosemirror-model",
+            "npm:nanoid"
+          ]
         },
         {
-          "file": "packages/base-formula/src/ast.ts",
-          "hash": "12616570936798822309"
+          "file": "packages/editor-ext/src/index.ts",
+          "hash": "16486007393635660477"
         },
         {
-          "file": "packages/base-formula/src/error.ts",
-          "hash": "98064280687532993"
+          "file": "packages/editor-ext/src/lib/attachment/attachment-upload.ts",
+          "hash": "7732255631574199763",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
         },
         {
-          "file": "packages/base-formula/src/eval.ts",
-          "hash": "5712108973193705478"
+          "file": "packages/editor-ext/src/lib/attachment/attachment.ts",
+          "hash": "448618662354756399",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/format.ts",
-          "hash": "8520796980687453836"
+          "file": "packages/editor-ext/src/lib/attachment/index.ts",
+          "hash": "8667087374195328576"
         },
         {
-          "file": "packages/base-formula/src/functions/coercion.ts",
-          "hash": "4522837280436030616"
+          "file": "packages/editor-ext/src/lib/audio/audio-upload.ts",
+          "hash": "10144741184687298772",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/date.ts",
-          "hash": "18083174663009817058"
+          "file": "packages/editor-ext/src/lib/audio/audio.ts",
+          "hash": "5220348630302621138",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/index.ts",
-          "hash": "16802263545824181049"
+          "file": "packages/editor-ext/src/lib/audio/index.ts",
+          "hash": "9948554914392577509"
         },
         {
-          "file": "packages/base-formula/src/functions/logic.ts",
-          "hash": "3460447397700337732"
+          "file": "packages/editor-ext/src/lib/base-embed/base-embed.ts",
+          "hash": "8016342206184487160",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/math.ts",
-          "hash": "9271918499052644605"
+          "file": "packages/editor-ext/src/lib/base-embed/index.ts",
+          "hash": "2645601451531519283"
         },
         {
-          "file": "packages/base-formula/src/functions/registry.ts",
-          "hash": "5933091893685456046"
+          "file": "packages/editor-ext/src/lib/callout/callout.ts",
+          "hash": "14121895435297356863",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/string.ts",
-          "hash": "11824875875704675405"
+          "file": "packages/editor-ext/src/lib/callout/index.ts",
+          "hash": "3111768702076565552"
         },
         {
-          "file": "packages/base-formula/src/graph.ts",
-          "hash": "4173344328988450026"
+          "file": "packages/editor-ext/src/lib/callout/utils.ts",
+          "hash": "14038471994921745275"
         },
         {
-          "file": "packages/base-formula/src/index.client.ts",
-          "hash": "14905713819610165097"
+          "file": "packages/editor-ext/src/lib/columns/column.ts",
+          "hash": "10437749795278436438",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/index.server.ts",
-          "hash": "9857447030427631157"
+          "file": "packages/editor-ext/src/lib/columns/columns.ts",
+          "hash": "16612073849064609481",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/number.ts",
-          "hash": "14822175072232937535"
+          "file": "packages/editor-ext/src/lib/columns/index.ts",
+          "hash": "17299971735182643362"
         },
         {
-          "file": "packages/base-formula/src/parser.ts",
-          "hash": "5156991907060858478"
+          "file": "packages/editor-ext/src/lib/comment/comment-decoration.ts",
+          "hash": "5939322344751653720",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/resolver.ts",
-          "hash": "1754209050466899839"
+          "file": "packages/editor-ext/src/lib/comment/comment.ts",
+          "hash": "13536197931835771098",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/tokenizer.ts",
-          "hash": "6974094912757386430"
+          "file": "packages/editor-ext/src/lib/custom-code-block/custom-code-block.ts",
+          "hash": "7822296151328470077",
+          "deps": [
+            "npm:@tiptap/extension-code-block",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/typecheck.ts",
-          "hash": "5735330946624298941"
+          "file": "packages/editor-ext/src/lib/custom-code-block/index.ts",
+          "hash": "12216571006755276870"
         },
         {
-          "file": "packages/base-formula/src/types.ts",
-          "hash": "14850564854653971672"
+          "file": "packages/editor-ext/src/lib/custom-code-block/lowlight-plugin.ts",
+          "hash": "13893651732908259343",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:highlight.js"
+          ]
         },
         {
-          "file": "packages/base-formula/tsconfig.json",
-          "hash": "2534783322275116419"
+          "file": "packages/editor-ext/src/lib/details/details-content.ts",
+          "hash": "15935801508395417613",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/details/details-summary.ts",
+          "hash": "12758092556035644592",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/details/details.ts",
+          "hash": "10065885992245651357",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/details/index.ts",
+          "hash": "5504091897997236724"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/drawio.ts",
+          "hash": "17570759197765253950",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/embed-provider.ts",
+          "hash": "12276194951042710406"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/embed.ts",
+          "hash": "13386767504314180969",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/excalidraw.ts",
+          "hash": "11392276521525601397",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/footnote.ts",
+          "hash": "5221268023457114744",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/extension-list-item"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/footnotes.ts",
+          "hash": "15130287336059861506",
+          "deps": [
+            "npm:@tiptap/extension-ordered-list"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/index.ts",
+          "hash": "13285940963223038404"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/reference.ts",
+          "hash": "1112415798003454887",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/rules.ts",
+          "hash": "9327014275201595892",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/utils.ts",
+          "hash": "421976177272882",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/heading/heading.ts",
+          "hash": "13357510251335612006",
+          "deps": [
+            "npm:@tiptap/extension-heading",
+            "npm:@tiptap/react",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/highlight.ts",
+          "hash": "9054027950079053330",
+          "deps": [
+            "npm:@tiptap/extension-highlight"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/image/image-upload.ts",
+          "hash": "770147908345572309",
+          "deps": [
+            "npm:image-dimensions",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/image/image.ts",
+          "hash": "17374055441019372787",
+          "deps": [
+            "npm:@tiptap/extension-image",
+            "npm:@tiptap/react",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/image/index.ts",
+          "hash": "3287827717416549237"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/indent.ts",
+          "hash": "861223156601889755",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/link.ts",
+          "hash": "14846954961666126898",
+          "deps": [
+            "npm:@tiptap/extension-link",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/index.ts",
+          "hash": "16872825312523487009"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/basename.ts",
+          "hash": "15089521215089661274"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/callout.marked.ts",
+          "hash": "7945231968109080006",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/footnotes.marked.ts",
+          "hash": "17686519120157289532",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/marked.utils.ts",
+          "hash": "3749092361607645807",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/math-block.marked.ts",
+          "hash": "12976929303922056507",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/math-inline.marked.ts",
+          "hash": "5633140064758088579",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/turndown.d.ts",
+          "hash": "16483039373970723436"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/turndown.utils.ts",
+          "hash": "14175502702923090957",
+          "deps": [
+            "npm:@joplin/turndown",
+            "npm:@joplin/turndown-plugin-gfm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/math/index.ts",
+          "hash": "9216724914328172045"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/math/math-block.ts",
+          "hash": "4669436118247786407",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/math/math-inline.ts",
+          "hash": "16483208518806440555",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/media-utils.ts",
+          "hash": "3735996499462096691",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/mention.ts",
+          "hash": "10994659505158527171",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/suggestion"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/page-break/index.ts",
+          "hash": "2912382442711395701"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/page-break/page-break.ts",
+          "hash": "16420766858505170966",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/pdf/index.ts",
+          "hash": "5561292232430393366"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/pdf/pdf-upload.ts",
+          "hash": "9535557238358128558",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/pdf/pdf.ts",
+          "hash": "16940926278802817027",
+          "deps": [
+            "npm:@tiptap/react",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/README.md",
+          "hash": "12626366037008563661"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/index.ts",
+          "hash": "2064986995527660056"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/numbering.ts",
+          "hash": "8208427951487406652",
+          "deps": [
+            "npm:docx"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/schema.ts",
+          "hash": "4244875991903059673",
+          "deps": [
+            "npm:docx",
+            "npm:prosemirror-model"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/serializer.ts",
+          "hash": "14241213456550491085",
+          "deps": [
+            "npm:prosemirror-model",
+            "npm:docx",
+            "npm:image-dimensions"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/types.ts",
+          "hash": "2258927498971876273",
+          "deps": [
+            "npm:docx"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/utils.ts",
+          "hash": "7773624389601063494",
+          "deps": [
+            "npm:docx",
+            "npm:prosemirror-model"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/copy.ts",
+          "hash": "16339366102358535139"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/getFromPath.ts",
+          "hash": "15995388352804905571"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/getReplaceStep.ts",
+          "hash": "9747802569727186109",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/index.ts",
+          "hash": "2811183928748374139"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/recreateTransform.ts",
+          "hash": "3328664818791884501",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:rfc6902",
+            "npm:diff"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/removeMarks.ts",
+          "hash": "2464285920263277619",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/simplifyTransform.ts",
+          "hash": "3086819321574953518",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/types.ts",
+          "hash": "3599134575823605386"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/resizable-nodeview.ts",
+          "hash": "7150533261482468225",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/search-and-replace/index.ts",
+          "hash": "771571211140881903"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/search-and-replace/search-and-replace.ts",
+          "hash": "6317783325468173607",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/selection.ts",
+          "hash": "10962569681657683836",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/shared-storage/index.ts",
+          "hash": "6186770647272989138"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/shared-storage/shared-storage.ts",
+          "hash": "7123900549994769075",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/status.ts",
+          "hash": "2714887710182703963",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/subpages/index.ts",
+          "hash": "13783062252759316301"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/subpages/subpages.ts",
+          "hash": "16420688710805492841",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/cell.ts",
+          "hash": "6934332219646990187",
+          "deps": [
+            "npm:@tiptap/extension-table"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/calc-drag-over.ts",
+          "hash": "17438094292987802459"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/dnd-extension.ts",
+          "hash": "3100822181427085293",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/index.ts",
+          "hash": "16946214202765125995"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/preview/drop-indicator-controller.ts",
+          "hash": "10086404725106204930",
+          "deps": [
+            "npm:@floating-ui/dom"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/preview/preview-controller.ts",
+          "hash": "437799138916732122",
+          "deps": [
+            "npm:@floating-ui/dom"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/preview/render-preview.ts",
+          "hash": "2418636928117255347"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/utils.ts",
+          "hash": "15710666689181935556",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/controller.ts",
+          "hash": "10628725618064973303"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/extension.ts",
+          "hash": "5397944482665729360",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/index.ts",
+          "hash": "7474815535873364081"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/offset.ts",
+          "hash": "13422308818205609161"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header.ts",
+          "hash": "12776086828308419268",
+          "deps": [
+            "npm:@tiptap/extension-table"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/index.ts",
+          "hash": "17976475571735050099"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/row.ts",
+          "hash": "10075674773432467400",
+          "deps": [
+            "npm:@tiptap/extension-table"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/table-readonly-sort.ts",
+          "hash": "3811452266511221471",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/table-view.ts",
+          "hash": "17789931026685277932",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/table.ts",
+          "hash": "15764447382796558578",
+          "deps": [
+            "npm:@tiptap/extension-table",
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/col-style.ts",
+          "hash": "7027444337668310879"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/convert-array-of-rows-to-table-node.ts",
+          "hash": "5267121440427437966",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/convert-table-node-to-array-of-rows.ts",
+          "hash": "15382142650754473629",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-cells-in-column.ts",
+          "hash": "6905495645571499854",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-cells-in-row.ts",
+          "hash": "9550097510437516289",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-selection-range-in-column.ts",
+          "hash": "3019006861208821899",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-selection-range-in-row.ts",
+          "hash": "5517586838980619412",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/index.ts",
+          "hash": "12606079681161411323"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/move-column.ts",
+          "hash": "12553031702071136958",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/move-row-in-array-of-rows.ts",
+          "hash": "17012335499705136832"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/move-row.ts",
+          "hash": "7781309902279763624",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/query.ts",
+          "hash": "9134229471443005051",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/transpose.ts",
+          "hash": "2339800877837998019"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/types.ts",
+          "hash": "12809178643045626431",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/trailing-node.ts",
+          "hash": "1339286952150359830",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/constants.ts",
+          "hash": "2262612928523924950"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/index.ts",
+          "hash": "1245205759274997073"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/transclusion-reference.ts",
+          "hash": "14933426962510245480",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/transclusion-source.ts",
+          "hash": "998630291353328709",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/types.ts",
+          "hash": "14140269734011264812"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/unique-id/index.ts",
+          "hash": "3467781799742523702"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/unique-id/unique-id.ts",
+          "hash": "7221813055148760326",
+          "deps": [
+            "npm:@tiptap/extension-unique-id"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/unique-id/unique-id.util.ts",
+          "hash": "14215441385530202441",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/utils.ts",
+          "hash": "2395991367396526796",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:@braintree/sanitize-url",
+            "npm:nanoid"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/video/index.ts",
+          "hash": "10493919359023137143"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/video/video-upload.ts",
+          "hash": "16975174545780627539",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/video/video.ts",
+          "hash": "1341701962480858449",
+          "deps": [
+            "npm:@tiptap/react",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/tsconfig.json",
+          "hash": "12125624465614140911"
         }
       ],
       "@docmost/editor-ext": [
@@ -4380,7 +5144,7 @@
           "hash": "9391321131720675690",
           "deps": [
             "npm:@eslint/js",
-            "npm:globals@15.13.0",
+            "npm:globals",
             "npm:eslint-plugin-react-hooks",
             "npm:eslint-plugin-react-refresh",
             "npm:typescript-eslint",
@@ -4411,8 +5175,8 @@
             "npm:eslint-plugin-react",
             "npm:eslint-plugin-react-hooks",
             "npm:eslint-plugin-react-refresh",
-            "npm:globals@15.13.0",
-            "npm:jsdom@25.0.0",
+            "npm:globals",
+            "npm:jsdom",
             "npm:optics-ts",
             "npm:postcss",
             "npm:postcss-preset-mantine",
@@ -4446,23 +5210,23 @@
             "npm:@tanstack/react-table",
             "npm:@tanstack/react-virtual",
             "npm:alfaaz",
-            "npm:axios@1.18.1",
+            "npm:axios",
             "npm:blueimp-load-image",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:file-saver",
             "npm:highlightjs-sap-abap",
             "npm:i18next",
             "npm:i18next-http-backend",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:jotai-optics",
             "npm:js-cookie",
             "npm:jwt-decode",
-            "npm:katex@0.16.40",
+            "npm:katex",
             "npm:lowlight",
             "npm:mantine-form-zod-resolver",
             "npm:mermaid",
             "npm:mitt",
-            "npm:nanoid@3.3.17",
+            "npm:nanoid",
             "npm:posthog-js",
             "npm:react",
             "npm:react-clear-modal",
@@ -4472,7 +5236,7 @@
             "npm:react-helmet-async",
             "npm:react-i18next",
             "npm:react-router-dom",
-            "npm:semver@7.7.4",
+            "npm:semver",
             "npm:socket.io-client",
             "npm:zod"
           ]
@@ -4809,7 +5573,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -4823,7 +5587,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -4836,7 +5600,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -4852,7 +5616,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks"
           ]
         },
@@ -4860,14 +5624,14 @@
           "file": "apps/client/src/components/layouts/global/hooks/atoms/sidebar-atom.ts",
           "hash": "7207745558022463407",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/components/layouts/global/hooks/hooks/use-toggle-sidebar.ts",
           "hash": "10282195723304754236",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -4885,7 +5649,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -4896,7 +5660,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react",
-            "npm:semver@7.7.4",
+            "npm:semver",
             "npm:react-i18next"
           ]
         },
@@ -4904,7 +5668,7 @@
           "file": "apps/client/src/components/settings/atoms/settings-origin-atom.ts",
           "hash": "11880365217029544746",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -4920,7 +5684,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5205,7 +5969,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -5279,7 +6043,7 @@
           "hash": "7738141929272210041",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -5370,7 +6134,7 @@
             "npm:@mantine/hooks",
             "npm:react",
             "npm:react-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tabler/icons-react",
             "npm:marked",
             "npm:@tiptap/pm",
@@ -5409,7 +6173,7 @@
           "hash": "13836081597702980425",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -5420,7 +6184,7 @@
           "hash": "17419751806596452221",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -5431,7 +6195,7 @@
           "hash": "14951920694186107945",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications",
@@ -5524,7 +6288,7 @@
           "hash": "7624587865863276508",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -5562,7 +6326,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5641,28 +6405,28 @@
           "file": "apps/client/src/ee/base/atoms/base-atoms.ts",
           "hash": "15536224663774553072",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/base/atoms/formula-recompute-atom.ts",
           "hash": "17831282817770271199",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/base/atoms/reference-store-atom.ts",
           "hash": "4301024543424277344",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/base/atoms/view-draft-atom.ts",
           "hash": "4503397279791082137",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5714,7 +6478,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/notifications",
@@ -5802,7 +6566,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5823,7 +6587,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5833,7 +6597,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5842,7 +6606,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5851,7 +6615,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5892,14 +6656,14 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
           "file": "apps/client/src/ee/base/components/cells/person-read-list.tsx",
           "hash": "979990811761198502",
           "deps": [
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5968,7 +6732,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5978,7 +6742,7 @@
             "npm:react",
             "npm:@tanstack/react-table",
             "npm:@tanstack/react-virtual",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -5994,7 +6758,7 @@
             "npm:@tanstack/react-table",
             "npm:@mantine/core",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@atlaskit/pragmatic-drag-and-drop",
             "npm:@atlaskit/pragmatic-drag-and-drop-hitbox",
             "npm:@atlaskit/pragmatic-drag-and-drop-flourish",
@@ -6028,7 +6792,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6055,7 +6819,7 @@
           "deps": [
             "npm:react",
             "npm:react-i18next",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@atlaskit/pragmatic-drag-and-drop",
             "npm:@atlaskit/pragmatic-drag-and-drop-hitbox",
             "npm:@atlaskit/pragmatic-drag-and-drop-flourish",
@@ -6098,7 +6862,7 @@
           "hash": "17227233413194689037",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -6110,7 +6874,7 @@
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -6121,7 +6885,7 @@
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6203,7 +6967,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -6233,7 +6997,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -6288,7 +7052,7 @@
           "hash": "15195659935055195084",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:@tabler/icons-react"
           ]
@@ -6303,7 +7067,7 @@
             "npm:@mantine/modals",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -6323,7 +7087,7 @@
             "npm:@mantine/core",
             "npm:@mantine/dates",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -6334,7 +7098,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -6346,7 +7110,7 @@
           "hash": "14198038133602382789",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -6437,7 +7201,7 @@
           "hash": "7756029566768023438",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -6474,7 +7238,7 @@
           "hash": "10406275888488907783",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6593,7 +7357,7 @@
           "hash": "8687891034554559029",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6601,7 +7365,7 @@
           "hash": "3866064058233504393",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6651,7 +7415,7 @@
             "npm:@tanstack/react-query",
             "npm:@mantine/notifications",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6683,7 +7447,7 @@
           "hash": "17467980432053110957",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6759,7 +7523,7 @@
           "file": "apps/client/src/ee/base/utils/generate-base-id.ts",
           "hash": "15576084492394383124",
           "deps": [
-            "npm:nanoid@3.3.17"
+            "npm:nanoid"
           ]
         },
         {
@@ -6788,7 +7552,7 @@
             "npm:@mantine/core",
             "npm:react",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6923,7 +7687,7 @@
             "npm:mantine-form-zod-resolver",
             "npm:@mantine/notifications",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6932,7 +7696,7 @@
           "deps": [
             "npm:posthog-js",
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6955,7 +7719,7 @@
           "file": "apps/client/src/ee/entitlement/entitlement-atom.ts",
           "hash": "1681338771927464187",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6981,14 +7745,14 @@
           "file": "apps/client/src/ee/hooks/use-feature.ts",
           "hash": "1467115131940836566",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/hooks/use-plan.tsx",
           "hash": "4133310598317383710",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7012,14 +7776,14 @@
           "file": "apps/client/src/ee/hooks/use-trial.tsx",
           "hash": "10107210732278579713",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/hooks/use-upgrade-label.ts",
           "hash": "4780180514019778234",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -7034,7 +7798,7 @@
             "npm:mantine-form-zod-resolver",
             "npm:react-i18next",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7043,7 +7807,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7051,7 +7815,7 @@
           "hash": "7989134810516650912",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7088,7 +7852,7 @@
           "hash": "5781850253284397844",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7262,7 +8026,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7271,7 +8035,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/modals"
           ]
@@ -7301,7 +8065,7 @@
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7386,7 +8150,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7505,7 +8269,7 @@
             "npm:zod",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications"
           ]
         },
@@ -7514,7 +8278,7 @@
           "hash": "15043728191925696778",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7547,7 +8311,7 @@
           "hash": "8944882751683757088",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7626,7 +8390,7 @@
           "hash": "5156331021308189793",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7636,7 +8400,7 @@
           "file": "apps/client/src/ee/security/components/allowed-domains.tsx",
           "hash": "5736079434866820942",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:zod",
             "npm:@mantine/form",
             "npm:mantine-form-zod-resolver",
@@ -7662,7 +8426,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@mantine/modals",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7673,7 +8437,7 @@
           "hash": "10534988310518203400",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7684,7 +8448,7 @@
           "hash": "6450671986049468866",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7696,7 +8460,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@mantine/modals",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -7790,7 +8554,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/notifications"
           ]
@@ -7807,7 +8571,7 @@
             "npm:@tabler/icons-react",
             "npm:react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7923,7 +8687,7 @@
             "npm:@mantine/notifications",
             "npm:react-router-dom",
             "npm:@tiptap/react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7937,7 +8701,7 @@
             "npm:react-i18next",
             "npm:react-router-dom",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7945,7 +8709,7 @@
           "hash": "3586543545057220491",
           "deps": [
             "npm:@tanstack/react-query",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications",
             "npm:react-i18next"
           ]
@@ -7964,7 +8728,7 @@
         },
         {
           "file": "apps/client/src/features/ai-chat/components/space-ai-chat.tsx",
-          "hash": "10108425806663442992",
+          "hash": "6416854538748726709",
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
@@ -8021,7 +8785,7 @@
           "hash": "4232270743491795724",
           "deps": [
             "npm:js-cookie",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -8104,7 +8868,7 @@
           "deps": [
             "npm:react",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications",
             "npm:react-i18next"
           ]
@@ -8122,7 +8886,7 @@
           "hash": "500371743000664735",
           "deps": [
             "npm:@tanstack/react-query",
-            "npm:axios@1.18.1"
+            "npm:axios"
           ]
         },
         {
@@ -8137,7 +8901,7 @@
           "file": "apps/client/src/features/comment/atoms/comment-atom.ts",
           "hash": "6883312559041418128",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -8155,7 +8919,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tiptap/react",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -8170,7 +8934,7 @@
             "npm:@tiptap/starter-kit",
             "@docmost/editor-ext",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -8181,7 +8945,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "@docmost/editor-ext",
             "npm:@mantine/hooks",
             "npm:react-i18next"
@@ -8197,7 +8961,7 @@
             "npm:@mantine/hooks",
             "npm:react-i18next",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -8236,7 +9000,7 @@
           "file": "apps/client/src/features/editor/atoms/editor-atoms.ts",
           "hash": "7162918876698576258",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tiptap/core"
           ]
         },
@@ -8339,9 +9103,9 @@
             "npm:@tiptap/react",
             "npm:react",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:uuid",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -8357,7 +9121,7 @@
             "npm:@tiptap/react",
             "npm:react-i18next",
             "@docmost/editor-ext",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -8367,7 +9131,7 @@
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -8392,7 +9156,7 @@
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@tiptap/y-tiptap",
             "@docmost/editor-ext"
@@ -8418,7 +9182,7 @@
             "npm:react",
             "npm:@tiptap/pm",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -8474,7 +9238,7 @@
             "npm:react",
             "npm:@tiptap/pm",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -8515,7 +9279,7 @@
           "hash": "15629687494016263211",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -8543,7 +9307,7 @@
             "@docmost/editor-ext",
             "npm:@mantine/core",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:react-drawio",
@@ -8559,7 +9323,7 @@
             "npm:react",
             "npm:@mantine/hooks",
             "npm:react-drawio",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/modals"
@@ -8583,7 +9347,7 @@
           "deps": [
             "npm:@tiptap/react",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:zod",
@@ -8604,7 +9368,7 @@
           "hash": "6812693372694929892",
           "deps": [
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -8651,7 +9415,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -8672,7 +9436,7 @@
             "npm:@mantine/core",
             "npm:@mantine/modals",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@excalidraw/excalidraw",
@@ -8705,7 +9469,7 @@
             "npm:@mantine/hooks",
             "npm:@excalidraw/excalidraw",
             "npm:react-clear-modal",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/modals",
@@ -8724,7 +9488,7 @@
           "hash": "6201270935949916816",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tiptap/react"
           ]
         },
@@ -8743,7 +9507,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -8786,7 +9550,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -8798,7 +9562,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -8850,7 +9614,7 @@
             "npm:@tiptap/pm",
             "@docmost/editor-ext",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
           ]
@@ -8874,7 +9638,7 @@
             "npm:@tiptap/react",
             "npm:@mantine/core",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -8903,7 +9667,7 @@
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:react-router-dom",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -8912,7 +9676,7 @@
           "deps": [
             "npm:react",
             "npm:@tiptap/react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "@docmost/editor-ext",
             "npm:@tiptap/pm",
             "npm:@mantine/core"
@@ -8951,7 +9715,7 @@
           "file": "apps/client/src/features/editor/components/math/math-block.tsx",
           "hash": "14834155714780321448",
           "deps": [
-            "npm:katex@0.16.40",
+            "npm:katex",
             "npm:react",
             "npm:@tiptap/react",
             "npm:@mantine/core",
@@ -8965,7 +9729,7 @@
           "file": "apps/client/src/features/editor/components/math/math-inline.tsx",
           "hash": "14065314921438368965",
           "deps": [
-            "npm:katex@0.16.40",
+            "npm:katex",
             "npm:react",
             "npm:@tiptap/react",
             "npm:@mantine/core",
@@ -8983,11 +9747,11 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:uuid",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -9044,7 +9808,7 @@
             "npm:@tiptap/react",
             "npm:@mantine/core",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext",
             "npm:@tabler/icons-react"
@@ -9062,7 +9826,7 @@
           "file": "apps/client/src/features/editor/components/search-and-replace/atoms/search-and-replace-state-atom.ts",
           "hash": "4804049526350579914",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -9074,7 +9838,7 @@
             "npm:@tiptap/react",
             "@docmost/editor-ext",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/hooks",
             "npm:react-router-dom"
@@ -9090,7 +9854,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -9130,7 +9894,7 @@
             "npm:@mantine/core",
             "npm:@mantine/hooks",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "@docmost/editor-ext"
           ]
         },
@@ -9179,7 +9943,7 @@
             "npm:@tiptap/react",
             "npm:@tiptap/pm",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:react-i18next"
           ]
@@ -9194,7 +9958,7 @@
             "npm:@floating-ui/react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext"
           ]
@@ -9208,7 +9972,7 @@
             "npm:@tiptap/pm",
             "npm:@floating-ui/react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext"
           ]
@@ -9346,7 +10110,7 @@
             "npm:@tiptap/pm",
             "npm:@floating-ui/react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext"
           ]
@@ -9502,7 +10266,7 @@
             "npm:@tiptap/pm",
             "@docmost/editor-ext",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
           ]
@@ -9518,7 +10282,7 @@
             "npm:@tiptap/react",
             "npm:@mantine/core",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -9623,9 +10387,9 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -9645,7 +10409,7 @@
             "npm:@hocuspocus/provider",
             "npm:@hocuspocus/provider-react",
             "npm:@tiptap/react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:react-router-dom",
             "npm:jwt-decode",
@@ -9662,7 +10426,7 @@
             "@docmost/editor-ext",
             "npm:@tiptap/extension-text",
             "npm:@tiptap/extension-placeholder",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -9767,7 +10531,7 @@
             "npm:@tiptap/extension-heading",
             "npm:@tiptap/extension-text",
             "npm:@tiptap/extension-placeholder",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:@tiptap/extension-history",
             "npm:react-router-dom",
@@ -9972,7 +10736,7 @@
           "file": "apps/client/src/features/home/atoms/home-tab-atom.ts",
           "hash": "11564596132506998478",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10003,7 +10767,7 @@
           "file": "apps/client/src/features/home/components/home-ai-prompt.tsx",
           "hash": "16544801130743210250",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -10015,7 +10779,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10054,7 +10818,7 @@
           "hash": "8839665811520590344",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/core"
@@ -10065,7 +10829,7 @@
           "hash": "2396169792958244905",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -10143,7 +10907,7 @@
           "hash": "6216902731544864135",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -10194,7 +10958,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -10218,7 +10982,7 @@
           "file": "apps/client/src/features/page-history/atoms/history-atoms.ts",
           "hash": "3273539174461030114",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10238,7 +11002,7 @@
             "npm:@mantine/core",
             "npm:@tiptap/pm",
             "@docmost/editor-ext",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10247,7 +11011,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -10256,7 +11020,7 @@
           "file": "apps/client/src/features/page-history/components/history-list.tsx",
           "hash": "1791152006121098116",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/core",
             "npm:react-i18next"
@@ -10267,7 +11031,7 @@
           "hash": "18127317720592244005",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -10278,7 +11042,7 @@
           "hash": "665763614825015730",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -10289,7 +11053,7 @@
           "hash": "7272176181595358368",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/hooks"
           ]
@@ -10299,7 +11063,7 @@
           "hash": "17935039409224795168",
           "deps": [
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10310,7 +11074,7 @@
           "file": "apps/client/src/features/page-history/hooks/use-diff-navigation.ts",
           "hash": "17411354973135544799",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -10318,7 +11082,7 @@
           "file": "apps/client/src/features/page-history/hooks/use-history-reset.ts",
           "hash": "3229648994309530212",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -10326,7 +11090,7 @@
           "file": "apps/client/src/features/page-history/hooks/use-history-restore.tsx",
           "hash": "9325831355272719198",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/core",
@@ -10369,7 +11133,7 @@
           "file": "apps/client/src/features/page/components/breadcrumbs/breadcrumb.tsx",
           "hash": "12153787307863209885",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
@@ -10397,7 +11161,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:react-router-dom",
             "npm:@mantine/notifications",
@@ -10434,7 +11198,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:@mantine/notifications",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:bytes"
@@ -10475,7 +11239,7 @@
             "npm:react",
             "npm:uuid",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10515,7 +11279,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -10544,14 +11308,14 @@
           "file": "apps/client/src/features/page/tree/atoms/open-tree-nodes-atom.ts",
           "hash": "11888613414006786371",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/page/tree/atoms/tree-data-atom.ts",
           "hash": "6072487258566142592",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10594,7 +11358,7 @@
           "file": "apps/client/src/features/page/tree/components/space-tree-node-menu.tsx",
           "hash": "6426969566020667208",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:react-router-dom",
             "npm:@mantine/core",
@@ -10609,7 +11373,7 @@
           "deps": [
             "npm:react",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:@tabler/icons-react"
@@ -10619,7 +11383,7 @@
           "file": "apps/client/src/features/page/tree/components/space-tree.tsx",
           "hash": "3960866501694480808",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
@@ -10645,7 +11409,7 @@
           "hash": "8743955192552321611",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications",
             "npm:react-i18next",
             "npm:react-router-dom"
@@ -10695,7 +11459,7 @@
           "hash": "6692794902018219672",
           "deps": [
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:react",
             "npm:react-i18next"
@@ -10726,7 +11490,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10740,7 +11504,7 @@
             "npm:@mantine/hooks",
             "npm:react-i18next",
             "npm:@mantine/notifications",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10817,21 +11581,21 @@
           "file": "apps/client/src/features/share/atoms/open-shared-tree-nodes-atom.ts",
           "hash": "13501948525656936986",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/share/atoms/shared-page-atom.ts",
           "hash": "11263451867957416119",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/share/atoms/sidebar-atom.ts",
           "hash": "11283378161734059032",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10881,7 +11645,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -10891,7 +11655,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@tabler/icons-react"
           ]
@@ -10906,9 +11670,9 @@
           "deps": [
             "npm:react",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:@mantine/core"
           ]
@@ -10918,14 +11682,14 @@
           "hash": "6150141576005749066",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/share/hooks/use-toggle-toc.ts",
           "hash": "11920253415381649417",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11045,9 +11809,9 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/hooks",
             "npm:react-i18next",
             "npm:react-error-boundary"
@@ -11126,7 +11890,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11187,7 +11951,7 @@
             "npm:react-i18next",
             "npm:react",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -11290,7 +12054,7 @@
           "file": "apps/client/src/features/user/atoms/current-user-atom.ts",
           "hash": "15920406078577238247",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11298,7 +12062,7 @@
           "hash": "3483668062530451870",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11307,7 +12071,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -11322,7 +12086,7 @@
           "file": "apps/client/src/features/user/components/account-name-form.tsx",
           "hash": "583274548795947071",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:zod",
             "npm:@mantine/form",
             "npm:mantine-form-zod-resolver",
@@ -11347,7 +12111,7 @@
             "npm:@mantine/core",
             "npm:zod",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:@mantine/form",
             "npm:mantine-form-zod-resolver",
@@ -11373,7 +12137,7 @@
           "hash": "295860632292686437",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -11383,7 +12147,7 @@
           "hash": "4386474006857713416",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -11393,7 +12157,7 @@
           "hash": "12569872593055494399",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -11403,7 +12167,7 @@
           "hash": "2376846208058100928",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -11427,7 +12191,7 @@
           "file": "apps/client/src/features/user/user-provider.tsx",
           "hash": "4346955918386512759",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:socket.io-client"
@@ -11437,7 +12201,7 @@
           "file": "apps/client/src/features/websocket/atoms/socket-atom.ts",
           "hash": "6391226925084500402",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:socket.io-client"
           ]
         },
@@ -11457,7 +12221,7 @@
           "file": "apps/client/src/features/websocket/use-query-emit.ts",
           "hash": "15405926124128212084",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11465,7 +12229,7 @@
           "hash": "17093660105791274909",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -11474,7 +12238,7 @@
           "hash": "3196206177624733325",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -11524,7 +12288,7 @@
           "file": "apps/client/src/features/workspace/components/members/components/workspace-invite-section.tsx",
           "hash": "10262848128890486052",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/core",
             "npm:react-i18next"
@@ -11554,7 +12318,7 @@
           "hash": "11465901614997902509",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -11565,7 +12329,7 @@
           "hash": "17995255845058343347",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/core",
             "npm:react-i18next"
           ]
@@ -11574,7 +12338,7 @@
           "file": "apps/client/src/features/workspace/components/settings/components/workspace-name-form.tsx",
           "hash": "15515621087128566417",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:zod",
             "npm:react",
             "npm:@mantine/core",
@@ -11645,7 +12409,7 @@
           "file": "apps/client/src/hooks/use-settings-navigation.ts",
           "hash": "5364142833805442617",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom"
           ]
         },
@@ -11660,14 +12424,14 @@
           "file": "apps/client/src/hooks/use-toggle-aside.tsx",
           "hash": "6187553308685569820",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/hooks/use-track-origin.ts",
           "hash": "1474755193328415087",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-router-dom"
           ]
@@ -11676,7 +12440,7 @@
           "file": "apps/client/src/hooks/use-user-role.tsx",
           "hash": "6783148756154008777",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11692,14 +12456,14 @@
           "file": "apps/client/src/lib/api-client.ts",
           "hash": "4486372778008595548",
           "deps": [
-            "npm:axios@1.18.1"
+            "npm:axios"
           ]
         },
         {
           "file": "apps/client/src/lib/api-error.ts",
           "hash": "9707627038998261675",
           "deps": [
-            "npm:axios@1.18.1"
+            "npm:axios"
           ]
         },
         {
@@ -11741,7 +12505,7 @@
           "file": "apps/client/src/lib/jotai-helper.ts",
           "hash": "2212972772473792247",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11931,7 +12695,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -11958,7 +12722,7 @@
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -12024,6 +12788,3497 @@
             "npm:@vitejs/plugin-react"
           ]
         }
+      ],
+      "server": [
+        {
+          "file": "apps/server/.dockerignore",
+          "hash": "10617010235656747280"
+        },
+        {
+          "file": "apps/server/.gitignore",
+          "hash": "11562617197349077164"
+        },
+        {
+          "file": "apps/server/.prettierrc",
+          "hash": "4808572120966128913"
+        },
+        {
+          "file": "apps/server/README.md",
+          "hash": "15216404710276572067"
+        },
+        {
+          "file": "apps/server/eslint.config.mjs",
+          "hash": "15647088274164235291",
+          "deps": [
+            "npm:@eslint/js",
+            "npm:globals@17.11.0",
+            "npm:typescript-eslint",
+            "npm:eslint-config-prettier"
+          ]
+        },
+        {
+          "file": "apps/server/nest-cli.json",
+          "hash": "789240945379598733"
+        },
+        {
+          "file": "apps/server/package.json",
+          "hash": "5938118700802865468",
+          "deps": [
+            "npm:@eslint/js",
+            "npm:@nestjs/cli",
+            "npm:@nestjs/schematics",
+            "npm:@nestjs/testing",
+            "npm:@types/bcrypt",
+            "npm:@types/debounce",
+            "npm:@types/express",
+            "npm:@types/fs-extra",
+            "npm:@types/jest",
+            "npm:@types/mime-types",
+            "npm:@types/node@25.9.5",
+            "npm:@types/nodemailer",
+            "npm:@types/passport-google-oauth20",
+            "npm:@types/passport-jwt",
+            "npm:@types/supertest",
+            "npm:@types/ws",
+            "npm:@types/yauzl",
+            "npm:eslint",
+            "npm:eslint-config-prettier",
+            "npm:globals@17.11.0",
+            "npm:jest",
+            "npm:kysely-codegen",
+            "npm:prettier",
+            "npm:source-map-support",
+            "npm:supertest",
+            "npm:ts-jest",
+            "npm:ts-loader",
+            "npm:ts-node",
+            "npm:tsconfig-paths",
+            "npm:typescript",
+            "npm:typescript-eslint",
+            "npm:@ai-sdk/google",
+            "npm:@ai-sdk/openai",
+            "npm:@ai-sdk/openai-compatible",
+            "npm:@aws-sdk/client-s3",
+            "npm:@aws-sdk/lib-storage",
+            "npm:@aws-sdk/s3-request-presigner",
+            "npm:@azure/storage-blob",
+            "npm:@clickhouse/client",
+            "@docmost/base-formula",
+            "npm:@docmost/pdf-inspector",
+            "npm:@fastify/cookie",
+            "npm:@fastify/multipart",
+            "npm:@fastify/static",
+            "npm:@keyv/redis",
+            "npm:@langchain/core",
+            "npm:@langchain/textsplitters",
+            "npm:@modelcontextprotocol/sdk",
+            "npm:@nest-lab/throttler-storage-redis",
+            "npm:@nestjs-labs/nestjs-ioredis",
+            "npm:@nestjs/bullmq",
+            "npm:@nestjs/cache-manager",
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:@nestjs/core",
+            "npm:@nestjs/event-emitter",
+            "npm:@nestjs/jwt",
+            "npm:@nestjs/mapped-types",
+            "npm:@nestjs/passport",
+            "npm:@nestjs/platform-fastify",
+            "npm:@nestjs/platform-socket.io",
+            "npm:@nestjs/schedule",
+            "npm:@nestjs/terminus",
+            "npm:@nestjs/throttler",
+            "npm:@nestjs/websockets",
+            "npm:@node-saml/passport-saml",
+            "npm:@socket.io/redis-adapter",
+            "npm:@turbopuffer/turbopuffer",
+            "npm:ai",
+            "npm:ai-sdk-ollama",
+            "npm:bcrypt",
+            "npm:bowser",
+            "npm:bullmq",
+            "npm:cache-manager",
+            "npm:cheerio",
+            "npm:class-transformer",
+            "npm:class-validator",
+            "npm:cookie",
+            "npm:csv-stringify",
+            "npm:fast-bm25",
+            "npm:fastify-ip",
+            "npm:fs-extra",
+            "npm:happy-dom",
+            "npm:ioredis",
+            "npm:js-tiktoken",
+            "npm:jsonwebtoken",
+            "npm:kysely",
+            "npm:kysely-migration-cli",
+            "npm:kysely-postgres-js",
+            "npm:ldapts",
+            "npm:mammoth",
+            "npm:mime-types",
+            "npm:msgpackr",
+            "npm:nanoid@5.1.16",
+            "npm:nestjs-cls",
+            "npm:nestjs-kysely",
+            "npm:nestjs-pino",
+            "npm:nodemailer",
+            "npm:openid-client",
+            "npm:otpauth",
+            "npm:p-limit",
+            "npm:passport-google-oauth20",
+            "npm:passport-jwt",
+            "npm:pg-tsquery",
+            "npm:pgvector",
+            "npm:pino-http",
+            "npm:pino-pretty",
+            "npm:postgres",
+            "npm:postmark",
+            "npm:react",
+            "npm:react-email",
+            "npm:reflect-metadata",
+            "npm:rxjs",
+            "npm:sanitize-filename",
+            "npm:scimmy",
+            "npm:socket.io",
+            "npm:stripe",
+            "npm:tlds",
+            "npm:tmp-promise",
+            "npm:typesense",
+            "npm:undici",
+            "npm:ws",
+            "npm:yauzl",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/server/src/app.controller.ts",
+          "hash": "4552329938751326480",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/app.module.ts",
+          "hash": "1716202346061245731",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:@nestjs/event-emitter",
+            "npm:@nestjs-labs/nestjs-ioredis",
+            "npm:@nestjs/cache-manager",
+            "npm:@keyv/redis",
+            "npm:nestjs-cls"
+          ]
+        },
+        {
+          "file": "apps/server/src/app.service.ts",
+          "hash": "16892833931858030153",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/adapter/collab-ws.adapter.ts",
+          "hash": "16548055007077754381",
+          "deps": [
+            "npm:ws"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/collaboration.gateway.ts",
+          "hash": "7904735392036894127",
+          "deps": [
+            "npm:@hocuspocus/server",
+            "npm:ws",
+            "npm:@nestjs/common",
+            "npm:ioredis",
+            "npm:msgpackr",
+            "npm:nanoid@5.1.16"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/collaboration.handler.ts",
+          "hash": "14098643210373314151",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@hocuspocus/server",
+            "npm:@hocuspocus/transformer",
+            "npm:yjs"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/collaboration.module.ts",
+          "hash": "10666607181529040007",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:ws"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/collaboration.util.ts",
+          "hash": "9330463229667404172",
+          "deps": [
+            "npm:@tiptap/starter-kit",
+            "npm:@tiptap/extension-document",
+            "npm:@tiptap/extension-text-align",
+            "npm:@tiptap/extension-superscript",
+            "npm:@tiptap/extension-subscript",
+            "npm:@tiptap/extension-typography",
+            "npm:@tiptap/extension-text-style",
+            "npm:@tiptap/extension-color",
+            "npm:@tiptap/extension-youtube",
+            "npm:@tiptap/extension-list",
+            "@docmost/editor-ext",
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:yjs",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/constants.ts",
+          "hash": "9640772421791898516"
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/authentication.extension.ts",
+          "hash": "5299788577675342298",
+          "deps": [
+            "npm:@hocuspocus/server",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/logger.extension.ts",
+          "hash": "8965290474373761960",
+          "deps": [
+            "npm:@hocuspocus/server",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/persistence.extension.ts",
+          "hash": "10066996683882838147",
+          "deps": [
+            "npm:@hocuspocus/server",
+            "npm:yjs",
+            "npm:@nestjs/common",
+            "npm:@hocuspocus/transformer",
+            "npm:nestjs-kysely",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/redis-sync/collab-proxy-socket.ts",
+          "hash": "7076250329733011833",
+          "deps": [
+            "npm:ioredis",
+            "npm:@hocuspocus/server"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/redis-sync/index.ts",
+          "hash": "2633388005551210399"
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/redis-sync/redis-sync.extension.ts",
+          "hash": "8817640048173038109",
+          "deps": [
+            "npm:@hocuspocus/server",
+            "npm:@hocuspocus/common",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/redis-sync/redis-sync.types.ts",
+          "hash": "3709738550611012862",
+          "deps": [
+            "npm:ioredis",
+            "npm:@hocuspocus/server"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/extensions/redis-sync/ws-socket-wrapper.ts",
+          "hash": "14395342934877784672",
+          "deps": [
+            "npm:ws",
+            "npm:@hocuspocus/server"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/processors/history.processor.ts",
+          "hash": "15419236632399105977",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/server/collab-app.module.ts",
+          "hash": "499413993713064591",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/event-emitter",
+            "npm:@nestjs-labs/nestjs-ioredis",
+            "npm:@nestjs/cache-manager",
+            "npm:@keyv/redis"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/server/collab-main.ts",
+          "hash": "5756582651759252613",
+          "deps": [
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-fastify",
+            "npm:@nestjs/common",
+            "npm:nestjs-pino"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/server/collaboration.controller.ts",
+          "hash": "1320139996886408633",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/services/collab-history.service.ts",
+          "hash": "8271520803689867884",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs-labs/nestjs-ioredis",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/collaboration/yjs.util.ts",
+          "hash": "7120608894732420285",
+          "deps": [
+            "npm:@tiptap/y-tiptap",
+            "npm:yjs",
+            "npm:@hocuspocus/server",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/decorators/auth-user.decorator.ts",
+          "hash": "8073113173502433049",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/decorators/auth-workspace.decorator.ts",
+          "hash": "3098964843500630486",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/decorators/public.decorator.ts",
+          "hash": "17960535925631508594",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/decorators/skip-transform.decorator.ts",
+          "hash": "5289840748501622277",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/events/audit-events.ts",
+          "hash": "5851878981086458538"
+        },
+        {
+          "file": "apps/server/src/common/events/event.contants.ts",
+          "hash": "7381245543478257525"
+        },
+        {
+          "file": "apps/server/src/common/features.ts",
+          "hash": "2750118499117329919"
+        },
+        {
+          "file": "apps/server/src/common/guards/jwt-auth.guard.ts",
+          "hash": "11722689313141961881",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/passport",
+            "npm:@nestjs/core",
+            "npm:date-fns"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/cache-keys.ts",
+          "hash": "7070570171410857989"
+        },
+        {
+          "file": "apps/server/src/common/helpers/constants.ts",
+          "hash": "4638224249888826654"
+        },
+        {
+          "file": "apps/server/src/common/helpers/file.helper.ts",
+          "hash": "18130032060538938097",
+          "deps": [
+            "npm:mime-types"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/html-escaper.ts",
+          "hash": "867865524019083908"
+        },
+        {
+          "file": "apps/server/src/common/helpers/index.ts",
+          "hash": "4079536174304361271"
+        },
+        {
+          "file": "apps/server/src/common/helpers/nanoid.utils.ts",
+          "hash": "7168679060567213115",
+          "deps": [
+            "npm:nanoid@5.1.16"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/attachment-node-types.ts",
+          "hash": "7943366044628638284"
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/html/generateHTML.ts",
+          "hash": "1737467624126580714",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/html/generateJSON.ts",
+          "hash": "13550863753913673195",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:happy-dom"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/html/getHTMLFromFragment.ts",
+          "hash": "11041328440606059707",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:happy-dom"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/html/index.ts",
+          "hash": "15219395147930754587"
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/indent-schema.spec.ts",
+          "hash": "6981111913377922643"
+        },
+        {
+          "file": "apps/server/src/common/helpers/prosemirror/utils.ts",
+          "hash": "12533721121000638391",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:uuid",
+            "npm:@hocuspocus/transformer",
+            "npm:yjs"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/security-headers.ts",
+          "hash": "16457867105306975445"
+        },
+        {
+          "file": "apps/server/src/common/helpers/text.utils.spec.ts",
+          "hash": "17070077048840643949"
+        },
+        {
+          "file": "apps/server/src/common/helpers/text.utils.ts",
+          "hash": "9315358623287525736"
+        },
+        {
+          "file": "apps/server/src/common/helpers/types/export-metadata.types.ts",
+          "hash": "15590675193414266809"
+        },
+        {
+          "file": "apps/server/src/common/helpers/types/permission.ts",
+          "hash": "6904656511410790637"
+        },
+        {
+          "file": "apps/server/src/common/helpers/utils.spec.ts",
+          "hash": "7894972576104540385"
+        },
+        {
+          "file": "apps/server/src/common/helpers/utils.ts",
+          "hash": "16185708778394632296",
+          "deps": [
+            "npm:bcrypt",
+            "npm:sanitize-filename",
+            "npm:fastify"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/helpers/with-cache.ts",
+          "hash": "11582776941118116996",
+          "deps": [
+            "npm:cache-manager"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/interceptors/audit-actor.interceptor.ts",
+          "hash": "16588838524693170443",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:rxjs",
+            "npm:nestjs-cls"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/interceptors/file.interceptor.ts",
+          "hash": "16078905389285285000",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:rxjs",
+            "npm:fastify"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/interceptors/http-response.interceptor.ts",
+          "hash": "14236102152099258193",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:rxjs",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/logger/internal-log-filter.ts",
+          "hash": "13115103146595758551",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/logger/logger.module.ts",
+          "hash": "4127440838392469093",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-pino"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/logger/pino.config.ts",
+          "hash": "15263777446962929032",
+          "deps": [
+            "npm:nestjs-pino",
+            "npm:pino"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/middlewares/audit-context.middleware.ts",
+          "hash": "17368032111465358746",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify",
+            "npm:nestjs-cls"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/middlewares/domain.middleware.ts",
+          "hash": "6010452031007119827",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/validators/is-iso6391.ts",
+          "hash": "10500557733903694354",
+          "deps": [
+            "npm:validator",
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/common/validators/no-urls.validator.spec.ts",
+          "hash": "7580192648411328319"
+        },
+        {
+          "file": "apps/server/src/common/validators/no-urls.validator.ts",
+          "hash": "1114437273166918421",
+          "deps": [
+            "npm:class-validator",
+            "npm:tlds"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/__tests__/ai-chat.service.spec.ts",
+          "hash": "573177983106295767",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/__tests__/ai-retrieval.service.spec.ts",
+          "hash": "13191822965816718523",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/ai-chat.controller.ts",
+          "hash": "2385046904381355415",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/ai-chat.module.ts",
+          "hash": "4735207086768487998",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/dto/ai-chat.dto.ts",
+          "hash": "9771858250006135776",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/services/ai-chat.service.ts",
+          "hash": "7044242293443404333",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/services/ai-provider.service.ts",
+          "hash": "12868146940659409188",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/ai-chat/services/ai-retrieval.service.ts",
+          "hash": "12526890047374147558",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/attachment/attachment.constants.ts",
+          "hash": "12504575949154853982"
+        },
+        {
+          "file": "apps/server/src/core/attachment/attachment.controller.ts",
+          "hash": "2045648494591058155",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify",
+            "npm:bytes",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/attachment/attachment.module.ts",
+          "hash": "15211341944966353685",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/attachment/attachment.utils.ts",
+          "hash": "7361201857936821713",
+          "deps": [
+            "npm:@fastify/multipart"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/attachment/dto/attachment.dto.ts",
+          "hash": "7135264683647018329",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/attachment/processors/attachment.processor.ts",
+          "hash": "7670625946300909700",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/attachment/services/attachment.service.ts",
+          "hash": "14109813446732560080",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@fastify/multipart",
+            "npm:uuid",
+            "npm:nestjs-kysely",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/auth.constants.ts",
+          "hash": "662109568320664821"
+        },
+        {
+          "file": "apps/server/src/core/auth/auth.controller.spec.ts",
+          "hash": "14239920491639202077",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/auth.controller.ts",
+          "hash": "11216678752689829916",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/throttler",
+            "npm:fastify",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/auth.module.ts",
+          "hash": "11829645198633919801",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/auth.util.ts",
+          "hash": "1963854010089279476",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/change-password.dto.ts",
+          "hash": "7707384594972706607",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/create-admin-user.dto.ts",
+          "hash": "14086526934447055576",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/create-user.dto.ts",
+          "hash": "11724432290956466002",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/forgot-password.dto.ts",
+          "hash": "17393183683233885829",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/jwt-payload.ts",
+          "hash": "18274170315915338276"
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/login.dto.ts",
+          "hash": "17702683834182211131",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/password-reset.dto.ts",
+          "hash": "13998070770805681268",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/dto/verify-user-token.dto.ts",
+          "hash": "12966468623591245143",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/guards/setup.guard.ts",
+          "hash": "5655110012702667163",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/services/auth.service.spec.ts",
+          "hash": "5442871165268080463",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/services/auth.service.ts",
+          "hash": "1345235351024991930",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/services/signup.service.ts",
+          "hash": "16278192442981251316",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/services/token.service.spec.ts",
+          "hash": "10459418378457090665",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/services/token.service.ts",
+          "hash": "5476884536104314862",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/jwt",
+            "npm:ms"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/strategies/jwt.strategy.ts",
+          "hash": "11840321152004096448",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/passport",
+            "npm:passport-jwt",
+            "npm:fastify",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/auth/token.module.ts",
+          "hash": "16938566128975961725",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/jwt",
+            "npm:ms"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/casl/abilities/space-ability.factory.ts",
+          "hash": "13084202506186061080",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@casl/ability"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/casl/abilities/workspace-ability.factory.ts",
+          "hash": "682501131580929914",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@casl/ability"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/casl/casl.module.ts",
+          "hash": "14498059576644344344",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/casl/interfaces/space-ability.type.ts",
+          "hash": "17780419004996742634"
+        },
+        {
+          "file": "apps/server/src/core/casl/interfaces/workspace-ability.type.ts",
+          "hash": "11388837452563754980"
+        },
+        {
+          "file": "apps/server/src/core/comment/comment.controller.ts",
+          "hash": "17337928235570016111",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/comment/comment.module.ts",
+          "hash": "7602800616000965334",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/comment/comment.service.spec.ts",
+          "hash": "4257341030368799476",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/comment/comment.service.ts",
+          "hash": "5461302998117014495",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/comment/dto/comments.input.ts",
+          "hash": "388858634422483783",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/comment/dto/create-comment.dto.ts",
+          "hash": "11395920869879201694",
+          "deps": [
+            "npm:class-validator",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/comment/dto/update-comment.dto.ts",
+          "hash": "7298047178343290279",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/core.module.ts",
+          "hash": "9547549090903474539",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-cls"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/favorite/dto/favorite-ids.dto.ts",
+          "hash": "15679846752186486893",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/favorite/dto/favorite.dto.ts",
+          "hash": "17823448312544177133",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/favorite/dto/list-favorites.dto.ts",
+          "hash": "4439485757711419491",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/favorite/favorite.controller.ts",
+          "hash": "13268114638900810036",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/favorite/favorite.module.ts",
+          "hash": "15613730968427080003",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/favorite/services/favorite.service.ts",
+          "hash": "13816595393906755666",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/dto/add-group-user.dto.ts",
+          "hash": "16448954193058977525",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/dto/create-group.dto.ts",
+          "hash": "3555198429981881449",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/dto/group-id.dto.ts",
+          "hash": "9306165068377351959",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/dto/remove-group-user.dto.ts",
+          "hash": "9304927865440148148",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/dto/update-group.dto.ts",
+          "hash": "18436393356466945663",
+          "deps": [
+            "npm:@nestjs/mapped-types",
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/group.controller.spec.ts",
+          "hash": "3253009564554872845",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/group.controller.ts",
+          "hash": "9841753785705622034",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/group.module.ts",
+          "hash": "16149303821054723257",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/services/group-user.service.ts",
+          "hash": "10365444602290378872",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/services/group.service.spec.ts",
+          "hash": "10462061661338876294",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/group/services/group.service.ts",
+          "hash": "73407168689049515",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/label/dto/label.dto.ts",
+          "hash": "1138642516481095624",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/label/label.controller.ts",
+          "hash": "3406074871163900726",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/label/label.module.ts",
+          "hash": "3140515185156132974",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/label/label.service.ts",
+          "hash": "4790919955921005505",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/label/utils.ts",
+          "hash": "14097395820238728399"
+        },
+        {
+          "file": "apps/server/src/core/notification/dto/notification.dto.ts",
+          "hash": "1624190390527443330",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/notification.constants.ts",
+          "hash": "13234108158644105920"
+        },
+        {
+          "file": "apps/server/src/core/notification/notification.controller.ts",
+          "hash": "11696852173942062311",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/notification.module.ts",
+          "hash": "6114103683513986819",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/notification.processor.ts",
+          "hash": "9313723436098673061",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/notification.service.ts",
+          "hash": "12451487583371683399",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/services/comment.notification.ts",
+          "hash": "16140754932852837858",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/services/page-update-email-rate-limiter.ts",
+          "hash": "15101223420539229622",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs-labs/nestjs-ioredis",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/services/page.notification.ts",
+          "hash": "2107058942086747047",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/notification/services/verification.notification.ts",
+          "hash": "3349469686760291326",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/backlink.dto.ts",
+          "hash": "15424775569976887616",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/create-page.dto.ts",
+          "hash": "9618584085689894225",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/created-by-user.dto.ts",
+          "hash": "1434525068537887083",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/deleted-page.dto.ts",
+          "hash": "8469359774254945197",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/duplicate-page.dto.ts",
+          "hash": "17870470374391898400",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/move-page.dto.ts",
+          "hash": "2269597242295910212",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/page.dto.ts",
+          "hash": "10566695436385413735",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/recent-page.dto.ts",
+          "hash": "9018177579854620957",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/sidebar-page.dto.ts",
+          "hash": "11037495234368555716",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/dto/update-page.dto.ts",
+          "hash": "3671590197774582645",
+          "deps": [
+            "npm:@nestjs/mapped-types",
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/page-access/page-access.module.ts",
+          "hash": "14283130424327157633",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/page-access/page-access.service.ts",
+          "hash": "9028657185761046053",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/page.controller.spec.ts",
+          "hash": "8066045823361871311",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/page.controller.ts",
+          "hash": "10551667733879769920",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/page.module.ts",
+          "hash": "11571403427642706346",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/services/backlink.service.spec.ts",
+          "hash": "318948243889048443",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/services/backlink.service.ts",
+          "hash": "16914736571970901307",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/services/page-history.service.ts",
+          "hash": "15952386960879844082",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/services/page.service.spec.ts",
+          "hash": "13528194428142188374",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/services/page.service.ts",
+          "hash": "15974653124751869852",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:fractional-indexing-jittered",
+            "npm:uuid",
+            "npm:@tiptap/pm",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:@nestjs/event-emitter",
+            "@docmost/editor-ext",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/services/trash-cleanup.service.ts",
+          "hash": "13560900054952765296",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/schedule",
+            "npm:nestjs-kysely",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/dto/lookup.dto.ts",
+          "hash": "196772879475782396",
+          "deps": [
+            "npm:class-transformer",
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/dto/references.dto.ts",
+          "hash": "17604790768945287455",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/dto/unsync-reference.dto.ts",
+          "hash": "14102266387155902325",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/spec/transclusion-prosemirror.util.spec.ts",
+          "hash": "12557225246567974939"
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/spec/transclusion-unsync.util.spec.ts",
+          "hash": "3650555675041307208"
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/spec/transclusion.controller.spec.ts",
+          "hash": "12077126609553126335",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/transclusion.controller.ts",
+          "hash": "13764031086545024271",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/transclusion.module.ts",
+          "hash": "2435700381845097842",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/transclusion.service.ts",
+          "hash": "11408817332069130303",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:uuid",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/transclusion.types.ts",
+          "hash": "1214186171121790877"
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/utils/transclusion-prosemirror.util.ts",
+          "hash": "2368956383216011975"
+        },
+        {
+          "file": "apps/server/src/core/page/transclusion/utils/transclusion-unsync.util.ts",
+          "hash": "10386114158547315945"
+        },
+        {
+          "file": "apps/server/src/core/search/dto/search-response.dto.ts",
+          "hash": "4659392871124563240"
+        },
+        {
+          "file": "apps/server/src/core/search/dto/search.dto.ts",
+          "hash": "13739819710352062110",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/search/search.controller.spec.ts",
+          "hash": "7099739891506808423",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/search/search.controller.ts",
+          "hash": "15054247172579063537",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/search/search.module.ts",
+          "hash": "14638934682560709366",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/search/search.service.spec.ts",
+          "hash": "1149777384332702817",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/search/search.service.ts",
+          "hash": "4910978339414952738",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely",
+            "npm:pg-tsquery"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/session/dto/revoke-session.dto.ts",
+          "hash": "13855428313015520386",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/session/session-activity.service.ts",
+          "hash": "6327578723991378075",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs-labs/nestjs-ioredis",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/session/session.controller.ts",
+          "hash": "17154670101127685203",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/session/session.module.ts",
+          "hash": "3574134185769641708",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/session/session.service.ts",
+          "hash": "6683114083613255478",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/schedule",
+            "npm:nestjs-cls",
+            "npm:bowser"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/dto/share-transclusion-lookup.dto.ts",
+          "hash": "767033873928444042",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/dto/share.dto.ts",
+          "hash": "3665570058239859979",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/share-seo.controller.ts",
+          "hash": "9842255106743128402",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/share.controller.ts",
+          "hash": "1926251589092229167",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/share.module.ts",
+          "hash": "16768120406784216315",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/share.service.ts",
+          "hash": "3808489359363632902",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:@tiptap/pm",
+            "npm:uuid",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/share/share.util.ts",
+          "hash": "10383464078223818292",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/add-space-members.dto.ts",
+          "hash": "602932703106865767",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/create-space.dto.ts",
+          "hash": "90801157566502296",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/delete-space.dto.ts",
+          "hash": "6838322732721346130",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/remove-space-member.dto.ts",
+          "hash": "15859169952377165035",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/space-id.dto.ts",
+          "hash": "13965110145138512684",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/update-space-member-role.dto.ts",
+          "hash": "8994571012842520877",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/dto/update-space.dto.ts",
+          "hash": "10903834207439543327",
+          "deps": [
+            "npm:@nestjs/mapped-types",
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/services/space-member.service.ts",
+          "hash": "18330822466326389883",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/services/space-permission.service.ts",
+          "hash": "14575040157184342731",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/services/space.service.spec.ts",
+          "hash": "15908462144059670472",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/services/space.service.ts",
+          "hash": "8726338040009737234",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:bullmq",
+            "npm:@nestjs/bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/space.controller.spec.ts",
+          "hash": "2179731332144455263",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/space.controller.ts",
+          "hash": "10787319524407355741",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/space/space.module.ts",
+          "hash": "17628277511096417802",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/user/dto/update-user.dto.ts",
+          "hash": "18428634102102450689",
+          "deps": [
+            "npm:@nestjs/mapped-types",
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/user/user.controller.spec.ts",
+          "hash": "8544731166474321108",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/user/user.controller.ts",
+          "hash": "11034965669899231940",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/user/user.module.ts",
+          "hash": "17412607578246872436",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/user/user.service.ts",
+          "hash": "8584848542352665839",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/watcher/dto/space-watcher.dto.ts",
+          "hash": "9031793014654182467",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/watcher/dto/watcher.dto.ts",
+          "hash": "5941559334403263812",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/watcher/space-watcher.controller.ts",
+          "hash": "5291101950875349418",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/watcher/watcher.controller.ts",
+          "hash": "13904865466615551526",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/watcher/watcher.module.ts",
+          "hash": "2537980725079803710",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/watcher/watcher.service.ts",
+          "hash": "1752184444711780526",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/controllers/workspace.controller.ts",
+          "hash": "11308515900818172156",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/check-hostname.dto.ts",
+          "hash": "16554048984289854330",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/create-workspace.dto.ts",
+          "hash": "4544715063905745826",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/delete-workspace.dto.ts",
+          "hash": "6760339706186703979",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/invitation.dto.ts",
+          "hash": "11343924757444262496",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/remove-workspace-user.dto.ts",
+          "hash": "9631588410185311049",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/update-workspace-user-role.dto.ts",
+          "hash": "17657543126642007190",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/dto/update-workspace.dto.ts",
+          "hash": "11760862578494925041",
+          "deps": [
+            "npm:@nestjs/mapped-types",
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/services/workspace-invitation.service.ts",
+          "hash": "4658759370912921843",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/services/workspace.service.spec.ts",
+          "hash": "1617271695034142121",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/services/workspace.service.ts",
+          "hash": "2042951439638574345",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely",
+            "npm:date-fns",
+            "npm:uuid",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/workspace.constants.ts",
+          "hash": "11331607637792815954"
+        },
+        {
+          "file": "apps/server/src/core/workspace/workspace.module.ts",
+          "hash": "10372035762226429240",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/core/workspace/workspace.util.ts",
+          "hash": "651221444466889711"
+        },
+        {
+          "file": "apps/server/src/database/database.module.ts",
+          "hash": "10892736194852032277",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely",
+            "npm:kysely-postgres-js",
+            "npm:postgres"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/helpers/helpers.ts",
+          "hash": "4046952574096325072",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/listeners/page.listener.ts",
+          "hash": "4227284448645624727",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/event-emitter",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/listeners/space.listener.ts",
+          "hash": "429303545657074777",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/event-emitter",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/listeners/workspace.listener.ts",
+          "hash": "14245108981934223746",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/event-emitter",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrate.ts",
+          "hash": "6031527599341729439",
+          "deps": [
+            "npm:kysely",
+            "npm:kysely-migration-cli",
+            "npm:dotenv",
+            "npm:kysely-postgres-js",
+            "npm:postgres"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T085400-uuid_v7_fn.ts",
+          "hash": "13937828316560263632",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T085500-workspaces.ts",
+          "hash": "6942022771005347670",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T085600-users.ts",
+          "hash": "17916930746535151018",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T085700-groups.ts",
+          "hash": "18314324990521693309",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T085900-spaces.ts",
+          "hash": "5411039876380005898",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086100-add-workspace-fk.ts",
+          "hash": "8400804626236397607",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086200-workspace_invitations.ts",
+          "hash": "16569029584690977614",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086300-pages.ts",
+          "hash": "6787878802526375",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086400-page_history.ts",
+          "hash": "10515330006517318321",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086600-comments.ts",
+          "hash": "11570660895580245129",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086700-attachments.ts",
+          "hash": "4562276831899657572",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240324T086800-pages-tsvector-trigger.ts",
+          "hash": "8191114939208001838",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240707T145623-drop-redundant-pages-slug_id-index.ts",
+          "hash": "14539971095198645278",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20240903T124647-user-tokens.ts",
+          "hash": "6466372134058448936",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20241218T223249-backlinks.ts",
+          "hash": "14317290514481045088",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250106T195516-billing.ts",
+          "hash": "5724877018542321932",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250118T194658-sso-auth.ts",
+          "hash": "523270068358438649",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250222T114520-add_license_key_to_workspace.ts",
+          "hash": "2582152798864295452",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250327T145832-add-contributorIds-to-pages.ts",
+          "hash": "14615355038755221735",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250408T191830-shares.ts",
+          "hash": "10640380895571212917",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250521T154949-file_tasks.ts",
+          "hash": "9330672888904829754",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250623T215045-more-billing-columns.ts",
+          "hash": "642834110613410498",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250715T070817-mfa.ts",
+          "hash": "13173370561641837941",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250725T052004-add-new-comments-columns.ts",
+          "hash": "9958428369947772094",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250729T213756-add-unaccent-pg_trm-update-tsvector..ts",
+          "hash": "16963817529211116919",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250831T191600-add-group-sync-to-auth-providers.ts",
+          "hash": "5931088431760413684",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250831T202306-ldap-auth.ts",
+          "hash": "14687619313493289899",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250901T184612-attachments-search.ts",
+          "hash": "13644006219152181138",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20250912T101500-api-keys.ts",
+          "hash": "13207092147224994066",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260205T214213-add-settings-to-spaces.ts",
+          "hash": "15152101595076754717",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260209T120000-add-contributor_ids-to-page-history.ts",
+          "hash": "4384135306678678171",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260213T085259-notifications.ts",
+          "hash": "13714784800090097230",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260213T085320-watchers.ts",
+          "hash": "14778172724976312435",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260213T085337-backfill-watchers.ts",
+          "hash": "2106438970582265578",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260224T233803-page-permissions.ts",
+          "hash": "9641732263016823208",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260228T223532-audit.ts",
+          "hash": "6480273771462816933",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260326T121350-user-sessions.ts",
+          "hash": "13898991278383759231",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260329T163516-add-new-indexes.ts",
+          "hash": "7480853397389309174",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260409T132415-ai-chat.ts",
+          "hash": "3102951390587165411",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260412T135891-templates.ts",
+          "hash": "8157233892962082837",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260412T162318-favorites.ts",
+          "hash": "13550951428185650394",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260413T121647-page-verifications.ts",
+          "hash": "4423015094685265867",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260414T124451-update-file_tasks.ts",
+          "hash": "6652340737485603396",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260501T092214-scim.ts",
+          "hash": "11782828065245098964",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260501T202258-page-transclusions.ts",
+          "hash": "979537167815748969",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260509T121236-labels.ts",
+          "hash": "14146185023478211946",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260529T125146-bases.ts",
+          "hash": "8058978925047998356",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260620T010047-personal-spaces.ts",
+          "hash": "6892422831243409244",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/migrations/20260819T075313-ai-chat-space-id.ts",
+          "hash": "18090289326091446319",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/pagination/cursor-pagination.ts",
+          "hash": "93837684211440022",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/pagination/pagination-options.ts",
+          "hash": "8938228193709719787",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/pagination/pagination.ts",
+          "hash": "9147040619070551240",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/ai-chat/ai-chat.repo.ts",
+          "hash": "13296657401832200859",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/attachment/attachment.repo.ts",
+          "hash": "12628868081437418014",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/backlink/backlink.repo.ts",
+          "hash": "248249159825833746",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/comment/comment.repo.ts",
+          "hash": "3382758853685465516",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/favorite/favorite.repo.ts",
+          "hash": "12509864633972164129",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/group/group-user.repo.ts",
+          "hash": "4017044487397342989",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/group/group.repo.ts",
+          "hash": "17419093601594879002",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/label/label.repo.ts",
+          "hash": "9353052890652257030",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/notification/notification.repo.ts",
+          "hash": "1311282873324085560",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/page-transclusions/page-transclusion-references.repo.ts",
+          "hash": "10191231299020673755",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/page-transclusions/page-transclusions.repo.ts",
+          "hash": "9732382205300320530",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/page/page-history.repo.ts",
+          "hash": "1895548608179838967",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/page/page-permission.repo.ts",
+          "hash": "10211791675801200659",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/cache-manager",
+            "npm:cache-manager",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/page/page.repo.ts",
+          "hash": "12436711577034864649",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:uuid",
+            "npm:kysely",
+            "npm:@nestjs/event-emitter"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/page/types/page-permission.types.ts",
+          "hash": "12427619672036058037"
+        },
+        {
+          "file": "apps/server/src/database/repos/session/user-session.repo.ts",
+          "hash": "5092714063265043821",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/share/share.repo.ts",
+          "hash": "5825571540681621915",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:uuid",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/space/space-member.repo.ts",
+          "hash": "16885659223397169346",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/cache-manager",
+            "npm:cache-manager",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/space/space.repo.ts",
+          "hash": "11081794947302678789",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely",
+            "npm:uuid",
+            "npm:@nestjs/event-emitter"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/space/types.ts",
+          "hash": "16195728149946336183"
+        },
+        {
+          "file": "apps/server/src/database/repos/space/utils.ts",
+          "hash": "5563463069163708179"
+        },
+        {
+          "file": "apps/server/src/database/repos/template/template.repo.ts",
+          "hash": "16952843395749514108",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/user-token/user-token.repo.ts",
+          "hash": "14804200182994031589",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/user/user.repo.ts",
+          "hash": "12680265007824297338",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/watcher/watcher.repo.ts",
+          "hash": "14355143957486262172",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/repos/workspace/workspace.repo.ts",
+          "hash": "8098255743563318942",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/services/migration.service.ts",
+          "hash": "17710085680540109592",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:kysely",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/types/db.d.ts",
+          "hash": "5190917758178574871",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/types/db.interface.ts",
+          "hash": "5630015596190955562"
+        },
+        {
+          "file": "apps/server/src/database/types/embeddings.types.ts",
+          "hash": "14329629311009799366"
+        },
+        {
+          "file": "apps/server/src/database/types/entity.types.ts",
+          "hash": "18231715584102948903",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/types/kysely.types.ts",
+          "hash": "6595841131581802548",
+          "deps": [
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/database/utils.ts",
+          "hash": "6434231811507295530"
+        },
+        {
+          "file": "apps/server/src/integrations/audit/audit.module.ts",
+          "hash": "1776020381481752359",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/audit/audit.service.ts",
+          "hash": "15579541932475693348",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/encryption/encryption.errors.ts",
+          "hash": "24284607848907290"
+        },
+        {
+          "file": "apps/server/src/integrations/encryption/encryption.module.ts",
+          "hash": "11408140943063428986",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/encryption/encryption.service.spec.ts",
+          "hash": "7559515781426865479",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/encryption/encryption.service.ts",
+          "hash": "1731530573611495772",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/environment/domain.service.ts",
+          "hash": "15506926592472929799",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/environment/environment.module.ts",
+          "hash": "7078249300351549998",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/config"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/environment/environment.service.spec.ts",
+          "hash": "6234023020716517441",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/environment/environment.service.ts",
+          "hash": "15253740163342272270",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/config",
+            "npm:ms"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/environment/environment.validation.ts",
+          "hash": "5707038271058761703",
+          "deps": [
+            "npm:class-validator",
+            "npm:class-transformer"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/environment/license-check.service.ts",
+          "hash": "5700104281098275647",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/export/dto/export-dto.ts",
+          "hash": "1239240343637484217",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/export/export.controller.ts",
+          "hash": "8378686370397039483",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:fastify"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/export/export.module.ts",
+          "hash": "12419323096077210824",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/export/export.service.ts",
+          "hash": "14215945409838840818",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:jszip",
+            "npm:@tiptap/pm",
+            "npm:@sindresorhus/slugify",
+            "@docmost/editor-ext"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/export/utils.ts",
+          "hash": "15281176640417696230",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@tiptap/pm",
+            "npm:uuid"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/health/health.controller.ts",
+          "hash": "14369971924985016298",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/terminus"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/health/health.module.ts",
+          "hash": "8163733983471770126",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/terminus"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/health/postgres.health.ts",
+          "hash": "10262491121804951212",
+          "deps": [
+            "npm:nestjs-kysely",
+            "npm:@nestjs/terminus",
+            "npm:@nestjs/common",
+            "npm:kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/health/redis.health.ts",
+          "hash": "14167224332148063666",
+          "deps": [
+            "npm:@nestjs/terminus",
+            "npm:@nestjs/common",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/dto/file-task-dto.ts",
+          "hash": "5159510323083136419",
+          "deps": [
+            "npm:class-validator"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/dto/import-dto.ts",
+          "hash": "11609428806182191060"
+        },
+        {
+          "file": "apps/server/src/integrations/import/file-task.controller.ts",
+          "hash": "2441933503702621646",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/import.controller.ts",
+          "hash": "498873450105204602",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:bytes"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/import.module.ts",
+          "hash": "9358098797455882414",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/processors/file-task.processor.ts",
+          "hash": "1820384619272008465",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:@nestjs/core",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/services/file-import-task.service.ts",
+          "hash": "11599898931429455967",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:tmp-promise",
+            "npm:uuid",
+            "npm:fractional-indexing-jittered",
+            "@docmost/editor-ext",
+            "npm:@nestjs/core",
+            "npm:@nestjs/event-emitter"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/services/import-attachment.service.ts",
+          "hash": "7705142947267301626",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:nestjs-kysely",
+            "npm:uuid",
+            "npm:image-dimensions",
+            "npm:cheerio",
+            "npm:p-limit",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/services/import.service.ts",
+          "hash": "2694968557964999573",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@fastify/multipart",
+            "npm:nestjs-kysely",
+            "npm:fractional-indexing-jittered",
+            "npm:@hocuspocus/transformer",
+            "npm:yjs",
+            "@docmost/editor-ext",
+            "npm:uuid",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:@nestjs/core",
+            "npm:cheerio"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/utils/file.utils.ts",
+          "hash": "11411568858917924075",
+          "deps": [
+            "npm:yauzl"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/utils/import-formatter.ts",
+          "hash": "10910553599253938423",
+          "deps": [
+            "@docmost/editor-ext",
+            "npm:@nestjs/common",
+            "npm:uuid",
+            "npm:cheerio",
+            "npm:@sindresorhus/slugify"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/utils/import.utils.ts",
+          "hash": "10513078191003112877",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/import/utils/table-utils.ts",
+          "hash": "17366237528701740147",
+          "deps": [
+            "npm:cheerio"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/drivers/index.ts",
+          "hash": "10871068111706482329"
+        },
+        {
+          "file": "apps/server/src/integrations/mail/drivers/interfaces/mail-driver.interface.ts",
+          "hash": "14722565423718845800"
+        },
+        {
+          "file": "apps/server/src/integrations/mail/drivers/log.driver.ts",
+          "hash": "5367817138522218616",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/drivers/postmark.driver.ts",
+          "hash": "7699538845684896163",
+          "deps": [
+            "npm:postmark",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/drivers/smtp.driver.ts",
+          "hash": "2413551200989796110",
+          "deps": [
+            "npm:nodemailer",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/interfaces/index.ts",
+          "hash": "6850390317201734462"
+        },
+        {
+          "file": "apps/server/src/integrations/mail/interfaces/mail.interface.ts",
+          "hash": "2085279580542908616",
+          "deps": [
+            "npm:nodemailer"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/interfaces/mail.message.ts",
+          "hash": "9128880409731893578"
+        },
+        {
+          "file": "apps/server/src/integrations/mail/mail.constants.ts",
+          "hash": "169704797642432826"
+        },
+        {
+          "file": "apps/server/src/integrations/mail/mail.module.ts",
+          "hash": "16895236281377215044",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/mail.service.ts",
+          "hash": "16973061542331518796",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:react-email"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/mail.utils.ts",
+          "hash": "16970459194148181478"
+        },
+        {
+          "file": "apps/server/src/integrations/mail/processors/email.processor.ts",
+          "hash": "567951565102472241",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/mail/providers/mail.provider.ts",
+          "hash": "12658157593761979865",
+          "deps": [
+            "npm:nodemailer"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/queue/constants/index.ts",
+          "hash": "8368002124196183255"
+        },
+        {
+          "file": "apps/server/src/integrations/queue/constants/queue.constants.ts",
+          "hash": "486517264705416030"
+        },
+        {
+          "file": "apps/server/src/integrations/queue/constants/queue.interface.ts",
+          "hash": "18367904953428549180"
+        },
+        {
+          "file": "apps/server/src/integrations/queue/processors/general-queue.processor.ts",
+          "hash": "2722225591953812569",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq",
+            "npm:bullmq",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/queue/queue.module.ts",
+          "hash": "18197746399572038431",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/bullmq"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/queue/tasks/backlinks.task.ts",
+          "hash": "7593230378151053883",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/redis/redis-config.service.ts",
+          "hash": "7975178933074470679",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs-labs/nestjs-ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/security/robots.txt.controller.ts",
+          "hash": "5101288036058192834",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/security/security.module.ts",
+          "hash": "10855755510749550817",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/security/version.controller.ts",
+          "hash": "14189181831446288741",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/security/version.service.ts",
+          "hash": "3214345416925220094",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/static/static.module.ts",
+          "hash": "15591917056031574856",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:@fastify/static"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/constants/storage.constants.ts",
+          "hash": "16950175669092448312"
+        },
+        {
+          "file": "apps/server/src/integrations/storage/drivers/azure.driver.ts",
+          "hash": "14519029556752405717",
+          "deps": [
+            "npm:@azure/storage-blob",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/drivers/index.ts",
+          "hash": "9929333325474294576"
+        },
+        {
+          "file": "apps/server/src/integrations/storage/drivers/local.driver.spec.ts",
+          "hash": "1601031074315598099"
+        },
+        {
+          "file": "apps/server/src/integrations/storage/drivers/local.driver.ts",
+          "hash": "17268733835256155372",
+          "deps": [
+            "npm:fs-extra"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/drivers/s3.driver.ts",
+          "hash": "17870991686004011618",
+          "deps": [
+            "npm:@aws-sdk/client-s3",
+            "npm:@aws-sdk/s3-request-presigner",
+            "npm:@aws-sdk/lib-storage",
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/interfaces/index.ts",
+          "hash": "7570325161441513765"
+        },
+        {
+          "file": "apps/server/src/integrations/storage/interfaces/storage-driver.interface.ts",
+          "hash": "4714256658295491920"
+        },
+        {
+          "file": "apps/server/src/integrations/storage/interfaces/storage.interface.ts",
+          "hash": "7707481963959141612",
+          "deps": [
+            "npm:@aws-sdk/client-s3"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/providers/storage.provider.ts",
+          "hash": "15862395634593734935"
+        },
+        {
+          "file": "apps/server/src/integrations/storage/storage.module.ts",
+          "hash": "12191652190290979001",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/storage.service.spec.ts",
+          "hash": "2185495958957413794",
+          "deps": [
+            "npm:@nestjs/testing"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/storage.service.ts",
+          "hash": "11510428946220514919",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/storage/storage.utils.ts",
+          "hash": "5905836670955944702"
+        },
+        {
+          "file": "apps/server/src/integrations/telemetry/telemetry.module.ts",
+          "hash": "14023964891922683800",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/schedule"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/telemetry/telemetry.service.ts",
+          "hash": "9390526696924948837",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/schedule",
+            "npm:nestjs-kysely"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/throttle/throttle.module.ts",
+          "hash": "14396751952453854291",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/throttler",
+            "npm:@nest-lab/throttler-storage-redis",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/throttle/throttler-names.ts",
+          "hash": "8523342291387846236"
+        },
+        {
+          "file": "apps/server/src/integrations/throttle/user-throttler.guard.ts",
+          "hash": "7688980437757067175",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/throttler"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/css/styles.ts",
+          "hash": "2234428096183975187"
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/approval-rejected-email.tsx",
+          "hash": "15609136937074179372",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/approval-requested-email.tsx",
+          "hash": "3678643806300775642",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/change-password-email.tsx",
+          "hash": "9495543213923437491",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/comment-created-email.tsx",
+          "hash": "6232808078218274298",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/comment-mention-email.tsx",
+          "hash": "2248398962241419335",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/comment-resolved-email.tsx",
+          "hash": "393431838573936777",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/forgot-password-email.tsx",
+          "hash": "1790364555670286205",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/invitation-accepted-email.tsx",
+          "hash": "17144581859100989839",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/invitation-email.tsx",
+          "hash": "12521969795308736380",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/page-mention-email.tsx",
+          "hash": "9847341585493236380",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/page-update-digest-email.tsx",
+          "hash": "16865926086596432240",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/page-update-email.tsx",
+          "hash": "3040832088357711034",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/permission-granted-email.tsx",
+          "hash": "17515108859504569881",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/verification-expired-email.tsx",
+          "hash": "1683221947430449213",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/emails/verification-expiring-email.tsx",
+          "hash": "6059967223822493456",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/partials/partials.tsx",
+          "hash": "13380828421656900414",
+          "deps": [
+            "npm:react-email",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/server/src/integrations/transactional/utils/utils.ts",
+          "hash": "7820168986073710581"
+        },
+        {
+          "file": "apps/server/src/main.ts",
+          "hash": "14331841544091201748",
+          "deps": [
+            "npm:@nestjs/core",
+            "npm:@nestjs/platform-fastify",
+            "npm:@nestjs/common",
+            "npm:nestjs-pino",
+            "npm:@fastify/multipart",
+            "npm:@fastify/cookie",
+            "npm:fastify-ip"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/adapter/ws-redis.adapter.ts",
+          "hash": "6254364890571760684",
+          "deps": [
+            "npm:@nestjs/platform-socket.io",
+            "npm:socket.io",
+            "npm:@socket.io/redis-adapter",
+            "npm:ioredis"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/base-realtime.bridge.ts",
+          "hash": "13923863457156717362",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/core",
+            "npm:socket.io"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/ws-tree.service.ts",
+          "hash": "11412161902727690721",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/ws.gateway.ts",
+          "hash": "17238820896217883893",
+          "deps": [
+            "npm:@nestjs/websockets",
+            "npm:socket.io",
+            "npm:@nestjs/common",
+            "npm:cookie"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/ws.module.ts",
+          "hash": "15912225540618354044",
+          "deps": [
+            "npm:@nestjs/common"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/ws.service.ts",
+          "hash": "15068822304728831551",
+          "deps": [
+            "npm:@nestjs/common",
+            "npm:@nestjs/cache-manager",
+            "npm:cache-manager",
+            "npm:socket.io"
+          ]
+        },
+        {
+          "file": "apps/server/src/ws/ws.utils.ts",
+          "hash": "3765194974144068447"
+        },
+        {
+          "file": "apps/server/test/app.e2e-spec.ts",
+          "hash": "15366050820271045017",
+          "deps": [
+            "npm:@nestjs/testing",
+            "npm:@nestjs/common",
+            "npm:supertest"
+          ]
+        },
+        {
+          "file": "apps/server/test/jest-e2e.json",
+          "hash": "12016907176913795980"
+        },
+        {
+          "file": "apps/server/tsconfig.build.json",
+          "hash": "7456477806318726591"
+        },
+        {
+          "file": "apps/server/tsconfig.json",
+          "hash": "10834374958825254782"
+        }
+      ],
+      "@docmost/base-formula": [
+        {
+          "file": "packages/base-formula/.gitignore",
+          "hash": "8047546030625036737"
+        },
+        {
+          "file": "packages/base-formula/LICENSE",
+          "hash": "12770854003351296173"
+        },
+        {
+          "file": "packages/base-formula/bench/formula-bench.ts",
+          "hash": "15502839427458207844"
+        },
+        {
+          "file": "packages/base-formula/package.json",
+          "hash": "10790741286274161701"
+        },
+        {
+          "file": "packages/base-formula/src/ast.ts",
+          "hash": "12616570936798822309"
+        },
+        {
+          "file": "packages/base-formula/src/error.ts",
+          "hash": "98064280687532993"
+        },
+        {
+          "file": "packages/base-formula/src/eval.ts",
+          "hash": "5712108973193705478"
+        },
+        {
+          "file": "packages/base-formula/src/format.ts",
+          "hash": "8520796980687453836"
+        },
+        {
+          "file": "packages/base-formula/src/functions/coercion.ts",
+          "hash": "4522837280436030616"
+        },
+        {
+          "file": "packages/base-formula/src/functions/date.ts",
+          "hash": "18083174663009817058"
+        },
+        {
+          "file": "packages/base-formula/src/functions/index.ts",
+          "hash": "16802263545824181049"
+        },
+        {
+          "file": "packages/base-formula/src/functions/logic.ts",
+          "hash": "3460447397700337732"
+        },
+        {
+          "file": "packages/base-formula/src/functions/math.ts",
+          "hash": "9271918499052644605"
+        },
+        {
+          "file": "packages/base-formula/src/functions/registry.ts",
+          "hash": "5933091893685456046"
+        },
+        {
+          "file": "packages/base-formula/src/functions/string.ts",
+          "hash": "11824875875704675405"
+        },
+        {
+          "file": "packages/base-formula/src/graph.ts",
+          "hash": "4173344328988450026"
+        },
+        {
+          "file": "packages/base-formula/src/index.client.ts",
+          "hash": "14905713819610165097"
+        },
+        {
+          "file": "packages/base-formula/src/index.server.ts",
+          "hash": "9857447030427631157"
+        },
+        {
+          "file": "packages/base-formula/src/number.ts",
+          "hash": "14822175072232937535"
+        },
+        {
+          "file": "packages/base-formula/src/parser.ts",
+          "hash": "5156991907060858478"
+        },
+        {
+          "file": "packages/base-formula/src/resolver.ts",
+          "hash": "1754209050466899839"
+        },
+        {
+          "file": "packages/base-formula/src/tokenizer.ts",
+          "hash": "6974094912757386430"
+        },
+        {
+          "file": "packages/base-formula/src/typecheck.ts",
+          "hash": "5735330946624298941"
+        },
+        {
+          "file": "packages/base-formula/src/types.ts",
+          "hash": "14850564854653971672"
+        },
+        {
+          "file": "packages/base-formula/tsconfig.json",
+          "hash": "2534783322275116419"
+        }
       ]
     },
     "nonProjectFiles": [
@@ -12041,7 +16296,7 @@
       },
       {
         "file": ".gitignore",
-        "hash": "17017356726675721505"
+        "hash": "16763918716856359521"
       },
       {
         "file": ".gitmodules",
@@ -12085,7 +16340,7 @@
       },
       {
         "file": "pnpm-lock.yaml",
-        "hash": "14212051170311078314"
+        "hash": "269952745385635698"
       },
       {
         "file": "pnpm-workspace.yaml",
@@ -12093,5 +16348,5 @@
       }
     ]
   },
-  "externalNodesHash": "13408075968950463029"
+  "externalNodesHash": "10045120502391993517"
 }
