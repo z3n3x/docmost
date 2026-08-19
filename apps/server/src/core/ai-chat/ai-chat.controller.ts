@@ -1,19 +1,22 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Post,
-  UseGuards,
   Res,
-  BadRequestException,
-  NotFoundException,
+  UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { AiChatService, StreamEvent } from './services/ai-chat.service';
+import { User, Workspace } from '@docmost/db/types/entity.types';
 import { AuthUser } from '../../common/decorators/auth-user.decorator';
 import { AuthWorkspace } from '../../common/decorators/auth-workspace.decorator';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
-import { User, Workspace } from '@docmost/db/types/entity.types';
 import { PaginationOptions } from '@docmost/db/pagination/pagination-options';
+import {
+  CreateAiChatDto,
+  UpdateChatTitleDto,
+} from './dto/ai-chat.dto';
+import { AiChatService, StreamEvent } from './services/ai-chat.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('ai/chats')
@@ -75,15 +78,16 @@ export class AiChatController {
 
   @Post('/update')
   async update(
-    @Body('chatId') chatId: string,
-    @Body('title') title: string,
+    @Body() dto: UpdateChatTitleDto,
     @AuthUser() user: User,
     @AuthWorkspace() workspace: Workspace,
   ) {
-    if (!chatId || !title) {
-      throw new BadRequestException('chatId and title are required');
-    }
-    return this.aiChatService.updateChatTitle(chatId, title, user, workspace);
+    return this.aiChatService.updateChatTitle(
+      dto.chatId,
+      dto.title,
+      user,
+      workspace,
+    );
   }
 
   @Post('/search')
@@ -141,21 +145,18 @@ export class AiChatController {
       throw new BadRequestException('Content is required');
     }
 
-    // Устанавливаем SSE headers
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     res.setHeader('X-Accel-Buffering', 'no');
 
     const abortController = new AbortController();
-    
-    // Обработка отключения клиента
-    res.on('close', () => {
-      abortController.abort();
-    });
+    res.on('close', () => abortController.abort());
 
     const sendEvent = (event: StreamEvent) => {
-      res.write(`data: ${JSON.stringify(event)}\n\n`);
+      if (!res.writableEnded) {
+        res.write(`data: ${JSON.stringify(event)}\n\n`);
+      }
     };
 
     try {
@@ -180,7 +181,9 @@ export class AiChatController {
         retryable: true,
       });
     } finally {
-      res.end();
+      if (!res.writableEnded) {
+        res.end();
+      }
     }
   }
 }

@@ -1,11 +1,13 @@
-import { type Kysely, sql } from 'kysely';
+import { type Kysely } from 'kysely';
 
 export async function up(db: Kysely<any>): Promise<void> {
-  // Добавляем space_id в ai_chats
+  // Existing ai_chats rows predate Space scoping and cannot be mapped to a
+  // Space reliably. Keep the column nullable for those legacy rows; all new
+  // chats are created with a non-null spaceId by AiChatService.
   await db.schema
     .alterTable('ai_chats')
     .addColumn('space_id', 'uuid', (col) =>
-      col.references('spaces.id').onDelete('cascade').notNull(),
+      col.references('spaces.id').onDelete('cascade'),
     )
     .execute();
 
@@ -16,9 +18,9 @@ export async function up(db: Kysely<any>): Promise<void> {
     .column('space_id')
     .execute();
 
-  // Обновляем индекс для более эффективного поиска по workspace + space + creator
   await db.schema
     .dropIndex('idx_ai_chats_workspace_creator')
+    .ifExists()
     .execute();
 
   await db.schema
@@ -32,6 +34,7 @@ export async function up(db: Kysely<any>): Promise<void> {
 export async function down(db: Kysely<any>): Promise<void> {
   await db.schema
     .dropIndex('idx_ai_chats_workspace_space_creator')
+    .ifExists()
     .execute();
 
   await db.schema
@@ -43,6 +46,7 @@ export async function down(db: Kysely<any>): Promise<void> {
 
   await db.schema
     .dropIndex('idx_ai_chats_space_id')
+    .ifExists()
     .execute();
 
   await db.schema

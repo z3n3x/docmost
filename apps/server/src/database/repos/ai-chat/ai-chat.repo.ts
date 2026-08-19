@@ -265,7 +265,11 @@ export class AiChatRepo {
   }
 
   private withCreator(eb: any) {
-    return jsonObjectFrom(eb.selectFrom('users').select(['id', 'name', 'email', 'avatarUrl']).whereRef('users.id', '=', 'aiChats.creatorId'))
-      .as('creator');
+    return jsonObjectFrom(
+      eb
+        .selectFrom('users')
+        .select(['id', 'name', 'email', 'avatarUrl'])
+        .whereRef('users.id', '=', 'aiChats.creatorId'),
+    ).as('creator');
   }
 }

@@ -1,8 +1,14 @@
-import { IsString, IsOptional, IsArray, IsNotEmpty, MaxLength } from 'class-validator';
+import {
+  IsArray,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUUID,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateAiChatDto {
-  @IsString()
-  @IsNotEmpty()
+  @IsUUID()
   spaceId: string;
 
   @IsOptional()

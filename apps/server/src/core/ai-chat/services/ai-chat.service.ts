@@ -1,7 +1,12 @@
-import { Injectable, BadRequestException, NotFoundException, ForbiddenException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { AiChatRepo } from '@docmost/db/repos/ai-chat/ai-chat.repo';
 import { AiProviderService, ChatMessage, StreamCallback } from './ai-provider.service';
-import { AiRetrievalService, RetrievalResult } from './ai-retrieval.service';
+import { AiRetrievalService } from './ai-retrieval.service';
 import { User, Workspace } from '@docmost/db/types/entity.types';
 import { PaginationOptions } from '@docmost/db/pagination/pagination-options';
 import { SpacePermissionService } from '../../space/services/space-permission.service';
@@ -21,11 +26,12 @@ export interface CreateChatParams {
 }
 
 export interface StreamEvent {
-  type: 'chat_created' | 'content' | 'sources' | 'tool_call' | 'tool_result' | 'done' | 'error';
+  type: 'content' | 'sources' | 'done' | 'error';
   chatId?: string;
   messageId?: string;
   text?: string;
   sources?: Array<{ pageId: string; title: string; slugId: string; spaceId: string }>;
+  usage?: { promptTokens: number; completionTokens: number };
   error?: string;
   code?: string;
   retryable?: boolean;
@@ -34,48 +40,41 @@ export interface StreamEvent {
 
 @Injectable()
 export class AiChatService {
-  private readonly rateLimitWindowMs = 60 * 1000; // 1 минута
-  private readonly rateLimitMaxRequests = 20; // 20 запросов в минуту
+  private readonly rateLimitWindowMs = 60 * 1000;
+  private readonly rateLimitMaxRequests = 20;
   private readonly userRequestTimestamps = new Map<string, number[]>();
-  
-  // Context limits
   private readonly maxQueryLength = 5000;
   private readonly maxRetrievedPages = 8;
-  private readonly maxPageContentLength = 3000;
-  private readonly maxContextTokens = 8000; // approximate
 
   constructor(
-    private aiChatRepo: AiChatRepo,
-    private aiProviderService: AiProviderService,
-    private aiRetrievalService: AiRetrievalService,
-    private spacePermissionService: SpacePermissionService,
-    private pageAccessService: PageAccessService,
+    private readonly aiChatRepo: AiChatRepo,
+    private readonly aiProviderService: AiProviderService,
+    private readonly aiRetrievalService: AiRetrievalService,
+    private readonly spacePermissionService: SpacePermissionService,
   ) {}
 
-  /**
-   * Rate limiting: проверка лимита запросов для пользователя
-   */
   private checkRateLimit(userId: string): void {
     const now = Date.now();
     const timestamps = this.userRequestTimestamps.get(userId) || [];
-    
-    // Удаляем старые timestamp'ы за пределами окна
-    const validTimestamps = timestamps.filter(ts => now - ts < this.rateLimitWindowMs);
-    
+    const validTimestamps = timestamps.filter(
+      (timestamp) => now - timestamp < this.rateLimitWindowMs,
+    );
+
     if (validTimestamps.length >= this.rateLimitMaxRequests) {
       throw new BadRequestException('Rate limit exceeded. Please try again later.');
     }
-    
+
     validTimestamps.push(now);
     this.userRequestTimestamps.set(userId, validTimestamps);
   }
 
-  /**
-   * Создание нового чата с обязательным spaceId
-   */
   async createChat(user: User, workspace: Workspace, params: CreateChatParams) {
-    // Проверяем доступ пользователя к Space
-    const hasAccess = await this.spacePermissionService.canAccessSpace(params.spaceId, user.id);
+    const hasAccess = await this.spacePermissionService.canAccessSpace(
+      params.spaceId,
+      user.id,
+      workspace.id,
+    );
+
     if (!hasAccess) {
       throw new ForbiddenException('You do not have access to this space');
     }
@@ -88,30 +87,37 @@ export class AiChatService {
     });
   }
 
-  /**
-   * Получение списка чатов пользователя
-   */
   async listChats(
     user: User,
     workspace: Workspace,
     pagination: PaginationOptions,
     spaceId?: string,
   ) {
-    return this.aiChatRepo.findByWorkspaceAndCreator(workspace.id, user.id, pagination, spaceId);
+    return this.aiChatRepo.findByWorkspaceAndCreator(
+      workspace.id,
+      user.id,
+      pagination,
+      spaceId,
+    );
   }
 
-  /**
-   * Получение информации о чате с сообщениями
-   */
   async getChatInfo(chatId: string, user: User, workspace: Workspace) {
     const chat = await this.aiChatRepo.findById(chatId);
-    
+
     if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
       throw new NotFoundException('Chat not found');
     }
 
-    // Проверяем доступ к Space чата
-    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(chat.spaceId, user.id);
+    if (!chat.spaceId) {
+      throw new NotFoundException('Chat is not associated with a Space');
+    }
+
+    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(
+      chat.spaceId,
+      user.id,
+      workspace.id,
+    );
+
     if (!hasSpaceAccess) {
       throw new ForbiddenException('You no longer have access to this space');
     }
@@ -125,12 +131,9 @@ export class AiChatService {
     return { chat, messages: messages.items };
   }
 
-  /**
-   * Удаление чата
-   */
   async deleteChat(chatId: string, user: User, workspace: Workspace) {
     const chat = await this.aiChatRepo.findById(chatId);
-    
+
     if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
       throw new NotFoundException('Chat not found');
     }
@@ -138,12 +141,9 @@ export class AiChatService {
     await this.aiChatRepo.softDelete(chatId);
   }
 
-  /**
-   * Обновление названия чата
-   */
   async updateChatTitle(chatId: string, title: string, user: User, workspace: Workspace) {
     const chat = await this.aiChatRepo.findById(chatId);
-    
+
     if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
       throw new NotFoundException('Chat not found');
     }
@@ -151,9 +151,6 @@ export class AiChatService {
     return this.aiChatRepo.update(chatId, { title });
   }
 
-  /**
-   * Отправка сообщения с streaming ответом
-   */
   async sendMessageStream(
     params: SendMessageParams,
     user: User,
@@ -161,68 +158,74 @@ export class AiChatService {
     sendEvent: (event: StreamEvent) => void,
     signal?: AbortSignal,
   ): Promise<void> {
-    // Rate limiting
     this.checkRateLimit(user.id);
 
-    // Валидация длины запроса
-    if (params.content.length > this.maxQueryLength) {
-      throw new BadRequestException(`Query is too long. Maximum length is ${this.maxQueryLength} characters.`);
+    const content = params.content.trim();
+    if (content.length === 0) {
+      throw new BadRequestException('Content is required');
+    }
+    if (content.length > this.maxQueryLength) {
+      throw new BadRequestException(
+        `Query is too long. Maximum length is ${this.maxQueryLength} characters.`,
+      );
     }
 
-    let chatId = params.chatId;
-    let isNewChat = false;
-    let spaceId: string | undefined;
-
-    // Создаем новый чат если не указан
-    if (!chatId) {
-      // Для нового чата spaceId должен быть передан через контекст или параметры
-      // В текущей реализации frontend передает spaceId при создании чата
-      throw new BadRequestException('chatId is required. Create a new chat first with a spaceId.');
-    } else {
-      // Проверяем доступ к чату и получаем spaceId из чата
-      const chat = await this.aiChatRepo.findById(chatId);
-      if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
-        sendEvent({ 
-          type: 'error', 
-          error: 'Chat not found', 
-          code: 'NOT_FOUND',
-          retryable: false 
-        });
-        return;
-      }
-      
-      spaceId = chat.spaceId;
-      
-      // Проверяем доступ пользователя к Space чата
-      const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(spaceId, user.id);
-      if (!hasSpaceAccess) {
-        sendEvent({
-          type: 'error',
-          error: 'You no longer have access to this space',
-          code: 'FORBIDDEN',
-          retryable: false,
-        });
-        return;
-      }
+    if (!params.chatId) {
+      throw new BadRequestException(
+        'chatId is required. Create a new chat first with a spaceId.',
+      );
     }
 
-    // Сохраняем сообщение пользователя
-    const userMessage = await this.aiChatRepo.createMessage({
-      chatId,
+    const chat = await this.aiChatRepo.findById(params.chatId);
+    if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
+      sendEvent({
+        type: 'error',
+        error: 'Chat not found',
+        code: 'NOT_FOUND',
+        retryable: false,
+      });
+      return;
+    }
+
+    if (!chat.spaceId) {
+      sendEvent({
+        type: 'error',
+        error: 'Chat is not associated with a Space',
+        code: 'INVALID_CHAT',
+        retryable: false,
+      });
+      return;
+    }
+
+    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(
+      chat.spaceId,
+      user.id,
+      workspace.id,
+    );
+    if (!hasSpaceAccess) {
+      sendEvent({
+        type: 'error',
+        error: 'You no longer have access to this space',
+        code: 'FORBIDDEN',
+        retryable: false,
+      });
+      return;
+    }
+
+    await this.aiChatRepo.createMessage({
+      chatId: chat.id,
       workspaceId: workspace.id,
       userId: user.id,
       role: 'user',
-      content: params.content,
+      content,
     });
 
-    // Retrieval: поиск релевантных страниц ТОЛЬКО в рамках Space чата
     const retrievedPages = await this.aiRetrievalService.retrieveContext({
-      query: params.content,
+      query: content,
       userId: user.id,
       workspaceId: workspace.id,
-      spaceId: spaceId, // Обязательно ограничиваем Space чата
+      spaceId: chat.spaceId,
       limit: this.maxRetrievedPages,
-      maxContentLength: this.maxPageContentLength,
     });
 
     // Формируем историю сообщений для контекста
@@ -236,86 +239,87 @@ export class AiChatService {
       content: msg.content || '',
     }));
 
-    // НЕ добавляем текущее сообщение - оно уже сохранено в БД и будет частью history при следующем запросе
-    // LLM получит только предыдущие сообщения + retrieval context
-
-    // Создаем сообщение для ответа ассистента
     const assistantMessage = await this.aiChatRepo.createMessage({
-      chatId,
+      chatId: chat.id,
       workspaceId: workspace.id,
       userId: null,
       role: 'assistant',
       content: '',
       metadata: {
-        citedPageIds: retrievedPages.map(p => p.pageId),
+        citedPageIds: retrievedPages.map((page) => page.pageId),
       },
     });
 
-    let accumulatedContent = '';
-
-    // Отправляем источники сразу после retrieval
     if (retrievedPages.length > 0) {
       sendEvent({
         type: 'sources',
-        sources: retrievedPages.map(p => ({
-          pageId: p.pageId,
-          title: p.title,
-          slugId: p.slugId,
-          spaceId: p.spaceId,
+        sources: retrievedPages.map((page) => ({
+          pageId: page.pageId,
+          title: page.title,
+          slugId: page.slugId,
+          spaceId: page.spaceId,
         })),
       });
     }
 
-    // Streaming callback
+    let accumulatedContent = '';
+    let generationFinished = false;
+
     const callback: StreamCallback = {
-      onToken: async (token: string) => {
+      onToken: async (token) => {
         accumulatedContent += token;
         sendEvent({ type: 'content', text: token });
-        // НЕ делаем UPDATE во время streaming - накапливаем в памяти
       },
-      onError: async (error: Error) => {
-        sendEvent({ 
-          type: 'error', 
-          error: error.message, 
-          code: 'GENERATION_ERROR',
-          retryable: true 
-        });
-        
-        // Обновляем сообщение об ошибке
-        await this.aiChatRepo.updateMessage(assistantMessage.id, {
-          metadata: { error: error.message },
-        });
-      },
-      onComplete: async (usage) => {
-        // ОДИН UPDATE после завершения генерации
+      onError: async (error) => {
         await this.aiChatRepo.updateMessage(assistantMessage.id, {
           content: accumulatedContent,
           metadata: {
-            citedPageIds: retrievedPages.map(p => p.pageId),
+            citedPageIds: retrievedPages.map((page) => page.pageId),
+            error: error.message,
+          },
+        });
+        sendEvent({
+          type: 'error',
+          error: error.message,
+          code: 'GENERATION_ERROR',
+          retryable: true,
+        });
+      },
+      onComplete: async (usage) => {
+        generationFinished = true;
+        await this.aiChatRepo.updateMessage(assistantMessage.id, {
+          content: accumulatedContent,
+          metadata: {
+            citedPageIds: retrievedPages.map((page) => page.pageId),
             usage,
           },
         });
-        
-        sendEvent({ 
-          type: 'done', 
+        sendEvent({
+          type: 'done',
           messageId: assistantMessage.id,
-          usage: usage ? { ...usage } : undefined,
+          usage,
         });
       },
     };
 
-    // Генерация ответа через LLM
     await this.aiProviderService.generateStream(
       messageHistory,
       retrievedPages,
       callback,
       signal,
     );
+
+    if (signal?.aborted && !generationFinished) {
+      await this.aiChatRepo.updateMessage(assistantMessage.id, {
+        content: accumulatedContent,
+        metadata: {
+          citedPageIds: retrievedPages.map((page) => page.pageId),
+          aborted: true,
+        },
+      });
+    }
   }
 
-  /**
-   * Проверка доступа к странице для citations
-   */
   async verifyPageAccess(pageId: string, userId: string): Promise<boolean> {
     return this.aiRetrievalService.canAccessPage(pageId, userId);
   }

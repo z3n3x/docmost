@@ -6,9 +6,9 @@ import { SpaceRepo } from '@docmost/db/repos/space/space.repo';
 @Injectable()
 export class SpacePermissionService {
   constructor(
-    private spaceMemberRepo: SpaceMemberRepo,
-    private groupUserRepo: GroupUserRepo,
-    private spaceRepo: SpaceRepo,
+    private readonly spaceMemberRepo: SpaceMemberRepo,
+    private readonly groupUserRepo: GroupUserRepo,
+    private readonly spaceRepo: SpaceRepo,
   ) {}
 
   /**
@@ -25,17 +25,14 @@ export class SpacePermissionService {
       return false;
     }
 
-    // Проверяем прямое членство пользователя в Space
     const directMembership = await this.spaceMemberRepo.getSpaceMemberByTypeId(
       spaceId,
       { userId },
     );
-    
     if (directMembership) {
       return true;
     }
 
-    // Проверяем членство через группы
     const userGroupIds = await this.groupUserRepo.getUserGroupIds(userId);
     if (userGroupIds && userGroupIds.length > 0) {
       // Более полная проверка по всем группам
@@ -50,12 +47,7 @@ export class SpacePermissionService {
       }
     }
 
-    // Если Space публичный (visibility = 'public'), разрешаем доступ на чтение
-    if (space.visibility === 'public') {
-      return true;
-    }
-
-    return false;
+    return space.visibility === 'public';
   }
 
   /**
