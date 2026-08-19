@@ -43,7 +43,6 @@ export class AiChatService {
   private readonly userRequestTimestamps = new Map<string, number[]>();
   private readonly maxQueryLength = 5000;
   private readonly maxRetrievedPages = 8;
-  private readonly maxPageContentLength = 3000;
 
   constructor(
     private readonly aiChatRepo: AiChatRepo,
@@ -71,6 +70,7 @@ export class AiChatService {
     const hasAccess = await this.spacePermissionService.canAccessSpace(
       params.spaceId,
       user.id,
+      workspace.id,
     );
 
     if (!hasAccess) {
@@ -113,6 +113,7 @@ export class AiChatService {
     const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(
       chat.spaceId,
       user.id,
+      workspace.id,
     );
 
     if (!hasSpaceAccess) {
@@ -192,6 +193,7 @@ export class AiChatService {
     const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(
       chat.spaceId,
       user.id,
+      workspace.id,
     );
     if (!hasSpaceAccess) {
       sendEvent({
@@ -203,7 +205,7 @@ export class AiChatService {
       return;
     }
 
-    const userMessage = await this.aiChatRepo.createMessage({
+    await this.aiChatRepo.createMessage({
       chatId: chat.id,
       workspaceId: workspace.id,
       userId: user.id,
@@ -304,8 +306,6 @@ export class AiChatService {
         },
       });
     }
-
-    void userMessage;
   }
 
   async verifyPageAccess(pageId: string, userId: string): Promise<boolean> {
