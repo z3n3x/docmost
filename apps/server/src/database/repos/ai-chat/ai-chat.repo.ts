@@ -5,7 +5,7 @@ import { dbOrTx } from '../../utils';
 import { AiChat, AiChatMessage } from '@docmost/db/types/entity.types';
 import { PaginationOptions } from '@docmost/db/pagination/pagination-options';
 import { executeWithCursorPagination } from '@docmost/db/pagination/cursor-pagination';
-import { jsonArrayFrom, jsonObjectFrom } from 'kysely/helpers/postgres';
+import { jsonObjectFrom } from 'kysely/helpers/postgres';
 
 @Injectable()
 export class AiChatRepo {
@@ -35,8 +35,9 @@ export class AiChatRepo {
     workspaceId: string,
     creatorId: string,
     pagination: PaginationOptions,
+    spaceId?: string,
   ): Promise<{ items: AiChat[]; hasMore: boolean }> {
-    const query = this.db
+    let query = this.db
       .selectFrom('aiChats')
       .selectAll('aiChats')
       .where('workspaceId', '=', workspaceId)
@@ -45,6 +46,10 @@ export class AiChatRepo {
       .orderBy('updatedAt', 'desc')
       .orderBy('id', 'desc');
 
+    if (spaceId) {
+      query = query.where('spaceId', '=', spaceId);
+    }
+
     const result = await executeWithCursorPagination(query, pagination);
     return result;
   }
@@ -52,6 +57,7 @@ export class AiChatRepo {
   async create(
     data: {
       workspaceId: string;
+      spaceId: string;
       creatorId: string;
       title?: string;
     },
@@ -63,6 +69,7 @@ export class AiChatRepo {
       .insertInto('aiChats')
       .values({
         workspaceId: data.workspaceId,
+        spaceId: data.spaceId,
         creatorId: data.creatorId,
         title: data.title,
       })
@@ -185,28 +192,6 @@ export class AiChatRepo {
     return result;
   }
 
-  async appendToMessageContent(
-    messageId: string,
-    text: string,
-    trx?: KyselyTransaction,
-  ): Promise<void> {
-    const db = dbOrTx(this.db, trx);
-
-    await db
-      .updateTable('aiChatMessages')
-      .set({
-        content: db
-          .selectFrom('aiChatMessages')
-          .select((eb) =>
-            eb.fn('concat', ['content', eb.val(text)]).as('concat'),
-          )
-          .where('id', '=', messageId),
-        updatedAt: new Date(),
-      })
-      .where('id', '=', messageId)
-      .execute();
-  }
-
   async findLastAssistantMessage(
     chatId: string,
     opts?: {
@@ -227,7 +212,11 @@ export class AiChatRepo {
   }
 
   private withCreator(eb: any) {
-    return jsonObjectFrom(eb.selectFrom('users').select(['id', 'name', 'email', 'avatarUrl']).whereRef('users.id', '=', 'aiChats.creatorId'))
-      .as('creator');
+    return jsonObjectFrom(
+      eb
+        .selectFrom('users')
+        .select(['id', 'name', 'email', 'avatarUrl'])
+        .whereRef('users.id', '=', 'aiChats.creatorId'),
+    ).as('creator');
   }
 }
