@@ -5,60 +5,28 @@
 
 # Dependencies
 node_modules/
-node_modules/**/*
+pnpm-lock.yaml
 
 # Environment variables
 .env
-.env.dev
-.env.prod
-data
-# compiled output
-dist
-/node_modules
+.env.local
+*.env.*
 
 # Logs
 *.log
-
-# Coverage reports
-coverage/
-htmlcov/
-.nyc_output/
-coverage-final.json
 
 # IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# OS generated files
 .DS_Store
+Thumbs.db
 
 # Build outputs
 dist/
 build/
 target/
-out/
-
-# Python specific
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-.coverage
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.backup
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
 ```

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AiRetrievalService } from '../ai-retrieval.service';
+import { AiRetrievalService } from '../services/ai-retrieval.service';
 import { SearchService } from '../../search/search.service';
 import { PagePermissionRepo } from '@docmost/db/repos/page/page-permission.repo';
 import { PageRepo } from '@docmost/db/repos/page/page.repo';

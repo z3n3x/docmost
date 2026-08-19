@@ -91,7 +91,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
         transform: "translateX(-50%)",
       }}
     >
-      <Collapse in={open}>
+      <Collapse expanded={open}>
         <Paper withBorder shadow="md" radius="lg" mb={8} p="md">
           <Group justify="space-between" mb="xs">
             <Group gap="xs">

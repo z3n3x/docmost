@@ -97,7 +97,7 @@ describe('AiChatService', () => {
 
       const result = await service.createChat(mockUser, mockWorkspace, { spaceId });
 
-      expect(spacePermissionService.canAccessSpace).toHaveBeenCalledWith(spaceId, mockUser.id);
+      expect(spacePermissionService.canAccessSpace).toHaveBeenCalledWith(spaceId, mockUser.id, mockWorkspace.id);
       expect(aiChatRepo.create).toHaveBeenCalledWith({
         workspaceId: mockWorkspace.id,
         spaceId,
@@ -115,7 +115,7 @@ describe('AiChatService', () => {
         service.createChat(mockUser, mockWorkspace, { spaceId }),
       ).rejects.toThrow(ForbiddenException);
 
-      expect(spacePermissionService.canAccessSpace).toHaveBeenCalledWith(spaceId, mockUser.id);
+      expect(spacePermissionService.canAccessSpace).toHaveBeenCalledWith(spaceId, mockUser.id, mockWorkspace.id);
       expect(aiChatRepo.create).not.toHaveBeenCalled();
     });
   });
@@ -138,7 +138,7 @@ describe('AiChatService', () => {
       const result = await service.getChatInfo(chatId, mockUser, mockWorkspace);
 
       expect(result.chat).toEqual(mockChat);
-      expect(spacePermissionService.canAccessSpace).toHaveBeenCalledWith(spaceId, mockUser.id);
+      expect(spacePermissionService.canAccessSpace).toHaveBeenCalledWith(spaceId, mockUser.id, mockWorkspace.id);
     });
 
     it('should throw NotFoundException when chat does not exist', async () => {

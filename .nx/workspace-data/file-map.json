@@ -5,106 +5,870 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "@docmost/base-formula": [
+      "@docmost/editor-ext": [
         {
-          "file": "packages/base-formula/.gitignore",
-          "hash": "8047546030625036737"
+          "file": "packages/editor-ext/.gitignore",
+          "hash": "1078447263991461837"
         },
         {
-          "file": "packages/base-formula/LICENSE",
-          "hash": "12770854003351296173"
+          "file": "packages/editor-ext/.prettierrc",
+          "hash": "4808572120966128913"
         },
         {
-          "file": "packages/base-formula/bench/formula-bench.ts",
-          "hash": "15502839427458207844"
+          "file": "packages/editor-ext/README.md",
+          "hash": "3480915136424482097"
         },
         {
-          "file": "packages/base-formula/package.json",
-          "hash": "10790741286274161701"
+          "file": "packages/editor-ext/package.json",
+          "hash": "12105996590823568517",
+          "deps": [
+            "npm:@types/nanoid",
+            "npm:marked",
+            "npm:@tiptap/extension-list-item",
+            "npm:@tiptap/extension-ordered-list",
+            "npm:prosemirror-model",
+            "npm:nanoid"
+          ]
         },
         {
-          "file": "packages/base-formula/src/ast.ts",
-          "hash": "12616570936798822309"
+          "file": "packages/editor-ext/src/index.ts",
+          "hash": "16486007393635660477"
         },
         {
-          "file": "packages/base-formula/src/error.ts",
-          "hash": "98064280687532993"
+          "file": "packages/editor-ext/src/lib/attachment/attachment-upload.ts",
+          "hash": "7732255631574199763",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
         },
         {
-          "file": "packages/base-formula/src/eval.ts",
-          "hash": "5712108973193705478"
+          "file": "packages/editor-ext/src/lib/attachment/attachment.ts",
+          "hash": "448618662354756399",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/format.ts",
-          "hash": "8520796980687453836"
+          "file": "packages/editor-ext/src/lib/attachment/index.ts",
+          "hash": "8667087374195328576"
         },
         {
-          "file": "packages/base-formula/src/functions/coercion.ts",
-          "hash": "4522837280436030616"
+          "file": "packages/editor-ext/src/lib/audio/audio-upload.ts",
+          "hash": "10144741184687298772",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/date.ts",
-          "hash": "18083174663009817058"
+          "file": "packages/editor-ext/src/lib/audio/audio.ts",
+          "hash": "5220348630302621138",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/index.ts",
-          "hash": "16802263545824181049"
+          "file": "packages/editor-ext/src/lib/audio/index.ts",
+          "hash": "9948554914392577509"
         },
         {
-          "file": "packages/base-formula/src/functions/logic.ts",
-          "hash": "3460447397700337732"
+          "file": "packages/editor-ext/src/lib/base-embed/base-embed.ts",
+          "hash": "8016342206184487160",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/math.ts",
-          "hash": "9271918499052644605"
+          "file": "packages/editor-ext/src/lib/base-embed/index.ts",
+          "hash": "2645601451531519283"
         },
         {
-          "file": "packages/base-formula/src/functions/registry.ts",
-          "hash": "5933091893685456046"
+          "file": "packages/editor-ext/src/lib/callout/callout.ts",
+          "hash": "14121895435297356863",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/functions/string.ts",
-          "hash": "11824875875704675405"
+          "file": "packages/editor-ext/src/lib/callout/index.ts",
+          "hash": "3111768702076565552"
         },
         {
-          "file": "packages/base-formula/src/graph.ts",
-          "hash": "4173344328988450026"
+          "file": "packages/editor-ext/src/lib/callout/utils.ts",
+          "hash": "14038471994921745275"
         },
         {
-          "file": "packages/base-formula/src/index.client.ts",
-          "hash": "14905713819610165097"
+          "file": "packages/editor-ext/src/lib/columns/column.ts",
+          "hash": "10437749795278436438",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/index.server.ts",
-          "hash": "9857447030427631157"
+          "file": "packages/editor-ext/src/lib/columns/columns.ts",
+          "hash": "16612073849064609481",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/number.ts",
-          "hash": "14822175072232937535"
+          "file": "packages/editor-ext/src/lib/columns/index.ts",
+          "hash": "17299971735182643362"
         },
         {
-          "file": "packages/base-formula/src/parser.ts",
-          "hash": "5156991907060858478"
+          "file": "packages/editor-ext/src/lib/comment/comment-decoration.ts",
+          "hash": "5939322344751653720",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/resolver.ts",
-          "hash": "1754209050466899839"
+          "file": "packages/editor-ext/src/lib/comment/comment.ts",
+          "hash": "13536197931835771098",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
         },
         {
-          "file": "packages/base-formula/src/tokenizer.ts",
-          "hash": "6974094912757386430"
+          "file": "packages/editor-ext/src/lib/custom-code-block/custom-code-block.ts",
+          "hash": "7822296151328470077",
+          "deps": [
+            "npm:@tiptap/extension-code-block",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/react"
+          ]
         },
         {
-          "file": "packages/base-formula/src/typecheck.ts",
-          "hash": "5735330946624298941"
+          "file": "packages/editor-ext/src/lib/custom-code-block/index.ts",
+          "hash": "12216571006755276870"
         },
         {
-          "file": "packages/base-formula/src/types.ts",
-          "hash": "14850564854653971672"
+          "file": "packages/editor-ext/src/lib/custom-code-block/lowlight-plugin.ts",
+          "hash": "13893651732908259343",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:highlight.js"
+          ]
         },
         {
-          "file": "packages/base-formula/tsconfig.json",
-          "hash": "2534783322275116419"
+          "file": "packages/editor-ext/src/lib/details/details-content.ts",
+          "hash": "15935801508395417613",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/details/details-summary.ts",
+          "hash": "12758092556035644592",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/details/details.ts",
+          "hash": "10065885992245651357",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/details/index.ts",
+          "hash": "5504091897997236724"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/drawio.ts",
+          "hash": "17570759197765253950",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/embed-provider.ts",
+          "hash": "12276194951042710406"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/embed.ts",
+          "hash": "13386767504314180969",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/excalidraw.ts",
+          "hash": "11392276521525601397",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/footnote.ts",
+          "hash": "5221268023457114744",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/extension-list-item"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/footnotes.ts",
+          "hash": "15130287336059861506",
+          "deps": [
+            "npm:@tiptap/extension-ordered-list"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/index.ts",
+          "hash": "13285940963223038404"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/reference.ts",
+          "hash": "1112415798003454887",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/rules.ts",
+          "hash": "9327014275201595892",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/footnotes/utils.ts",
+          "hash": "421976177272882",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/heading/heading.ts",
+          "hash": "13357510251335612006",
+          "deps": [
+            "npm:@tiptap/extension-heading",
+            "npm:@tiptap/react",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/highlight.ts",
+          "hash": "9054027950079053330",
+          "deps": [
+            "npm:@tiptap/extension-highlight"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/image/image-upload.ts",
+          "hash": "770147908345572309",
+          "deps": [
+            "npm:image-dimensions",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/image/image.ts",
+          "hash": "17374055441019372787",
+          "deps": [
+            "npm:@tiptap/extension-image",
+            "npm:@tiptap/react",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/image/index.ts",
+          "hash": "3287827717416549237"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/indent.ts",
+          "hash": "861223156601889755",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/link.ts",
+          "hash": "14846954961666126898",
+          "deps": [
+            "npm:@tiptap/extension-link",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/index.ts",
+          "hash": "16872825312523487009"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/basename.ts",
+          "hash": "15089521215089661274"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/callout.marked.ts",
+          "hash": "7945231968109080006",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/footnotes.marked.ts",
+          "hash": "17686519120157289532",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/marked.utils.ts",
+          "hash": "3749092361607645807",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/math-block.marked.ts",
+          "hash": "12976929303922056507",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/math-inline.marked.ts",
+          "hash": "5633140064758088579",
+          "deps": [
+            "npm:marked"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/turndown.d.ts",
+          "hash": "16483039373970723436"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/markdown/utils/turndown.utils.ts",
+          "hash": "14175502702923090957",
+          "deps": [
+            "npm:@joplin/turndown",
+            "npm:@joplin/turndown-plugin-gfm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/math/index.ts",
+          "hash": "9216724914328172045"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/math/math-block.ts",
+          "hash": "4669436118247786407",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/math/math-inline.ts",
+          "hash": "16483208518806440555",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/media-utils.ts",
+          "hash": "3735996499462096691",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/mention.ts",
+          "hash": "10994659505158527171",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:@tiptap/suggestion"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/page-break/index.ts",
+          "hash": "2912382442711395701"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/page-break/page-break.ts",
+          "hash": "16420766858505170966",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/pdf/index.ts",
+          "hash": "5561292232430393366"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/pdf/pdf-upload.ts",
+          "hash": "9535557238358128558",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/pdf/pdf.ts",
+          "hash": "16940926278802817027",
+          "deps": [
+            "npm:@tiptap/react",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/README.md",
+          "hash": "12626366037008563661"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/index.ts",
+          "hash": "2064986995527660056"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/numbering.ts",
+          "hash": "8208427951487406652",
+          "deps": [
+            "npm:docx"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/schema.ts",
+          "hash": "4244875991903059673",
+          "deps": [
+            "npm:docx",
+            "npm:prosemirror-model"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/serializer.ts",
+          "hash": "14241213456550491085",
+          "deps": [
+            "npm:prosemirror-model",
+            "npm:docx",
+            "npm:image-dimensions"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/types.ts",
+          "hash": "2258927498971876273",
+          "deps": [
+            "npm:docx"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/prosemirror-docx/utils.ts",
+          "hash": "7773624389601063494",
+          "deps": [
+            "npm:docx",
+            "npm:prosemirror-model"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/copy.ts",
+          "hash": "16339366102358535139"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/getFromPath.ts",
+          "hash": "15995388352804905571"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/getReplaceStep.ts",
+          "hash": "9747802569727186109",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/index.ts",
+          "hash": "2811183928748374139"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/recreateTransform.ts",
+          "hash": "3328664818791884501",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:rfc6902",
+            "npm:diff"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/removeMarks.ts",
+          "hash": "2464285920263277619",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/simplifyTransform.ts",
+          "hash": "3086819321574953518",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/recreate-transform/types.ts",
+          "hash": "3599134575823605386"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/resizable-nodeview.ts",
+          "hash": "7150533261482468225",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/search-and-replace/index.ts",
+          "hash": "771571211140881903"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/search-and-replace/search-and-replace.ts",
+          "hash": "6317783325468173607",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/selection.ts",
+          "hash": "10962569681657683836",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/shared-storage/index.ts",
+          "hash": "6186770647272989138"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/shared-storage/shared-storage.ts",
+          "hash": "7123900549994769075",
+          "deps": [
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/status.ts",
+          "hash": "2714887710182703963",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/subpages/index.ts",
+          "hash": "13783062252759316301"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/subpages/subpages.ts",
+          "hash": "16420688710805492841",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/cell.ts",
+          "hash": "6934332219646990187",
+          "deps": [
+            "npm:@tiptap/extension-table"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/calc-drag-over.ts",
+          "hash": "17438094292987802459"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/dnd-extension.ts",
+          "hash": "3100822181427085293",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/index.ts",
+          "hash": "16946214202765125995"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/preview/drop-indicator-controller.ts",
+          "hash": "10086404725106204930",
+          "deps": [
+            "npm:@floating-ui/dom"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/preview/preview-controller.ts",
+          "hash": "437799138916732122",
+          "deps": [
+            "npm:@floating-ui/dom"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/preview/render-preview.ts",
+          "hash": "2418636928117255347"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/dnd/utils.ts",
+          "hash": "15710666689181935556",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/controller.ts",
+          "hash": "10628725618064973303"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/extension.ts",
+          "hash": "5397944482665729360",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/index.ts",
+          "hash": "7474815535873364081"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header-pin/offset.ts",
+          "hash": "13422308818205609161"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/header.ts",
+          "hash": "12776086828308419268",
+          "deps": [
+            "npm:@tiptap/extension-table"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/index.ts",
+          "hash": "17976475571735050099"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/row.ts",
+          "hash": "10075674773432467400",
+          "deps": [
+            "npm:@tiptap/extension-table"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/table-readonly-sort.ts",
+          "hash": "3811452266511221471",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/table-view.ts",
+          "hash": "17789931026685277932",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/table.ts",
+          "hash": "15764447382796558578",
+          "deps": [
+            "npm:@tiptap/extension-table",
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/col-style.ts",
+          "hash": "7027444337668310879"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/convert-array-of-rows-to-table-node.ts",
+          "hash": "5267121440427437966",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/convert-table-node-to-array-of-rows.ts",
+          "hash": "15382142650754473629",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-cells-in-column.ts",
+          "hash": "6905495645571499854",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-cells-in-row.ts",
+          "hash": "9550097510437516289",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-selection-range-in-column.ts",
+          "hash": "3019006861208821899",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/get-selection-range-in-row.ts",
+          "hash": "5517586838980619412",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/index.ts",
+          "hash": "12606079681161411323"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/move-column.ts",
+          "hash": "12553031702071136958",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/move-row-in-array-of-rows.ts",
+          "hash": "17012335499705136832"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/move-row.ts",
+          "hash": "7781309902279763624",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/query.ts",
+          "hash": "9134229471443005051",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/transpose.ts",
+          "hash": "2339800877837998019"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/table/utils/types.ts",
+          "hash": "12809178643045626431",
+          "deps": [
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/trailing-node.ts",
+          "hash": "1339286952150359830",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/constants.ts",
+          "hash": "2262612928523924950"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/index.ts",
+          "hash": "1245205759274997073"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/transclusion-reference.ts",
+          "hash": "14933426962510245480",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/transclusion/transclusion-source.ts",
+          "hash": "998630291353328709",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/react"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/types.ts",
+          "hash": "14140269734011264812"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/unique-id/index.ts",
+          "hash": "3467781799742523702"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/unique-id/unique-id.ts",
+          "hash": "7221813055148760326",
+          "deps": [
+            "npm:@tiptap/extension-unique-id"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/unique-id/unique-id.util.ts",
+          "hash": "14215441385530202441",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/utils.ts",
+          "hash": "2395991367396526796",
+          "deps": [
+            "npm:@tiptap/core",
+            "npm:@tiptap/pm",
+            "npm:@braintree/sanitize-url",
+            "npm:nanoid"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/video/index.ts",
+          "hash": "10493919359023137143"
+        },
+        {
+          "file": "packages/editor-ext/src/lib/video/video-upload.ts",
+          "hash": "16975174545780627539",
+          "deps": [
+            "npm:@tiptap/pm",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/src/lib/video/video.ts",
+          "hash": "1341701962480858449",
+          "deps": [
+            "npm:@tiptap/react",
+            "npm:@tiptap/core"
+          ]
+        },
+        {
+          "file": "packages/editor-ext/tsconfig.json",
+          "hash": "12125624465614140911"
         }
       ],
       "client": [
@@ -125,7 +889,7 @@
           "hash": "9391321131720675690",
           "deps": [
             "npm:@eslint/js",
-            "npm:globals@15.13.0",
+            "npm:globals",
             "npm:eslint-plugin-react-hooks",
             "npm:eslint-plugin-react-refresh",
             "npm:typescript-eslint",
@@ -156,8 +920,8 @@
             "npm:eslint-plugin-react",
             "npm:eslint-plugin-react-hooks",
             "npm:eslint-plugin-react-refresh",
-            "npm:globals@15.13.0",
-            "npm:jsdom@25.0.0",
+            "npm:globals",
+            "npm:jsdom",
             "npm:optics-ts",
             "npm:postcss",
             "npm:postcss-preset-mantine",
@@ -191,23 +955,23 @@
             "npm:@tanstack/react-table",
             "npm:@tanstack/react-virtual",
             "npm:alfaaz",
-            "npm:axios@1.18.1",
+            "npm:axios",
             "npm:blueimp-load-image",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:file-saver",
             "npm:highlightjs-sap-abap",
             "npm:i18next",
             "npm:i18next-http-backend",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:jotai-optics",
             "npm:js-cookie",
             "npm:jwt-decode",
-            "npm:katex@0.16.40",
+            "npm:katex",
             "npm:lowlight",
             "npm:mantine-form-zod-resolver",
             "npm:mermaid",
             "npm:mitt",
-            "npm:nanoid@3.3.17",
+            "npm:nanoid",
             "npm:posthog-js",
             "npm:react",
             "npm:react-clear-modal",
@@ -217,7 +981,7 @@
             "npm:react-helmet-async",
             "npm:react-i18next",
             "npm:react-router-dom",
-            "npm:semver@7.7.4",
+            "npm:semver",
             "npm:socket.io-client",
             "npm:zod"
           ]
@@ -554,7 +1318,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -568,7 +1332,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -581,7 +1345,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -597,7 +1361,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks"
           ]
         },
@@ -605,19 +1369,19 @@
           "file": "apps/client/src/components/layouts/global/hooks/atoms/sidebar-atom.ts",
           "hash": "7207745558022463407",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/components/layouts/global/hooks/hooks/use-toggle-sidebar.ts",
           "hash": "10282195723304754236",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/components/layouts/global/layout.tsx",
-          "hash": "11384539204968017644",
+          "hash": "7884175791484808765",
           "deps": [
             "npm:react-router-dom",
             "npm:react"
@@ -630,7 +1394,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -641,7 +1405,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react",
-            "npm:semver@7.7.4",
+            "npm:semver",
             "npm:react-i18next"
           ]
         },
@@ -649,7 +1413,7 @@
           "file": "apps/client/src/components/settings/atoms/settings-origin-atom.ts",
           "hash": "11880365217029544746",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -665,7 +1429,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -950,7 +1714,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -1024,7 +1788,7 @@
           "hash": "7738141929272210041",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -1115,7 +1879,7 @@
             "npm:@mantine/hooks",
             "npm:react",
             "npm:react-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tabler/icons-react",
             "npm:marked",
             "npm:@tiptap/pm",
@@ -1154,7 +1918,7 @@
           "hash": "13836081597702980425",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -1165,7 +1929,7 @@
           "hash": "17419751806596452221",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -1176,7 +1940,7 @@
           "hash": "14951920694186107945",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications",
@@ -1269,7 +2033,7 @@
           "hash": "7624587865863276508",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -1307,7 +2071,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -1386,28 +2150,28 @@
           "file": "apps/client/src/ee/base/atoms/base-atoms.ts",
           "hash": "15536224663774553072",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/base/atoms/formula-recompute-atom.ts",
           "hash": "17831282817770271199",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/base/atoms/reference-store-atom.ts",
           "hash": "4301024543424277344",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/base/atoms/view-draft-atom.ts",
           "hash": "4503397279791082137",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -1459,7 +2223,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/notifications",
@@ -1547,7 +2311,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1568,7 +2332,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1578,7 +2342,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1587,7 +2351,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1596,7 +2360,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1637,14 +2401,14 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
           "file": "apps/client/src/ee/base/components/cells/person-read-list.tsx",
           "hash": "979990811761198502",
           "deps": [
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1713,7 +2477,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -1723,7 +2487,7 @@
             "npm:react",
             "npm:@tanstack/react-table",
             "npm:@tanstack/react-virtual",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -1739,7 +2503,7 @@
             "npm:@tanstack/react-table",
             "npm:@mantine/core",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@atlaskit/pragmatic-drag-and-drop",
             "npm:@atlaskit/pragmatic-drag-and-drop-hitbox",
             "npm:@atlaskit/pragmatic-drag-and-drop-flourish",
@@ -1773,7 +2537,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -1800,7 +2564,7 @@
           "deps": [
             "npm:react",
             "npm:react-i18next",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@atlaskit/pragmatic-drag-and-drop",
             "npm:@atlaskit/pragmatic-drag-and-drop-hitbox",
             "npm:@atlaskit/pragmatic-drag-and-drop-flourish",
@@ -1843,7 +2607,7 @@
           "hash": "17227233413194689037",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -1855,7 +2619,7 @@
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -1866,7 +2630,7 @@
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -1948,7 +2712,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -1978,7 +2742,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -2033,7 +2797,7 @@
           "hash": "15195659935055195084",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:@tabler/icons-react"
           ]
@@ -2048,7 +2812,7 @@
             "npm:@mantine/modals",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -2068,7 +2832,7 @@
             "npm:@mantine/core",
             "npm:@mantine/dates",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -2079,7 +2843,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -2091,7 +2855,7 @@
           "hash": "14198038133602382789",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -2182,7 +2946,7 @@
           "hash": "7756029566768023438",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -2219,7 +2983,7 @@
           "hash": "10406275888488907783",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2338,7 +3102,7 @@
           "hash": "8687891034554559029",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2346,7 +3110,7 @@
           "hash": "3866064058233504393",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2396,7 +3160,7 @@
             "npm:@tanstack/react-query",
             "npm:@mantine/notifications",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2428,7 +3192,7 @@
           "hash": "17467980432053110957",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2504,7 +3268,7 @@
           "file": "apps/client/src/ee/base/utils/generate-base-id.ts",
           "hash": "15576084492394383124",
           "deps": [
-            "npm:nanoid@3.3.17"
+            "npm:nanoid"
           ]
         },
         {
@@ -2533,7 +3297,7 @@
             "npm:@mantine/core",
             "npm:react",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2668,7 +3432,7 @@
             "npm:mantine-form-zod-resolver",
             "npm:@mantine/notifications",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2677,7 +3441,7 @@
           "deps": [
             "npm:posthog-js",
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2700,7 +3464,7 @@
           "file": "apps/client/src/ee/entitlement/entitlement-atom.ts",
           "hash": "1681338771927464187",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2726,14 +3490,14 @@
           "file": "apps/client/src/ee/hooks/use-feature.ts",
           "hash": "1467115131940836566",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/hooks/use-plan.tsx",
           "hash": "4133310598317383710",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2757,14 +3521,14 @@
           "file": "apps/client/src/ee/hooks/use-trial.tsx",
           "hash": "10107210732278579713",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/ee/hooks/use-upgrade-label.ts",
           "hash": "4780180514019778234",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -2779,7 +3543,7 @@
             "npm:mantine-form-zod-resolver",
             "npm:react-i18next",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2788,7 +3552,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2796,7 +3560,7 @@
           "hash": "7989134810516650912",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -2833,7 +3597,7 @@
           "hash": "5781850253284397844",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3007,7 +3771,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3016,7 +3780,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/modals"
           ]
@@ -3046,7 +3810,7 @@
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3131,7 +3895,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3250,7 +4014,7 @@
             "npm:zod",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications"
           ]
         },
@@ -3259,7 +4023,7 @@
           "hash": "15043728191925696778",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -3292,7 +4056,7 @@
           "hash": "8944882751683757088",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -3371,7 +4135,7 @@
           "hash": "5156331021308189793",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -3381,7 +4145,7 @@
           "file": "apps/client/src/ee/security/components/allowed-domains.tsx",
           "hash": "5736079434866820942",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:zod",
             "npm:@mantine/form",
             "npm:mantine-form-zod-resolver",
@@ -3407,7 +4171,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@mantine/modals",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -3418,7 +4182,7 @@
           "hash": "10534988310518203400",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -3429,7 +4193,7 @@
           "hash": "6450671986049468866",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -3441,7 +4205,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@mantine/modals",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -3535,7 +4299,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/notifications"
           ]
@@ -3552,7 +4316,7 @@
             "npm:@tabler/icons-react",
             "npm:react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3668,7 +4432,7 @@
             "npm:@mantine/notifications",
             "npm:react-router-dom",
             "npm:@tiptap/react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3682,7 +4446,7 @@
             "npm:react-i18next",
             "npm:react-router-dom",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3690,7 +4454,7 @@
           "hash": "3586543545057220491",
           "deps": [
             "npm:@tanstack/react-query",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications",
             "npm:react-i18next"
           ]
@@ -3706,6 +4470,20 @@
         {
           "file": "apps/client/src/ee/utils.ts",
           "hash": "603040059070884181"
+        },
+        {
+          "file": "apps/client/src/features/ai-chat/components/space-ai-chat.tsx",
+          "hash": "6416854538748726709",
+          "deps": [
+            "npm:@mantine/core",
+            "npm:@tabler/icons-react",
+            "npm:react",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "apps/client/src/features/ai-chat/services/ai-chat-service.ts",
+          "hash": "5281892691712265095"
         },
         {
           "file": "apps/client/src/features/attachments/components/attachment-file-icon.tsx",
@@ -3752,7 +4530,7 @@
           "hash": "4232270743491795724",
           "deps": [
             "npm:js-cookie",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3835,7 +4613,7 @@
           "deps": [
             "npm:react",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications",
             "npm:react-i18next"
           ]
@@ -3853,7 +4631,7 @@
           "hash": "500371743000664735",
           "deps": [
             "npm:@tanstack/react-query",
-            "npm:axios@1.18.1"
+            "npm:axios"
           ]
         },
         {
@@ -3868,7 +4646,7 @@
           "file": "apps/client/src/features/comment/atoms/comment-atom.ts",
           "hash": "6883312559041418128",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3886,7 +4664,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tiptap/react",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -3901,7 +4679,7 @@
             "npm:@tiptap/starter-kit",
             "@docmost/editor-ext",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -3912,7 +4690,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "@docmost/editor-ext",
             "npm:@mantine/hooks",
             "npm:react-i18next"
@@ -3928,7 +4706,7 @@
             "npm:@mantine/hooks",
             "npm:react-i18next",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -3967,7 +4745,7 @@
           "file": "apps/client/src/features/editor/atoms/editor-atoms.ts",
           "hash": "7162918876698576258",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tiptap/core"
           ]
         },
@@ -4070,9 +4848,9 @@
             "npm:@tiptap/react",
             "npm:react",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:uuid",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -4088,7 +4866,7 @@
             "npm:@tiptap/react",
             "npm:react-i18next",
             "@docmost/editor-ext",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -4098,7 +4876,7 @@
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -4123,7 +4901,7 @@
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@tiptap/y-tiptap",
             "@docmost/editor-ext"
@@ -4149,7 +4927,7 @@
             "npm:react",
             "npm:@tiptap/pm",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -4205,7 +4983,7 @@
             "npm:react",
             "npm:@tiptap/pm",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "@docmost/editor-ext",
             "npm:react-i18next"
@@ -4246,7 +5024,7 @@
           "hash": "15629687494016263211",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -4274,7 +5052,7 @@
             "@docmost/editor-ext",
             "npm:@mantine/core",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:react-drawio",
@@ -4290,7 +5068,7 @@
             "npm:react",
             "npm:@mantine/hooks",
             "npm:react-drawio",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/modals"
@@ -4314,7 +5092,7 @@
           "deps": [
             "npm:@tiptap/react",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:zod",
@@ -4335,7 +5113,7 @@
           "hash": "6812693372694929892",
           "deps": [
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -4382,7 +5160,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -4403,7 +5181,7 @@
             "npm:@mantine/core",
             "npm:@mantine/modals",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@excalidraw/excalidraw",
@@ -4436,7 +5214,7 @@
             "npm:@mantine/hooks",
             "npm:@excalidraw/excalidraw",
             "npm:react-clear-modal",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/modals",
@@ -4455,7 +5233,7 @@
           "hash": "6201270935949916816",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tiptap/react"
           ]
         },
@@ -4474,7 +5252,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -4517,7 +5295,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -4529,7 +5307,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -4581,7 +5359,7 @@
             "npm:@tiptap/pm",
             "@docmost/editor-ext",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
           ]
@@ -4605,7 +5383,7 @@
             "npm:@tiptap/react",
             "npm:@mantine/core",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -4634,7 +5412,7 @@
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:react-router-dom",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -4643,7 +5421,7 @@
           "deps": [
             "npm:react",
             "npm:@tiptap/react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "@docmost/editor-ext",
             "npm:@tiptap/pm",
             "npm:@mantine/core"
@@ -4682,7 +5460,7 @@
           "file": "apps/client/src/features/editor/components/math/math-block.tsx",
           "hash": "14834155714780321448",
           "deps": [
-            "npm:katex@0.16.40",
+            "npm:katex",
             "npm:react",
             "npm:@tiptap/react",
             "npm:@mantine/core",
@@ -4696,7 +5474,7 @@
           "file": "apps/client/src/features/editor/components/math/math-inline.tsx",
           "hash": "14065314921438368965",
           "deps": [
-            "npm:katex@0.16.40",
+            "npm:katex",
             "npm:react",
             "npm:@tiptap/react",
             "npm:@mantine/core",
@@ -4714,11 +5492,11 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:uuid",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -4775,7 +5553,7 @@
             "npm:@tiptap/react",
             "npm:@mantine/core",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext",
             "npm:@tabler/icons-react"
@@ -4793,7 +5571,7 @@
           "file": "apps/client/src/features/editor/components/search-and-replace/atoms/search-and-replace-state-atom.ts",
           "hash": "4804049526350579914",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -4805,7 +5583,7 @@
             "npm:@tiptap/react",
             "@docmost/editor-ext",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/hooks",
             "npm:react-router-dom"
@@ -4821,7 +5599,7 @@
           "deps": [
             "npm:react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -4861,7 +5639,7 @@
             "npm:@mantine/core",
             "npm:@mantine/hooks",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "@docmost/editor-ext"
           ]
         },
@@ -4910,7 +5688,7 @@
             "npm:@tiptap/react",
             "npm:@tiptap/pm",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:react-i18next"
           ]
@@ -4925,7 +5703,7 @@
             "npm:@floating-ui/react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext"
           ]
@@ -4939,7 +5717,7 @@
             "npm:@tiptap/pm",
             "npm:@floating-ui/react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext"
           ]
@@ -5077,7 +5855,7 @@
             "npm:@tiptap/pm",
             "npm:@floating-ui/react",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next",
             "@docmost/editor-ext"
           ]
@@ -5233,7 +6011,7 @@
             "npm:@tiptap/pm",
             "@docmost/editor-ext",
             "npm:@mantine/core",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
           ]
@@ -5249,7 +6027,7 @@
             "npm:@tiptap/react",
             "npm:@mantine/core",
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react-i18next"
           ]
         },
@@ -5354,9 +6132,9 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -5376,7 +6154,7 @@
             "npm:@hocuspocus/provider",
             "npm:@hocuspocus/provider-react",
             "npm:@tiptap/react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:react-router-dom",
             "npm:jwt-decode",
@@ -5393,7 +6171,7 @@
             "@docmost/editor-ext",
             "npm:@tiptap/extension-text",
             "npm:@tiptap/extension-placeholder",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5498,7 +6276,7 @@
             "npm:@tiptap/extension-heading",
             "npm:@tiptap/extension-text",
             "npm:@tiptap/extension-placeholder",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:@tiptap/extension-history",
             "npm:react-router-dom",
@@ -5703,7 +6481,7 @@
           "file": "apps/client/src/features/home/atoms/home-tab-atom.ts",
           "hash": "11564596132506998478",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5734,7 +6512,7 @@
           "file": "apps/client/src/features/home/components/home-ai-prompt.tsx",
           "hash": "16544801130743210250",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -5746,7 +6524,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5785,7 +6563,7 @@
           "hash": "8839665811520590344",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
             "npm:@mantine/core"
@@ -5796,7 +6574,7 @@
           "hash": "2396169792958244905",
           "deps": [
             "npm:react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -5874,7 +6652,7 @@
           "hash": "6216902731544864135",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -5925,7 +6703,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:@mantine/hooks",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
             "npm:react-i18next"
           ]
@@ -5949,7 +6727,7 @@
           "file": "apps/client/src/features/page-history/atoms/history-atoms.ts",
           "hash": "3273539174461030114",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5969,7 +6747,7 @@
             "npm:@mantine/core",
             "npm:@tiptap/pm",
             "@docmost/editor-ext",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -5978,7 +6756,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -5987,7 +6765,7 @@
           "file": "apps/client/src/features/page-history/components/history-list.tsx",
           "hash": "1791152006121098116",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/core",
             "npm:react-i18next"
@@ -5998,7 +6776,7 @@
           "hash": "18127317720592244005",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -6009,7 +6787,7 @@
           "hash": "665763614825015730",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@tabler/icons-react",
             "npm:react-i18next"
@@ -6020,7 +6798,7 @@
           "hash": "7272176181595358368",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/hooks"
           ]
@@ -6030,7 +6808,7 @@
           "hash": "17935039409224795168",
           "deps": [
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6041,7 +6819,7 @@
           "file": "apps/client/src/features/page-history/hooks/use-diff-navigation.ts",
           "hash": "17411354973135544799",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -6049,7 +6827,7 @@
           "file": "apps/client/src/features/page-history/hooks/use-history-reset.ts",
           "hash": "3229648994309530212",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -6057,7 +6835,7 @@
           "file": "apps/client/src/features/page-history/hooks/use-history-restore.tsx",
           "hash": "9325831355272719198",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/core",
@@ -6100,7 +6878,7 @@
           "file": "apps/client/src/features/page/components/breadcrumbs/breadcrumb.tsx",
           "hash": "12153787307863209885",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
@@ -6128,7 +6906,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:react-router-dom",
             "npm:@mantine/notifications",
@@ -6165,7 +6943,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:@mantine/notifications",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:bytes"
@@ -6206,7 +6984,7 @@
             "npm:react",
             "npm:uuid",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6246,7 +7024,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next"
           ]
         },
@@ -6275,14 +7053,14 @@
           "file": "apps/client/src/features/page/tree/atoms/open-tree-nodes-atom.ts",
           "hash": "11888613414006786371",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/page/tree/atoms/tree-data-atom.ts",
           "hash": "6072487258566142592",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6325,7 +7103,7 @@
           "file": "apps/client/src/features/page/tree/components/space-tree-node-menu.tsx",
           "hash": "6426969566020667208",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:react-router-dom",
             "npm:@mantine/core",
@@ -6340,7 +7118,7 @@
           "deps": [
             "npm:react",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:@tabler/icons-react"
@@ -6350,7 +7128,7 @@
           "file": "apps/client/src/features/page/tree/components/space-tree.tsx",
           "hash": "3960866501694480808",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
@@ -6376,7 +7154,7 @@
           "hash": "8743955192552321611",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/notifications",
             "npm:react-i18next",
             "npm:react-router-dom"
@@ -6426,7 +7204,7 @@
           "hash": "6692794902018219672",
           "deps": [
             "npm:@tabler/icons-react",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/core",
             "npm:react",
             "npm:react-i18next"
@@ -6457,7 +7235,7 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6471,7 +7249,7 @@
             "npm:@mantine/hooks",
             "npm:react-i18next",
             "npm:@mantine/notifications",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6548,21 +7326,21 @@
           "file": "apps/client/src/features/share/atoms/open-shared-tree-nodes-atom.ts",
           "hash": "13501948525656936986",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/share/atoms/shared-page-atom.ts",
           "hash": "11263451867957416119",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/share/atoms/sidebar-atom.ts",
           "hash": "11283378161734059032",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6612,7 +7390,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6622,7 +7400,7 @@
             "npm:react",
             "npm:@mantine/core",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
             "npm:@tabler/icons-react"
           ]
@@ -6637,9 +7415,9 @@
           "deps": [
             "npm:react",
             "npm:react-router-dom",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-i18next",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@tabler/icons-react",
             "npm:@mantine/core"
           ]
@@ -6649,14 +7427,14 @@
           "hash": "6150141576005749066",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/features/share/hooks/use-toggle-toc.ts",
           "hash": "11920253415381649417",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6776,9 +7554,9 @@
             "npm:@mantine/core",
             "npm:@tabler/icons-react",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom",
-            "npm:clsx@2.1.1",
+            "npm:clsx",
             "npm:@mantine/hooks",
             "npm:react-i18next",
             "npm:react-error-boundary"
@@ -6857,7 +7635,7 @@
             "npm:@tabler/icons-react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -6918,7 +7696,7 @@
             "npm:react-i18next",
             "npm:react",
             "npm:@mantine/hooks",
-            "npm:clsx@2.1.1"
+            "npm:clsx"
           ]
         },
         {
@@ -7021,7 +7799,7 @@
           "file": "apps/client/src/features/user/atoms/current-user-atom.ts",
           "hash": "15920406078577238247",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7029,7 +7807,7 @@
           "hash": "3483668062530451870",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7038,7 +7816,7 @@
           "deps": [
             "npm:@mantine/core",
             "npm:react-i18next",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react"
           ]
         },
@@ -7053,7 +7831,7 @@
           "file": "apps/client/src/features/user/components/account-name-form.tsx",
           "hash": "583274548795947071",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:zod",
             "npm:@mantine/form",
             "npm:mantine-form-zod-resolver",
@@ -7078,7 +7856,7 @@
             "npm:@mantine/core",
             "npm:zod",
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/hooks",
             "npm:@mantine/form",
             "npm:mantine-form-zod-resolver",
@@ -7104,7 +7882,7 @@
           "hash": "295860632292686437",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -7114,7 +7892,7 @@
           "hash": "4386474006857713416",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -7124,7 +7902,7 @@
           "hash": "12569872593055494399",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -7134,7 +7912,7 @@
           "hash": "2376846208058100928",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next"
           ]
@@ -7158,7 +7936,7 @@
           "file": "apps/client/src/features/user/user-provider.tsx",
           "hash": "4346955918386512759",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:socket.io-client"
@@ -7168,7 +7946,7 @@
           "file": "apps/client/src/features/websocket/atoms/socket-atom.ts",
           "hash": "6391226925084500402",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:socket.io-client"
           ]
         },
@@ -7188,7 +7966,7 @@
           "file": "apps/client/src/features/websocket/use-query-emit.ts",
           "hash": "15405926124128212084",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7196,7 +7974,7 @@
           "hash": "17093660105791274909",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -7205,7 +7983,7 @@
           "hash": "3196206177624733325",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@tanstack/react-query"
           ]
         },
@@ -7255,7 +8033,7 @@
           "file": "apps/client/src/features/workspace/components/members/components/workspace-invite-section.tsx",
           "hash": "10262848128890486052",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:@mantine/core",
             "npm:react-i18next"
@@ -7285,7 +8063,7 @@
           "hash": "11465901614997902509",
           "deps": [
             "npm:@mantine/core",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-i18next",
             "npm:@mantine/notifications"
@@ -7296,7 +8074,7 @@
           "hash": "17995255845058343347",
           "deps": [
             "npm:react",
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:@mantine/core",
             "npm:react-i18next"
           ]
@@ -7305,7 +8083,7 @@
           "file": "apps/client/src/features/workspace/components/settings/components/workspace-name-form.tsx",
           "hash": "15515621087128566417",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:zod",
             "npm:react",
             "npm:@mantine/core",
@@ -7376,7 +8154,7 @@
           "file": "apps/client/src/hooks/use-settings-navigation.ts",
           "hash": "5364142833805442617",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react-router-dom"
           ]
         },
@@ -7391,14 +8169,14 @@
           "file": "apps/client/src/hooks/use-toggle-aside.tsx",
           "hash": "6187553308685569820",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
           "file": "apps/client/src/hooks/use-track-origin.ts",
           "hash": "1474755193328415087",
           "deps": [
-            "npm:jotai@2.20.1",
+            "npm:jotai",
             "npm:react",
             "npm:react-router-dom"
           ]
@@ -7407,7 +8185,7 @@
           "file": "apps/client/src/hooks/use-user-role.tsx",
           "hash": "6783148756154008777",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7423,14 +8201,14 @@
           "file": "apps/client/src/lib/api-client.ts",
           "hash": "4486372778008595548",
           "deps": [
-            "npm:axios@1.18.1"
+            "npm:axios"
           ]
         },
         {
           "file": "apps/client/src/lib/api-error.ts",
           "hash": "9707627038998261675",
           "deps": [
-            "npm:axios@1.18.1"
+            "npm:axios"
           ]
         },
         {
@@ -7472,7 +8250,7 @@
           "file": "apps/client/src/lib/jotai-helper.ts",
           "hash": "2212972772473792247",
           "deps": [
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7662,7 +8440,7 @@
             "npm:react",
             "npm:react-router-dom",
             "npm:react-i18next",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7689,7 +8467,7 @@
             "npm:react-i18next",
             "npm:@mantine/core",
             "npm:react",
-            "npm:jotai@2.20.1"
+            "npm:jotai"
           ]
         },
         {
@@ -7778,7 +8556,7 @@
           "hash": "15647088274164235291",
           "deps": [
             "npm:@eslint/js",
-            "npm:globals@17.4.0",
+            "npm:globals@17.11.0",
             "npm:typescript-eslint",
             "npm:eslint-config-prettier"
           ]
@@ -7797,11 +8575,11 @@
             "npm:@nestjs/testing",
             "npm:@types/bcrypt",
             "npm:@types/debounce",
-            "npm:@types/express@5.0.6",
+            "npm:@types/express",
             "npm:@types/fs-extra",
             "npm:@types/jest",
             "npm:@types/mime-types",
-            "npm:@types/node@25.5.0",
+            "npm:@types/node@25.9.5",
             "npm:@types/nodemailer",
             "npm:@types/passport-google-oauth20",
             "npm:@types/passport-jwt",
@@ -7810,11 +8588,11 @@
             "npm:@types/yauzl",
             "npm:eslint",
             "npm:eslint-config-prettier",
-            "npm:globals@17.4.0",
+            "npm:globals@17.11.0",
             "npm:jest",
             "npm:kysely-codegen",
             "npm:prettier",
-            "npm:source-map-support@0.5.21",
+            "npm:source-map-support",
             "npm:supertest",
             "npm:ts-jest",
             "npm:ts-loader",
@@ -7868,11 +8646,11 @@
             "npm:cheerio",
             "npm:class-transformer",
             "npm:class-validator",
-            "npm:cookie@1.1.1",
+            "npm:cookie",
             "npm:csv-stringify",
             "npm:fast-bm25",
             "npm:fastify-ip",
-            "npm:fs-extra@11.3.4",
+            "npm:fs-extra",
             "npm:happy-dom",
             "npm:ioredis",
             "npm:js-tiktoken",
@@ -7882,8 +8660,8 @@
             "npm:kysely-postgres-js",
             "npm:ldapts",
             "npm:mammoth",
-            "npm:mime-types@3.0.2",
-            "npm:msgpackr@1.11.9",
+            "npm:mime-types",
+            "npm:msgpackr",
             "npm:nanoid@5.1.16",
             "npm:nestjs-cls",
             "npm:nestjs-kysely",
@@ -7891,7 +8669,7 @@
             "npm:nodemailer",
             "npm:openid-client",
             "npm:otpauth",
-            "npm:p-limit@7.3.0",
+            "npm:p-limit",
             "npm:passport-google-oauth20",
             "npm:passport-jwt",
             "npm:pg-tsquery",
@@ -7903,7 +8681,7 @@
             "npm:react",
             "npm:react-email",
             "npm:reflect-metadata",
-            "npm:rxjs@7.8.2",
+            "npm:rxjs",
             "npm:sanitize-filename",
             "npm:scimmy",
             "npm:socket.io",
@@ -7912,7 +8690,7 @@
             "npm:tmp-promise",
             "npm:typesense",
             "npm:undici",
-            "npm:ws@8.21.0",
+            "npm:ws",
             "npm:yauzl",
             "npm:zod"
           ]
@@ -7948,7 +8726,7 @@
           "file": "apps/server/src/collaboration/adapter/collab-ws.adapter.ts",
           "hash": "16548055007077754381",
           "deps": [
-            "npm:ws@8.21.0"
+            "npm:ws"
           ]
         },
         {
@@ -7956,10 +8734,10 @@
           "hash": "7904735392036894127",
           "deps": [
             "npm:@hocuspocus/server",
-            "npm:ws@8.21.0",
+            "npm:ws",
             "npm:@nestjs/common",
             "npm:ioredis",
-            "npm:msgpackr@1.11.9",
+            "npm:msgpackr",
             "npm:nanoid@5.1.16"
           ]
         },
@@ -7979,7 +8757,7 @@
           "deps": [
             "npm:@nestjs/common",
             "npm:@nestjs/core",
-            "npm:ws@8.21.0"
+            "npm:ws"
           ]
         },
         {
@@ -8069,7 +8847,7 @@
           "file": "apps/server/src/collaboration/extensions/redis-sync/ws-socket-wrapper.ts",
           "hash": "14395342934877784672",
           "deps": [
-            "npm:ws@8.21.0",
+            "npm:ws",
             "npm:@hocuspocus/server"
           ]
         },
@@ -8191,7 +8969,7 @@
           "file": "apps/server/src/common/helpers/file.helper.ts",
           "hash": "18130032060538938097",
           "deps": [
-            "npm:mime-types@3.0.2"
+            "npm:mime-types"
           ]
         },
         {
@@ -8301,7 +9079,7 @@
           "hash": "16588838524693170443",
           "deps": [
             "npm:@nestjs/common",
-            "npm:rxjs@7.8.2",
+            "npm:rxjs",
             "npm:nestjs-cls"
           ]
         },
@@ -8310,7 +9088,7 @@
           "hash": "16078905389285285000",
           "deps": [
             "npm:@nestjs/common",
-            "npm:rxjs@7.8.2",
+            "npm:rxjs",
             "npm:fastify"
           ]
         },
@@ -8319,7 +9097,7 @@
           "hash": "14236102152099258193",
           "deps": [
             "npm:@nestjs/common",
-            "npm:rxjs@7.8.2",
+            "npm:rxjs",
             "npm:@nestjs/core"
           ]
         },
@@ -8385,7 +9163,7 @@
         },
         {
           "file": "apps/server/src/core/ai-chat/__tests__/ai-chat.service.spec.ts",
-          "hash": "16402943425720614977",
+          "hash": "573177983106295767",
           "deps": [
             "npm:@nestjs/testing",
             "npm:@nestjs/common"
@@ -8393,14 +9171,14 @@
         },
         {
           "file": "apps/server/src/core/ai-chat/__tests__/ai-retrieval.service.spec.ts",
-          "hash": "5206367294654386368",
+          "hash": "13191822965816718523",
           "deps": [
             "npm:@nestjs/testing"
           ]
         },
         {
           "file": "apps/server/src/core/ai-chat/ai-chat.controller.ts",
-          "hash": "4328816743568593964",
+          "hash": "2385046904381355415",
           "deps": [
             "npm:@nestjs/common",
             "npm:express"
@@ -8415,21 +9193,21 @@
         },
         {
           "file": "apps/server/src/core/ai-chat/dto/ai-chat.dto.ts",
-          "hash": "4669790247584644959",
+          "hash": "9771858250006135776",
           "deps": [
             "npm:class-validator"
           ]
         },
         {
           "file": "apps/server/src/core/ai-chat/services/ai-chat.service.ts",
-          "hash": "11839030760851428661",
+          "hash": "7044242293443404333",
           "deps": [
             "npm:@nestjs/common"
           ]
         },
         {
           "file": "apps/server/src/core/ai-chat/services/ai-provider.service.ts",
-          "hash": "17342777120858111250",
+          "hash": "12868146940659409188",
           "deps": [
             "npm:@nestjs/common"
           ]
@@ -9424,7 +10202,7 @@
         },
         {
           "file": "apps/server/src/core/space/services/space-permission.service.ts",
-          "hash": "1677275733116530527",
+          "hash": "14575040157184342731",
           "deps": [
             "npm:@nestjs/common"
           ]
@@ -10048,7 +10826,7 @@
         },
         {
           "file": "apps/server/src/database/migrations/20260819T075313-ai-chat-space-id.ts",
-          "hash": "9759099670926945494",
+          "hash": "18090289326091446319",
           "deps": [
             "npm:kysely"
           ]
@@ -10076,7 +10854,7 @@
         },
         {
           "file": "apps/server/src/database/repos/ai-chat/ai-chat.repo.ts",
-          "hash": "4184306089085282194",
+          "hash": "13296657401832200859",
           "deps": [
             "npm:@nestjs/common",
             "npm:nestjs-kysely",
@@ -10573,7 +11351,7 @@
             "npm:uuid",
             "npm:image-dimensions",
             "npm:cheerio",
-            "npm:p-limit@7.3.0",
+            "npm:p-limit",
             "npm:@nestjs/bullmq",
             "npm:bullmq"
           ]
@@ -10821,7 +11599,7 @@
           "file": "apps/server/src/integrations/storage/drivers/local.driver.ts",
           "hash": "17268733835256155372",
           "deps": [
-            "npm:fs-extra@11.3.4"
+            "npm:fs-extra"
           ]
         },
         {
@@ -11099,7 +11877,7 @@
             "npm:@nestjs/websockets",
             "npm:socket.io",
             "npm:@nestjs/common",
-            "npm:cookie@1.1.1"
+            "npm:cookie"
           ]
         },
         {
@@ -11145,870 +11923,106 @@
           "hash": "10834374958825254782"
         }
       ],
-      "@docmost/editor-ext": [
+      "@docmost/base-formula": [
         {
-          "file": "packages/editor-ext/.gitignore",
-          "hash": "1078447263991461837"
+          "file": "packages/base-formula/.gitignore",
+          "hash": "8047546030625036737"
         },
         {
-          "file": "packages/editor-ext/.prettierrc",
-          "hash": "4808572120966128913"
+          "file": "packages/base-formula/LICENSE",
+          "hash": "12770854003351296173"
         },
         {
-          "file": "packages/editor-ext/README.md",
-          "hash": "3480915136424482097"
+          "file": "packages/base-formula/bench/formula-bench.ts",
+          "hash": "15502839427458207844"
         },
         {
-          "file": "packages/editor-ext/package.json",
-          "hash": "12105996590823568517",
-          "deps": [
-            "npm:@types/nanoid",
-            "npm:marked",
-            "npm:@tiptap/extension-list-item@2.27.2",
-            "npm:@tiptap/extension-ordered-list@2.27.2",
-            "npm:prosemirror-model",
-            "npm:nanoid@3.3.17"
-          ]
+          "file": "packages/base-formula/package.json",
+          "hash": "10790741286274161701"
         },
         {
-          "file": "packages/editor-ext/src/index.ts",
-          "hash": "16486007393635660477"
+          "file": "packages/base-formula/src/ast.ts",
+          "hash": "12616570936798822309"
         },
         {
-          "file": "packages/editor-ext/src/lib/attachment/attachment-upload.ts",
-          "hash": "7732255631574199763",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
+          "file": "packages/base-formula/src/error.ts",
+          "hash": "98064280687532993"
         },
         {
-          "file": "packages/editor-ext/src/lib/attachment/attachment.ts",
-          "hash": "448618662354756399",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
+          "file": "packages/base-formula/src/eval.ts",
+          "hash": "5712108973193705478"
         },
         {
-          "file": "packages/editor-ext/src/lib/attachment/index.ts",
-          "hash": "8667087374195328576"
+          "file": "packages/base-formula/src/format.ts",
+          "hash": "8520796980687453836"
         },
         {
-          "file": "packages/editor-ext/src/lib/audio/audio-upload.ts",
-          "hash": "10144741184687298772",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
+          "file": "packages/base-formula/src/functions/coercion.ts",
+          "hash": "4522837280436030616"
         },
         {
-          "file": "packages/editor-ext/src/lib/audio/audio.ts",
-          "hash": "5220348630302621138",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
+          "file": "packages/base-formula/src/functions/date.ts",
+          "hash": "18083174663009817058"
         },
         {
-          "file": "packages/editor-ext/src/lib/audio/index.ts",
-          "hash": "9948554914392577509"
+          "file": "packages/base-formula/src/functions/index.ts",
+          "hash": "16802263545824181049"
         },
         {
-          "file": "packages/editor-ext/src/lib/base-embed/base-embed.ts",
-          "hash": "8016342206184487160",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
+          "file": "packages/base-formula/src/functions/logic.ts",
+          "hash": "3460447397700337732"
         },
         {
-          "file": "packages/editor-ext/src/lib/base-embed/index.ts",
-          "hash": "2645601451531519283"
+          "file": "packages/base-formula/src/functions/math.ts",
+          "hash": "9271918499052644605"
         },
         {
-          "file": "packages/editor-ext/src/lib/callout/callout.ts",
-          "hash": "14121895435297356863",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm",
-            "npm:@tiptap/react"
-          ]
+          "file": "packages/base-formula/src/functions/registry.ts",
+          "hash": "5933091893685456046"
         },
         {
-          "file": "packages/editor-ext/src/lib/callout/index.ts",
-          "hash": "3111768702076565552"
+          "file": "packages/base-formula/src/functions/string.ts",
+          "hash": "11824875875704675405"
         },
         {
-          "file": "packages/editor-ext/src/lib/callout/utils.ts",
-          "hash": "14038471994921745275"
+          "file": "packages/base-formula/src/graph.ts",
+          "hash": "4173344328988450026"
         },
         {
-          "file": "packages/editor-ext/src/lib/columns/column.ts",
-          "hash": "10437749795278436438",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
+          "file": "packages/base-formula/src/index.client.ts",
+          "hash": "14905713819610165097"
         },
         {
-          "file": "packages/editor-ext/src/lib/columns/columns.ts",
-          "hash": "16612073849064609481",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
+          "file": "packages/base-formula/src/index.server.ts",
+          "hash": "9857447030427631157"
         },
         {
-          "file": "packages/editor-ext/src/lib/columns/index.ts",
-          "hash": "17299971735182643362"
+          "file": "packages/base-formula/src/number.ts",
+          "hash": "14822175072232937535"
         },
         {
-          "file": "packages/editor-ext/src/lib/comment/comment-decoration.ts",
-          "hash": "5939322344751653720",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
+          "file": "packages/base-formula/src/parser.ts",
+          "hash": "5156991907060858478"
         },
         {
-          "file": "packages/editor-ext/src/lib/comment/comment.ts",
-          "hash": "13536197931835771098",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
+          "file": "packages/base-formula/src/resolver.ts",
+          "hash": "1754209050466899839"
         },
         {
-          "file": "packages/editor-ext/src/lib/custom-code-block/custom-code-block.ts",
-          "hash": "7822296151328470077",
-          "deps": [
-            "npm:@tiptap/extension-code-block",
-            "npm:@tiptap/pm",
-            "npm:@tiptap/react"
-          ]
+          "file": "packages/base-formula/src/tokenizer.ts",
+          "hash": "6974094912757386430"
         },
         {
-          "file": "packages/editor-ext/src/lib/custom-code-block/index.ts",
-          "hash": "12216571006755276870"
+          "file": "packages/base-formula/src/typecheck.ts",
+          "hash": "5735330946624298941"
         },
         {
-          "file": "packages/editor-ext/src/lib/custom-code-block/lowlight-plugin.ts",
-          "hash": "13893651732908259343",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm",
-            "npm:highlight.js"
-          ]
+          "file": "packages/base-formula/src/types.ts",
+          "hash": "14850564854653971672"
         },
         {
-          "file": "packages/editor-ext/src/lib/details/details-content.ts",
-          "hash": "15935801508395417613",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/details/details-summary.ts",
-          "hash": "12758092556035644592",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/details/details.ts",
-          "hash": "10065885992245651357",
-          "deps": [
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/details/index.ts",
-          "hash": "5504091897997236724"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/drawio.ts",
-          "hash": "17570759197765253950",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/embed-provider.ts",
-          "hash": "12276194951042710406"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/embed.ts",
-          "hash": "13386767504314180969",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/excalidraw.ts",
-          "hash": "11392276521525601397",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/footnotes/footnote.ts",
-          "hash": "5221268023457114744",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/extension-list-item@2.27.2"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/footnotes/footnotes.ts",
-          "hash": "15130287336059861506",
-          "deps": [
-            "npm:@tiptap/extension-ordered-list@2.27.2"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/footnotes/index.ts",
-          "hash": "13285940963223038404"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/footnotes/reference.ts",
-          "hash": "1112415798003454887",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/footnotes/rules.ts",
-          "hash": "9327014275201595892",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/footnotes/utils.ts",
-          "hash": "421976177272882",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/heading/heading.ts",
-          "hash": "13357510251335612006",
-          "deps": [
-            "npm:@tiptap/extension-heading",
-            "npm:@tiptap/react",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/highlight.ts",
-          "hash": "9054027950079053330",
-          "deps": [
-            "npm:@tiptap/extension-highlight"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/image/image-upload.ts",
-          "hash": "770147908345572309",
-          "deps": [
-            "npm:image-dimensions",
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/image/image.ts",
-          "hash": "17374055441019372787",
-          "deps": [
-            "npm:@tiptap/extension-image",
-            "npm:@tiptap/react",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/image/index.ts",
-          "hash": "3287827717416549237"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/indent.ts",
-          "hash": "861223156601889755",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/link.ts",
-          "hash": "14846954961666126898",
-          "deps": [
-            "npm:@tiptap/extension-link",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/index.ts",
-          "hash": "16872825312523487009"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/basename.ts",
-          "hash": "15089521215089661274"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/callout.marked.ts",
-          "hash": "7945231968109080006",
-          "deps": [
-            "npm:marked"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/footnotes.marked.ts",
-          "hash": "17686519120157289532",
-          "deps": [
-            "npm:marked"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/marked.utils.ts",
-          "hash": "3749092361607645807",
-          "deps": [
-            "npm:marked"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/math-block.marked.ts",
-          "hash": "12976929303922056507",
-          "deps": [
-            "npm:marked"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/math-inline.marked.ts",
-          "hash": "5633140064758088579",
-          "deps": [
-            "npm:marked"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/turndown.d.ts",
-          "hash": "16483039373970723436"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/markdown/utils/turndown.utils.ts",
-          "hash": "14175502702923090957",
-          "deps": [
-            "npm:@joplin/turndown",
-            "npm:@joplin/turndown-plugin-gfm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/math/index.ts",
-          "hash": "9216724914328172045"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/math/math-block.ts",
-          "hash": "4669436118247786407",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/math/math-inline.ts",
-          "hash": "16483208518806440555",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/media-utils.ts",
-          "hash": "3735996499462096691",
-          "deps": [
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/mention.ts",
-          "hash": "10994659505158527171",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm",
-            "npm:@tiptap/suggestion"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/page-break/index.ts",
-          "hash": "2912382442711395701"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/page-break/page-break.ts",
-          "hash": "16420766858505170966",
-          "deps": [
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/pdf/index.ts",
-          "hash": "5561292232430393366"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/pdf/pdf-upload.ts",
-          "hash": "9535557238358128558",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/pdf/pdf.ts",
-          "hash": "16940926278802817027",
-          "deps": [
-            "npm:@tiptap/react",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/README.md",
-          "hash": "12626366037008563661"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/index.ts",
-          "hash": "2064986995527660056"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/numbering.ts",
-          "hash": "8208427951487406652",
-          "deps": [
-            "npm:docx"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/schema.ts",
-          "hash": "4244875991903059673",
-          "deps": [
-            "npm:docx",
-            "npm:prosemirror-model"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/serializer.ts",
-          "hash": "14241213456550491085",
-          "deps": [
-            "npm:prosemirror-model",
-            "npm:docx",
-            "npm:image-dimensions"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/types.ts",
-          "hash": "2258927498971876273",
-          "deps": [
-            "npm:docx"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/prosemirror-docx/utils.ts",
-          "hash": "7773624389601063494",
-          "deps": [
-            "npm:docx",
-            "npm:prosemirror-model"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/copy.ts",
-          "hash": "16339366102358535139"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/getFromPath.ts",
-          "hash": "15995388352804905571"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/getReplaceStep.ts",
-          "hash": "9747802569727186109",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/index.ts",
-          "hash": "2811183928748374139"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/recreateTransform.ts",
-          "hash": "3328664818791884501",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:rfc6902",
-            "npm:diff"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/removeMarks.ts",
-          "hash": "2464285920263277619",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/simplifyTransform.ts",
-          "hash": "3086819321574953518",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/recreate-transform/types.ts",
-          "hash": "3599134575823605386"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/resizable-nodeview.ts",
-          "hash": "7150533261482468225",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/search-and-replace/index.ts",
-          "hash": "771571211140881903"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/search-and-replace/search-and-replace.ts",
-          "hash": "6317783325468173607",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/selection.ts",
-          "hash": "10962569681657683836",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/shared-storage/index.ts",
-          "hash": "6186770647272989138"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/shared-storage/shared-storage.ts",
-          "hash": "7123900549994769075",
-          "deps": [
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/status.ts",
-          "hash": "2714887710182703963",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/subpages/index.ts",
-          "hash": "13783062252759316301"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/subpages/subpages.ts",
-          "hash": "16420688710805492841",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/cell.ts",
-          "hash": "6934332219646990187",
-          "deps": [
-            "npm:@tiptap/extension-table"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/calc-drag-over.ts",
-          "hash": "17438094292987802459"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/dnd-extension.ts",
-          "hash": "3100822181427085293",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/index.ts",
-          "hash": "16946214202765125995"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/preview/drop-indicator-controller.ts",
-          "hash": "10086404725106204930",
-          "deps": [
-            "npm:@floating-ui/dom"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/preview/preview-controller.ts",
-          "hash": "437799138916732122",
-          "deps": [
-            "npm:@floating-ui/dom"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/preview/render-preview.ts",
-          "hash": "2418636928117255347"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/dnd/utils.ts",
-          "hash": "15710666689181935556",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/header-pin/controller.ts",
-          "hash": "10628725618064973303"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/header-pin/extension.ts",
-          "hash": "5397944482665729360",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/header-pin/index.ts",
-          "hash": "7474815535873364081"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/header-pin/offset.ts",
-          "hash": "13422308818205609161"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/header.ts",
-          "hash": "12776086828308419268",
-          "deps": [
-            "npm:@tiptap/extension-table"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/index.ts",
-          "hash": "17976475571735050099"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/row.ts",
-          "hash": "10075674773432467400",
-          "deps": [
-            "npm:@tiptap/extension-table"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/table-readonly-sort.ts",
-          "hash": "3811452266511221471",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/table-view.ts",
-          "hash": "17789931026685277932",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/table.ts",
-          "hash": "15764447382796558578",
-          "deps": [
-            "npm:@tiptap/extension-table",
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/col-style.ts",
-          "hash": "7027444337668310879"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/convert-array-of-rows-to-table-node.ts",
-          "hash": "5267121440427437966",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/convert-table-node-to-array-of-rows.ts",
-          "hash": "15382142650754473629",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/get-cells-in-column.ts",
-          "hash": "6905495645571499854",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/get-cells-in-row.ts",
-          "hash": "9550097510437516289",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/get-selection-range-in-column.ts",
-          "hash": "3019006861208821899",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/get-selection-range-in-row.ts",
-          "hash": "5517586838980619412",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/index.ts",
-          "hash": "12606079681161411323"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/move-column.ts",
-          "hash": "12553031702071136958",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/move-row-in-array-of-rows.ts",
-          "hash": "17012335499705136832"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/move-row.ts",
-          "hash": "7781309902279763624",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/query.ts",
-          "hash": "9134229471443005051",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/transpose.ts",
-          "hash": "2339800877837998019"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/table/utils/types.ts",
-          "hash": "12809178643045626431",
-          "deps": [
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/trailing-node.ts",
-          "hash": "1339286952150359830",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/transclusion/constants.ts",
-          "hash": "2262612928523924950"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/transclusion/index.ts",
-          "hash": "1245205759274997073"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/transclusion/transclusion-reference.ts",
-          "hash": "14933426962510245480",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/transclusion/transclusion-source.ts",
-          "hash": "998630291353328709",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/react"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/types.ts",
-          "hash": "14140269734011264812"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/unique-id/index.ts",
-          "hash": "3467781799742523702"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/unique-id/unique-id.ts",
-          "hash": "7221813055148760326",
-          "deps": [
-            "npm:@tiptap/extension-unique-id"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/unique-id/unique-id.util.ts",
-          "hash": "14215441385530202441",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/utils.ts",
-          "hash": "2395991367396526796",
-          "deps": [
-            "npm:@tiptap/core",
-            "npm:@tiptap/pm",
-            "npm:@braintree/sanitize-url",
-            "npm:nanoid@3.3.17"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/video/index.ts",
-          "hash": "10493919359023137143"
-        },
-        {
-          "file": "packages/editor-ext/src/lib/video/video-upload.ts",
-          "hash": "16975174545780627539",
-          "deps": [
-            "npm:@tiptap/pm",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/src/lib/video/video.ts",
-          "hash": "1341701962480858449",
-          "deps": [
-            "npm:@tiptap/react",
-            "npm:@tiptap/core"
-          ]
-        },
-        {
-          "file": "packages/editor-ext/tsconfig.json",
-          "hash": "12125624465614140911"
+          "file": "packages/base-formula/tsconfig.json",
+          "hash": "2534783322275116419"
         }
       ]
     },
@@ -12023,7 +12037,7 @@
       },
       {
         "file": ".gitignore",
-        "hash": "14877195159507041958"
+        "hash": "16763918716856359521"
       },
       {
         "file": ".gitmodules",
@@ -12067,7 +12081,7 @@
       },
       {
         "file": "pnpm-lock.yaml",
-        "hash": "14212051170311078314"
+        "hash": "269952745385635698"
       },
       {
         "file": "pnpm-workspace.yaml",
@@ -12075,5 +12089,5 @@
       }
     ]
   },
-  "externalNodesHash": "13408075968950463029"
+  "externalNodesHash": "10045120502391993517"
 }
