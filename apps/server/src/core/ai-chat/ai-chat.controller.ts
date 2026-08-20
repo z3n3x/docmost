@@ -6,7 +6,6 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
 import { User, Workspace } from '@docmost/db/types/entity.types';
 import { AuthUser } from '../../common/decorators/auth-user.decorator';
 import { AuthWorkspace } from '../../common/decorators/auth-workspace.decorator';
@@ -17,6 +16,17 @@ import {
   UpdateChatTitleDto,
 } from './dto/ai-chat.dto';
 import { AiChatService, StreamEvent } from './services/ai-chat.service';
+
+type AiChatReply = {
+  raw: {
+    setHeader(name: string, value: string): void;
+    write(chunk: string): boolean;
+    end(): void;
+    on(event: string, listener: () => void): void;
+    writableEnded: boolean;
+  };
+  hijack(): void;
+};
 
 @UseGuards(JwtAuthGuard)
 @Controller('ai/chats')
@@ -44,7 +54,7 @@ export class AiChatController {
     @Body('query') query?: string,
     @Body('adminView') adminView?: boolean,
   ) {
-    const pagination: PaginationOptions = { 
+    const pagination: PaginationOptions = {
       limit: limit || 20,
       query: query || '',
       adminView: adminView || false,
@@ -96,13 +106,9 @@ export class AiChatController {
     @AuthUser() user: User,
     @AuthWorkspace() workspace: Workspace,
   ) {
-    // TODO: реализовать поиск по чатам
     return [];
   }
 
-  /**
-   * Получение истории сообщений чата
-   */
   @Post('/messages')
   async getMessages(
     @Body('chatId') chatId: string,
@@ -123,13 +129,9 @@ export class AiChatController {
     @AuthUser() user: User,
     @AuthWorkspace() workspace: Workspace,
   ) {
-    // TODO: реализовать загрузку файлов
     throw new BadRequestException('File upload not implemented yet');
   }
 
-  /**
-   * SSE streaming endpoint для отправки сообщений
-   */
   @Post('/send')
   async send(
     @Body('chatId') chatId: string | undefined,
@@ -139,23 +141,26 @@ export class AiChatController {
     @Body('attachmentIds') attachmentIds: string[] | undefined,
     @AuthUser() user: User,
     @AuthWorkspace() workspace: Workspace,
-    @Res() res: Response,
+    @Res() res: AiChatReply,
   ) {
     if (!content || content.trim().length === 0) {
       throw new BadRequestException('Content is required');
     }
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-    res.setHeader('X-Accel-Buffering', 'no');
+    res.hijack();
+
+    const raw = res.raw;
+    raw.setHeader('Content-Type', 'text/event-stream');
+    raw.setHeader('Cache-Control', 'no-cache');
+    raw.setHeader('Connection', 'keep-alive');
+    raw.setHeader('X-Accel-Buffering', 'no');
 
     const abortController = new AbortController();
-    res.on('close', () => abortController.abort());
+    raw.on('close', () => abortController.abort());
 
     const sendEvent = (event: StreamEvent) => {
-      if (!res.writableEnded) {
-        res.write(`data: ${JSON.stringify(event)}\n\n`);
+      if (!raw.writableEnded) {
+        raw.write(`data: ${JSON.stringify(event)}\n\n`);
       }
     };
 
@@ -181,8 +186,8 @@ export class AiChatController {
         retryable: true,
       });
     } finally {
-      if (!res.writableEnded) {
-        res.end();
+      if (!raw.writableEnded) {
+        raw.end();
       }
     }
   }
