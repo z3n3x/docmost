@@ -1,0 +1,4 @@
+
+> @docmost/editor-ext@ build /workspace/packages/editor-ext
+> tsc --build
+
