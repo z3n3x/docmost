@@ -15,16 +15,9 @@ import {
   IconMoon,
   IconSettings,
   IconSun,
-  IconUser,
   IconUserCircle,
   IconUsers,
 } from "@tabler/icons-react";
-import { useDisclosure } from "@mantine/hooks";
-import { getSpaceUrl } from "@/lib/config.ts";
-import { useHasFeature } from "@/ee/hooks/use-feature";
-import { Feature } from "@/ee/features";
-import { usePersonalSpaceQuery } from "@/ee/personal-space/queries/personal-space-query";
-import CreatePersonalSpaceModal from "@/ee/personal-space/components/create-personal-space-modal";
 import { useAtom } from "jotai";
 import { currentUserAtom } from "@/features/user/atoms/current-user-atom.ts";
 import { Link } from "react-router-dom";
@@ -43,33 +36,24 @@ export default function TopMenu() {
   const user = currentUser?.user;
   const workspace = currentUser?.workspace;
 
-  const hasPersonalSpaces = useHasFeature(Feature.PERSONAL_SPACES);
-  const settingEnabled = workspace?.settings?.spaces?.allowPersonal === true;
-  const { data: personalSpace } = usePersonalSpaceQuery(hasPersonalSpaces);
-  const [
-    createOpened,
-    { open: openCreate, close: closeCreate },
-  ] = useDisclosure(false);
-
   if (!user || !workspace) {
     return <></>;
   }
 
   return (
-    <>
-    <Menu width={250} position="bottom-end" withArrow shadow={"lg"}>
+    <Menu width={250} position="bottom-end" withArrow shadow="lg">
       <Menu.Target>
         <UnstyledButton>
-          <Group gap={7} wrap={"nowrap"}>
+          <Group gap={7} wrap="nowrap">
             <CustomAvatar
-              avatarUrl={workspace?.logo}
-              name={workspace?.name}
+              avatarUrl={workspace.logo}
+              name={workspace.name}
               variant="filled"
               size="sm"
               type={AvatarIconType.WORKSPACE_ICON}
             />
             <Text fw={500} size="sm" lh={1} mr={3} lineClamp={1}>
-              {workspace?.name}
+              {workspace.name}
             </Text>
             <IconChevronDown size={16} />
           </Group>
@@ -77,7 +61,6 @@ export default function TopMenu() {
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Label>{t("Workspace")}</Menu.Label>
-
         <Menu.Item
           component={Link}
           to={APP_ROUTE.SETTINGS.WORKSPACE.GENERAL}
@@ -85,7 +68,6 @@ export default function TopMenu() {
         >
           {t("Workspace settings")}
         </Menu.Item>
-
         <Menu.Item
           component={Link}
           to={APP_ROUTE.SETTINGS.WORKSPACE.MEMBERS}
@@ -95,16 +77,14 @@ export default function TopMenu() {
         </Menu.Item>
 
         <Menu.Divider />
-
         <Menu.Label>{t("Account")}</Menu.Label>
         <Menu.Item component={Link} to={APP_ROUTE.SETTINGS.ACCOUNT.PROFILE}>
-          <Group wrap={"nowrap"}>
+          <Group wrap="nowrap">
             <CustomAvatar
-              size={"sm"}
+              size="sm"
               avatarUrl={user.avatarUrl}
               name={user.name}
             />
-
             <div style={{ width: 190 }}>
               <Text size="sm" fw={500} lineClamp={1}>
                 {user.name}
@@ -122,7 +102,6 @@ export default function TopMenu() {
         >
           {t("My profile")}
         </Menu.Item>
-
         <Menu.Item
           component={Link}
           to={APP_ROUTE.SETTINGS.ACCOUNT.PREFERENCES}
@@ -131,58 +110,31 @@ export default function TopMenu() {
           {t("My preferences")}
         </Menu.Item>
 
-        {personalSpace ? (
-          <Menu.Item
-            component={Link}
-            to={getSpaceUrl(personalSpace.slug)}
-            leftSection={<IconUser size={16} />}
-          >
-            {t("Personal space")}
-          </Menu.Item>
-        ) : (
-          hasPersonalSpaces &&
-          settingEnabled && (
-            <Menu.Item
-              onClick={openCreate}
-              leftSection={<IconUser size={16} />}
-            >
-              {t("Create personal space")}
-            </Menu.Item>
-          )
-        )}
-
         <Menu.Sub>
           <Menu.Sub.Target>
             <Menu.Sub.Item leftSection={<IconBrightnessFilled size={16} />}>
               {t("Theme")}
             </Menu.Sub.Item>
           </Menu.Sub.Target>
-
           <Menu.Sub.Dropdown>
             <Menu.Item
               onClick={() => setColorScheme("light")}
               leftSection={<IconSun size={16} />}
-              rightSection={
-                colorScheme === "light" ? <IconCheck size={16} /> : null
-              }
+              rightSection={colorScheme === "light" ? <IconCheck size={16} /> : null}
             >
               {t("Light")}
             </Menu.Item>
             <Menu.Item
               onClick={() => setColorScheme("dark")}
               leftSection={<IconMoon size={16} />}
-              rightSection={
-                colorScheme === "dark" ? <IconCheck size={16} /> : null
-              }
+              rightSection={colorScheme === "dark" ? <IconCheck size={16} /> : null}
             >
               {t("Dark")}
             </Menu.Item>
             <Menu.Item
               onClick={() => setColorScheme("auto")}
               leftSection={<IconDeviceDesktop size={16} />}
-              rightSection={
-                colorScheme === "auto" ? <IconCheck size={16} /> : null
-              }
+              rightSection={colorScheme === "auto" ? <IconCheck size={16} /> : null}
             >
               {t("System settings")}
             </Menu.Item>
@@ -190,14 +142,10 @@ export default function TopMenu() {
         </Menu.Sub>
 
         <Menu.Divider />
-
         <Menu.Item onClick={logout} leftSection={<IconLogout size={16} />}>
           {t("Logout")}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>
-
-      <CreatePersonalSpaceModal opened={createOpened} onClose={closeCreate} />
-    </>
   );
 }
