@@ -81,7 +81,13 @@ export async function createAiChat(spaceId: string): Promise<string> {
   }
 
   const chat = await response.json();
-  return chat.id;
+  const chatId = chat?.id;
+
+  if (typeof chatId !== "string" || !chatId) {
+    throw new Error("AI chat was created but the server did not return a chat ID");
+  }
+
+  return chatId;
 }
 
 export async function sendAiChatMessage(
@@ -90,6 +96,10 @@ export async function sendAiChatMessage(
   handlers: AiChatStreamHandlers,
   signal?: AbortSignal,
 ): Promise<void> {
+  if (!chatId) {
+    throw new Error("AI chat ID is missing");
+  }
+
   const response = await fetch("/api/ai/chats/send", {
     method: "POST",
     credentials: "include",
