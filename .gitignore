@@ -1,1 +1,1 @@
-Nothing should be ignored based on the provided file changes, as they only contain source code files (.ts files) without any build artifacts, dependencies, or temporary files.
+Nothing should be ignored based on the provided file changes. The only modified file is a TypeScript source file (`apps/server/src/core/ai-chat/ai-chat.module.ts`), which is source code and should not be ignored. There are no build artifacts, dependencies, or temporary files in the changes that would warrant adding ignore rules.
