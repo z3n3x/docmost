@@ -7,6 +7,7 @@ export interface AiChatSource {
 
 export interface AiChatStreamHandlers {
   onSources?: (sources: AiChatSource[]) => void;
+  onSuggestions?: (suggestions: AiChatSource[]) => void;
   onContent?: (text: string) => void;
   onDone?: (messageId?: string) => void;
   onError?: (message: string, code?: string) => void;
@@ -44,22 +45,29 @@ async function parseSseStream(
           .find((line) => line.startsWith("data: "));
         if (!dataLine) continue;
 
-        const payload = JSON.parse(dataLine.slice(6));
-        switch (payload.type) {
-          case "sources":
-            handlers.onSources?.(payload.sources || []);
-            break;
-          case "content":
-            handlers.onContent?.(payload.text || "");
-            break;
-          case "done":
-            handlers.onDone?.(payload.messageId);
-            break;
-          case "error":
-            handlers.onError?.(payload.error || "AI generation failed", payload.code);
-            break;
-          default:
-            break;
+        try {
+          const payload = JSON.parse(dataLine.slice(6));
+          switch (payload.type) {
+            case "sources":
+              handlers.onSources?.(payload.sources || []);
+              break;
+            case "suggestions":
+              handlers.onSuggestions?.(payload.suggestions || []);
+              break;
+            case "content":
+              handlers.onContent?.(payload.text || "");
+              break;
+            case "done":
+              handlers.onDone?.(payload.messageId);
+              break;
+            case "error":
+              handlers.onError?.(payload.error || "AI generation failed", payload.code);
+              break;
+            default:
+              break;
+          }
+        } catch {
+          // Ignore malformed SSE events and keep consuming the stream.
         }
       }
     }
