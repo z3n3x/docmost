@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { AiChatRepo } from '@docmost/db/repos/ai-chat/ai-chat.repo';
@@ -10,7 +11,6 @@ import { AiRetrievalService } from './ai-retrieval.service';
 import { User, Workspace } from '@docmost/db/types/entity.types';
 import { PaginationOptions } from '@docmost/db/pagination/pagination-options';
 import { SpacePermissionService } from '../../space/services/space-permission.service';
-import { PageAccessService } from '../../page/page-access/page-access.service';
 
 export interface SendMessageParams {
   chatId?: string;
@@ -26,11 +26,12 @@ export interface CreateChatParams {
 }
 
 export interface StreamEvent {
-  type: 'content' | 'sources' | 'done' | 'error';
+  type: 'content' | 'sources' | 'suggestions' | 'done' | 'error';
   chatId?: string;
   messageId?: string;
   text?: string;
   sources?: Array<{ pageId: string; title: string; slugId: string; spaceId: string }>;
+  suggestions?: Array<{ pageId: string; title: string; slugId: string; spaceId: string }>;
   usage?: { promptTokens: number; completionTokens: number };
   error?: string;
   code?: string;
@@ -39,6 +40,7 @@ export interface StreamEvent {
 
 @Injectable()
 export class AiChatService {
+  private readonly logger = new Logger(AiChatService.name);
   private readonly rateLimitWindowMs = 60 * 1000;
   private readonly rateLimitMaxRequests = 20;
   private readonly userRequestTimestamps = new Map<string, number[]>();
@@ -121,12 +123,12 @@ export class AiChatService {
       throw new ForbiddenException('You no longer have access to this space');
     }
 
-    const messages = await this.aiChatRepo.findMessages(chat.id, { 
+    const messages = await this.aiChatRepo.findMessages(chat.id, {
       limit: 50,
       query: '',
       adminView: false,
     });
-    
+
     return { chat, messages: messages.items };
   }
 
@@ -227,13 +229,12 @@ export class AiChatService {
       limit: this.maxRetrievedPages,
     });
 
-    // Формируем историю сообщений для контекста
-    const recentMessages = await this.aiChatRepo.findMessages(chat.id, { 
+    const recentMessages = await this.aiChatRepo.findMessages(chat.id, {
       limit: 10,
       query: '',
       adminView: false,
     });
-    const messageHistory: ChatMessage[] = recentMessages.items.map(msg => ({
+    const messageHistory: ChatMessage[] = recentMessages.items.map((msg) => ({
       role: msg.role as 'user' | 'assistant' | 'system',
       content: msg.content || '',
     }));
@@ -265,6 +266,17 @@ export class AiChatService {
     let generationFinished = false;
 
     const callback: StreamCallback = {
+      onSuggestions: async (pages) => {
+        sendEvent({
+          type: 'suggestions',
+          suggestions: pages.map((page) => ({
+            pageId: page.pageId,
+            title: page.title,
+            slugId: page.slugId,
+            spaceId: page.spaceId,
+          })),
+        });
+      },
       onToken: async (token) => {
         accumulatedContent += token;
         sendEvent({ type: 'content', text: token });
@@ -286,6 +298,9 @@ export class AiChatService {
       },
       onComplete: async (usage) => {
         generationFinished = true;
+        this.logger.log(
+          `AI usage: user=${user.id} chat=${chat.id} promptTokens=${usage?.promptTokens ?? 0} completionTokens=${usage?.completionTokens ?? 0}`,
+        );
         await this.aiChatRepo.updateMessage(assistantMessage.id, {
           content: accumulatedContent,
           metadata: {
@@ -323,9 +338,6 @@ export class AiChatService {
     return this.aiRetrievalService.canAccessPage(pageId, userId);
   }
 
-  /**
-   * Получение истории сообщений чата
-   */
   async getChatMessages(
     chatId: string,
     user: User,
@@ -333,23 +345,26 @@ export class AiChatService {
     limit?: number,
   ): Promise<{ items: any[] }> {
     const chat = await this.aiChatRepo.findById(chatId);
-    
+
     if (!chat || chat.workspaceId !== workspace.id || chat.creatorId !== user.id) {
       throw new NotFoundException('Chat not found');
     }
 
-    // Проверяем доступ к Space чата
-    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(chat.spaceId, user.id, workspace.id);
+    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(
+      chat.spaceId,
+      user.id,
+      workspace.id,
+    );
     if (!hasSpaceAccess) {
       throw new ForbiddenException('You no longer have access to this space');
     }
 
-    const messages = await this.aiChatRepo.findMessages(chat.id, { 
+    const messages = await this.aiChatRepo.findMessages(chat.id, {
       limit: limit || 50,
       query: '',
       adminView: false,
     });
-    
+
     return { items: messages.items };
   }
 }
