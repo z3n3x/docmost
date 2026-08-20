@@ -34,15 +34,14 @@ export class AiRetrievalService {
   }): Promise<RetrievalResult[]> {
     const { query, userId, workspaceId, spaceId, limit = 5, maxContentLength = 3000 } = params;
 
-    if (!query || query.trim().length === 0) {
-      return [];
-    }
-
+    // Если запрос пустой, пробуем вернуть последние страницы из Space (fallback)
+    const isQueryEmpty = !query || query.trim().length === 0;
+    
     // Используем существующий поиск с permission filtering
     const searchResults = await this.searchService.searchPage(
       {
-        query: query.trim(),
-        limit: limit * 2, // Берем больше, потом отфильтруем
+        query: isQueryEmpty ? '' : query.trim(),
+        limit: isQueryEmpty ? limit : limit * 2, // Берем больше для поиска, потом отфильтруем
         spaceId: spaceId,
       },
       {
@@ -51,13 +50,47 @@ export class AiRetrievalService {
       },
     );
 
-    if (!searchResults.items || searchResults.items.length === 0) {
+    let items = searchResults.items || [];
+
+    // Fallback: если поиск ничего не дал, берем последние страницы из Space
+    if (items.length === 0 && spaceId) {
+      this.logger.log(`No search results for "${query}", fetching recent pages from space ${spaceId}`);
+      
+      try {
+        // Получаем страницы пространства напрямую через репозиторий
+        const recentPagesResult = await this.pageRepo.getRecentPagesInSpace(spaceId, {
+          limit: limit,
+        });
+        
+        const recentPages = recentPagesResult.items || [];
+        
+        // Фильтруем по правам доступа
+        const pageIds = recentPages.map(p => p.id);
+        const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
+          pageIds,
+          userId,
+        });
+        
+        items = recentPages
+          .filter(p => accessibleIds.includes(p.id))
+          .map(page => ({
+            id: page.id,
+            title: page.title,
+            slugId: page.slugId,
+            rank: 0,
+          }));
+      } catch (error) {
+        this.logger.error(`Failed to fetch recent pages: ${error.message}`);
+      }
+    }
+
+    if (items.length === 0) {
       return [];
     }
 
     // Загружаем полный контент для доступных страниц
     const results: RetrievalResult[] = [];
-    for (const item of searchResults.items) {
+    for (const item of items) {
       try {
         const page = await this.pageRepo.findById(item.id, {
           includeContent: true,
