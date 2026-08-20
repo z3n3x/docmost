@@ -21,14 +21,11 @@ import CloudLogin from "@/ee/pages/cloud-login.tsx";
 import CreateWorkspace from "@/ee/pages/create-workspace.tsx";
 import { isCloud } from "@/lib/config.ts";
 import SharedPage from "@/pages/share/shared-page.tsx";
-import PdfRenderPage from "@/ee/pdf-export/pdf-render-page.tsx";
 import Shares from "@/pages/settings/shares/shares.tsx";
 import ShareLayout from "@/features/share/components/share-layout.tsx";
 import ShareRedirect from "@/pages/share/share-redirect.tsx";
 import { useTrackOrigin } from "@/hooks/use-track-origin";
 import SpacesPage from "@/pages/spaces/spaces.tsx";
-import { MfaChallengePage } from "@/ee/mfa/pages/mfa-challenge-page";
-import { MfaSetupRequiredPage } from "@/ee/mfa/pages/mfa-setup-required-page";
 import SpaceTrash from "@/pages/space/space-trash.tsx";
 import FavoritesPage from "@/pages/favorites/favorites-page";
 import VerifyEmail from "@/ee/pages/verify-email.tsx";
@@ -45,8 +42,6 @@ export default function App() {
         <Route path={"/invites/:invitationId"} element={<InviteSignup />} />
         <Route path={"/forgot-password"} element={<ForgotPassword />} />
         <Route path={"/password-reset"} element={<PasswordReset />} />
-        <Route path={"/login/mfa"} element={<MfaChallengePage />} />
-        <Route path={"/login/mfa/setup"} element={<MfaSetupRequiredPage />} />
 
         {!isCloud() && (
           <Route path={"/setup/register"} element={<SetupWorkspace />} />
@@ -68,7 +63,6 @@ export default function App() {
           <Route path={"/share/p/:pageSlug"} element={<SharedPage />} />
         </Route>
 
-        <Route path={"/pdf-render/:pageId"} element={<PdfRenderPage />} />
         <Route path={"/share/:shareId"} element={<ShareRedirect />} />
         <Route path={"/p/:pageSlug"} element={<PageRedirect />} />
 
