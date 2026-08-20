@@ -42,7 +42,11 @@ export class AiChatController {
     if (!spaceId) {
       throw new BadRequestException('spaceId is required');
     }
-    return this.aiChatService.createChat(user, workspace, { spaceId });
+
+    const chat = await this.aiChatService.createChat(user, workspace, { spaceId });
+
+    // Keep the create contract explicit for the AI Chat client.
+    return { id: chat.id };
   }
 
   @Post('/')
