@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   Box,
+  Button,
   Collapse,
   Group,
   Paper,
@@ -9,7 +10,7 @@ import {
   Text,
   Textarea,
 } from "@mantine/core";
-import { IconArrowUp, IconSparkles, IconX } from "@tabler/icons-react";
+import { IconArrowUp, IconFileText, IconSparkles, IconX } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -28,6 +29,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   const [message, setMessage] = useState("");
   const [answer, setAnswer] = useState("");
   const [sources, setSources] = useState<AiChatSource[]>([]);
+  const [suggestions, setSuggestions] = useState<AiChatSource[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const chatIdRef = useRef<string | null>(null);
@@ -39,12 +41,13 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     setLoading(false);
     setAnswer("");
     setSources([]);
+    setSuggestions([]);
     setError(null);
     setMessage("");
   }, [spaceId]);
 
-  const submit = async () => {
-    const content = message.trim();
+  const submit = async (prompt = message) => {
+    const content = prompt.trim();
     if (!content || loading) return;
 
     setOpen(true);
@@ -52,6 +55,8 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     setError(null);
     setAnswer("");
     setSources([]);
+    setSuggestions([]);
+    setMessage(content);
     abortRef.current = new AbortController();
 
     try {
@@ -64,6 +69,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
         content,
         {
           onSources: setSources,
+          onSuggestions: setSuggestions,
           onContent: (text) => setAnswer((current) => current + text),
           onError: (message) => setError(message),
         },
@@ -115,6 +121,27 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
             ) : null}
 
             {error && <Text c="red" mt="sm">{error}</Text>}
+
+            {suggestions.length > 0 && !loading && (
+              <Stack gap="xs" mt="md">
+                <Text size="xs" c="dimmed" fw={600}>
+                  Try asking about
+                </Text>
+                <Group gap="xs">
+                  {suggestions.map((suggestion) => (
+                    <Button
+                      key={suggestion.pageId}
+                      variant="light"
+                      size="xs"
+                      leftSection={<IconFileText size={14} />}
+                      onClick={() => void submit(`Tell me about "${suggestion.title}"`)}
+                    >
+                      {suggestion.title}
+                    </Button>
+                  ))}
+                </Group>
+              </Stack>
+            )}
 
             {sources.length > 0 && (
               <Stack gap={4} mt="md">
