@@ -22,6 +22,7 @@ import {
 } from "@/components/settings/settings-queries.tsx";
 import AppVersion from "@/components/settings/app-version.tsx";
 import { mobileSidebarAtom } from "@/components/layouts/global/hooks/atoms/sidebar-atom.ts";
+import { useAtom } from "jotai";
 import { useToggleSidebar } from "@/components/layouts/global/hooks/hooks/use-toggle-sidebar.ts";
 import { useSettingsNavigation } from "@/hooks/use-settings-navigation";
 
