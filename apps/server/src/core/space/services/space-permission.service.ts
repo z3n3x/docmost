@@ -17,10 +17,12 @@ export class SpacePermissionService {
    */
   async canAccessSpace(spaceId: string, userId: string, workspaceId?: string): Promise<boolean> {
     // Проверяем существование Space
-    const space = workspaceId 
-      ? await this.spaceRepo.findById(spaceId, workspaceId)
-      : await this.spaceRepo.findById(spaceId, '');
-    
+    if (!workspaceId) {
+      return false;
+    }
+
+    const space = await this.spaceRepo.findById(spaceId, workspaceId);
+
     if (!space) {
       return false;
     }
