@@ -339,7 +339,7 @@ export class AiChatService {
     }
 
     // Проверяем доступ к Space чата
-    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(chat.spaceId, user.id);
+    const hasSpaceAccess = await this.spacePermissionService.canAccessSpace(chat.spaceId, user.id, workspace.id);
     if (!hasSpaceAccess) {
       throw new ForbiddenException('You no longer have access to this space');
     }
