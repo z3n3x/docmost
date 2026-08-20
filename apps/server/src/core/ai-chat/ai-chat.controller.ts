@@ -17,12 +17,14 @@ import {
   UpdateChatTitleDto,
 } from './dto/ai-chat.dto';
 import { AiChatService, StreamEvent } from './services/ai-chat.service';
+import { SkipTransform } from '../../common/decorators/skip-transform.decorator';
 
 @UseGuards(JwtAuthGuard)
 @Controller('ai/chats')
 export class AiChatController {
   constructor(private readonly aiChatService: AiChatService) {}
 
+  @SkipTransform()
   @Post('/create')
   async create(
     @Body('spaceId') spaceId: string,
