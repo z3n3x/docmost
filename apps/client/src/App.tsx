@@ -17,6 +17,8 @@ import Layout from "@/components/layouts/global/layout.tsx";
 import InviteSignup from "@/pages/auth/invite-signup.tsx";
 import ForgotPassword from "@/pages/auth/forgot-password.tsx";
 import PasswordReset from "./pages/auth/password-reset";
+import CloudLogin from "@/ee/pages/cloud-login.tsx";
+import CreateWorkspace from "@/ee/pages/create-workspace.tsx";
 import { isCloud } from "@/lib/config.ts";
 import SharedPage from "@/pages/share/shared-page.tsx";
 import PdfRenderPage from "@/ee/pdf-export/pdf-render-page.tsx";
@@ -52,6 +54,8 @@ export default function App() {
 
         {isCloud() && (
           <>
+            <Route path={"/create"} element={<CreateWorkspace />} />
+            <Route path={"/select"} element={<CloudLogin />} />
             <Route path={"/verify-email"} element={<VerifyEmail />} />
           </>
         )}
