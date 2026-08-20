@@ -1,20 +1,14 @@
 import {
   ActionIcon,
-  Badge,
   Box,
   Group,
   Text,
   Tooltip,
-  UnstyledButton,
 } from "@mantine/core";
 import classes from "./app-header.module.css";
-import React from "react";
-import TopMenu from "@/components/layouts/global/top-menu.tsx";
-import { Link, useLocation } from "react-router-dom";
-import { IconSparkles } from "@tabler/icons-react";
-import useToggleAside from "@/hooks/use-toggle-aside.tsx";
-import APP_ROUTE from "@/lib/app-route.ts";
 import { useAtom } from "jotai";
+import { Link } from "react-router-dom";
+import TopMenu from "@/components/layouts/global/top-menu.tsx";
 import {
   desktopSidebarAtom,
   mobileSidebarAtom,
@@ -22,21 +16,15 @@ import {
 import { useToggleSidebar } from "@/components/layouts/global/hooks/hooks/use-toggle-sidebar.ts";
 import SidebarToggle from "@/components/ui/sidebar-toggle-button.tsx";
 import { useTranslation } from "react-i18next";
-import useTrial from "@/ee/hooks/use-trial.tsx";
-import { isCloud } from "@/lib/config.ts";
 import {
   SearchControl,
   SearchMobileControl,
 } from "@/features/search/components/search-control.tsx";
-import {
-  searchSpotlight,
-  shareSearchSpotlight,
-} from "@/features/search/constants.ts";
+import { searchSpotlight } from "@/features/search/constants.ts";
 import { NotificationPopover } from "@/features/notification/components/notification-popover.tsx";
-import { workspaceAtom } from "@/features/user/atoms/current-user-atom.ts";
 
 const links = [
-  { link: APP_ROUTE.HOME, label: "Home" },
+  { link: "/home", label: "Home" },
 ];
 
 export function AppHeader() {
@@ -46,13 +34,6 @@ export function AppHeader() {
 
   const [desktopOpened] = useAtom(desktopSidebarAtom);
   const toggleDesktop = useToggleSidebar(desktopSidebarAtom);
-  const { isTrial, trialDaysLeft } = useTrial();
-  const location = useLocation();
-  const toggleAside = useToggleAside();
-  const [workspace] = useAtom(workspaceAtom);
-  const aiChatEnabled = workspace?.settings?.ai?.chat === true;
-
-  const isPageRoute = location.pathname.includes("/p/");
 
   const items = links.map((link) => (
     <Link key={link.label} to={link.link} className={classes.link}>
@@ -62,7 +43,7 @@ export function AppHeader() {
 
   return (
     <>
-      <Group h="100%" px="md" justify="space-between" wrap={"nowrap"}>
+      <Group h="100%" px="md" justify="space-between" wrap="nowrap">
         <Group wrap="nowrap">
           <Tooltip label={t("Sidebar toggle")}>
             <SidebarToggle
@@ -117,64 +98,8 @@ export function AppHeader() {
           </Group>
         </div>
 
-        <Group px={"xl"} wrap="nowrap">
-          {aiChatEnabled && (
-            <>
-              <UnstyledButton
-                component={Link}
-                to="/ai"
-                className={classes.link}
-                visibleFrom="sm"
-                onClick={(e: React.MouseEvent) => {
-                  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) {
-                    return;
-                  }
-                  if (isPageRoute) {
-                    e.preventDefault();
-                    toggleAside("chat");
-                  }
-                }}
-              >
-                {t("AI Chat")}
-              </UnstyledButton>
-              <Tooltip label={t("AI Chat")} openDelay={250} withArrow>
-                <ActionIcon
-                  component={Link}
-                  to="/ai"
-                  variant="subtle"
-                  color="dark"
-                  size="sm"
-                  hiddenFrom="sm"
-                  aria-label={t("AI Chat")}
-                  onClick={(e: React.MouseEvent) => {
-                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) {
-                      return;
-                    }
-                    if (isPageRoute) {
-                      e.preventDefault();
-                      toggleAside("chat");
-                    }
-                  }}
-                >
-                  <IconSparkles size={20} stroke={2} />
-                </ActionIcon>
-              </Tooltip>
-            </>
-          )}
+        <Group px="xl" wrap="nowrap">
           <NotificationPopover />
-          {isCloud() && isTrial && trialDaysLeft !== 0 && (
-            <Badge
-              variant="light"
-              style={{ cursor: "pointer" }}
-              component={Link}
-              to={APP_ROUTE.SETTINGS.WORKSPACE.BILLING}
-              visibleFrom="xs"
-            >
-              {trialDaysLeft === 1
-                ? "1 day left"
-                : `${trialDaysLeft} days left`}
-            </Badge>
-          )}
           <TopMenu />
         </Group>
       </Group>
