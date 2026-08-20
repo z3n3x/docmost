@@ -1,0 +1,308 @@
+
+> server@0.95.0 build /workspace/apps/server
+> nest build
+
+[96msrc/common/helpers/utils.ts[0m:[93m4[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m4[0m import { FastifyRequest } from 'fastify';
+[7m [0m [91m                               ~~~~~~~~~[0m
+[96msrc/common/interceptors/file.interceptor.ts[0m:[93m9[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m9[0m import { FastifyRequest } from 'fastify';
+[7m [0m [91m                               ~~~~~~~~~[0m
+[96msrc/common/logger/pino.config.ts[0m:[93m2[0m:[93m34[0m - [91merror[0m[90m TS2307: [0mCannot find module 'pino' or its corresponding type declarations.
+
+[7m2[0m import { stdTimeFunctions } from 'pino';
+[7m [0m [91m                                 ~~~~~~[0m
+[96msrc/common/middlewares/audit-context.middleware.ts[0m:[93m2[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m2[0m import { FastifyRequest, FastifyReply } from 'fastify';
+[7m [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/common/middlewares/domain.middleware.ts[0m:[93m2[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m2[0m import { FastifyRequest, FastifyReply } from 'fastify';
+[7m [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/common/validators/is-iso6391.ts[0m:[93m2[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'validator/lib/isISO6391' or its corresponding type declarations.
+
+[7m2[0m import isISO6391Validator from 'validator/lib/isISO6391';
+[7m [0m [91m                               ~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/core/attachment/attachment.controller.ts[0m:[93m21[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m21[0m import { FastifyReply, FastifyRequest } from 'fastify';
+[7m  [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/core/auth/auth.controller.ts[0m:[93m32[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m32[0m import { FastifyReply, FastifyRequest } from 'fastify';
+[7m  [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/core/auth/strategies/jwt.strategy.ts[0m:[93m10[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m10[0m import { FastifyRequest } from 'fastify';
+[7m  [0m [91m                               ~~~~~~~~~[0m
+[96msrc/core/session/session.controller.ts[0m:[93m17[0m:[93m32[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m17[0m import { FastifyRequest } from 'fastify';
+[7m  [0m [91m                               ~~~~~~~~~[0m
+[96msrc/core/share/share-seo.controller.ts[0m:[93m3[0m:[93m46[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m3[0m import { FastifyReply, FastifyRequest } from 'fastify';
+[7m [0m [91m                                             ~~~~~~~~~[0m
+[96msrc/core/workspace/controllers/workspace.controller.ts[0m:[93m33[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m33[0m import { FastifyReply } from 'fastify';
+[7m  [0m [91m                             ~~~~~~~~~[0m
+[96msrc/database/migrate.ts[0m:[93m5[0m:[93m25[0m - [91merror[0m[90m TS2307: [0mCannot find module 'dotenv' or its corresponding type declarations.
+
+[7m5[0m import * as dotenv from 'dotenv';
+[7m [0m [91m                        ~~~~~~~~[0m
+[96msrc/integrations/export/export.controller.ts[0m:[93m25[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module 'fastify' or its corresponding type declarations.
+
+[7m25[0m import { FastifyReply } from 'fastify';
+[7m  [0m [91m                             ~~~~~~~~~[0m
+[96msrc/integrations/transactional/emails/approval-rejected-email.tsx[0m:[93m22[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m22[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/approval-rejected-email.tsx[0m:[93m36[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m36[0m       <EmailButton href={pageUrl}>View page</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/approval-requested-email.tsx[0m:[93m20[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m20[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/approval-requested-email.tsx[0m:[93m29[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m29[0m       <EmailButton href={pageUrl}>Review page</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/change-password-email.tsx[0m:[93m12[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m12[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/comment-created-email.tsx[0m:[93m18[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m18[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/comment-created-email.tsx[0m:[93m26[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m26[0m       <EmailButton href={pageUrl}>View</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/comment-mention-email.tsx[0m:[93m18[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m18[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/comment-mention-email.tsx[0m:[93m26[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m26[0m       <EmailButton href={pageUrl}>View</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/comment-resolved-email.tsx[0m:[93m18[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m18[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/comment-resolved-email.tsx[0m:[93m26[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m26[0m       <EmailButton href={pageUrl}>View</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/forgot-password-email.tsx[0m:[93m13[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m13[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/invitation-accepted-email.tsx[0m:[93m16[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m16[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/invitation-email.tsx[0m:[93m12[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m12[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/invitation-email.tsx[0m:[93m20[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m20[0m       <EmailButton href={inviteLink}>Accept Invite</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/page-mention-email.tsx[0m:[93m14[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m14[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/page-mention-email.tsx[0m:[93m22[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m22[0m       <EmailButton href={pageUrl}>View</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/page-update-digest-email.tsx[0m:[93m24[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m24[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/page-update-email.tsx[0m:[93m22[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m22[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/page-update-email.tsx[0m:[93m33[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m33[0m       <EmailButton href={pageUrl}>View page</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/permission-granted-email.tsx[0m:[93m20[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m20[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/permission-granted-email.tsx[0m:[93m28[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m28[0m       <EmailButton href={pageUrl}>View</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/verification-expired-email.tsx[0m:[93m14[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m14[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/verification-expired-email.tsx[0m:[93m23[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m23[0m       <EmailButton href={pageUrl}>Re-verify page</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/verification-expiring-email.tsx[0m:[93m20[0m:[93m6[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{}' but required in type 'MailBodyProps'.
+
+[7m20[0m     <MailBody>
+[7m  [0m [91m     ~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m14[0m:[93m3[0m
+    [7m14[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/emails/verification-expiring-email.tsx[0m:[93m29[0m:[93m8[0m - [91merror[0m[90m TS2741: [0mProperty 'children' is missing in type '{ href: string; }' but required in type 'EmailButtonProps'.
+
+[7m29[0m       <EmailButton href={pageUrl}>Review page</EmailButton>
+[7m  [0m [91m       ~~~~~~~~~~~[0m
+
+  [96msrc/integrations/transactional/partials/partials.tsx[0m:[93m40[0m:[93m3[0m
+    [7m40[0m   children: React.ReactNode;
+    [7m  [0m [96m  ~~~~~~~~[0m
+    'children' is declared here.
+[96msrc/integrations/transactional/partials/partials.tsx[0m:[93m82[0m:[93m8[0m - [91merror[0m[90m TS2322: [0mType '{}' is not assignable to type 'Readonly<Omit<DetailedHTMLProps<TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>, "ref"> & { ...; }> & RefAttributes<...>'.
+  Property 'children' is missing in type '{}' but required in type 'Readonly<Omit<DetailedHTMLProps<TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>, "ref"> & { ...; }>'.
+
+[7m82[0m       <Row>
+[7m  [0m [91m       ~~~[0m
+
+  [96m../../node_modules/.pnpm/@types+react@19.2.17/node_modules/@types/react/index.d.ts[0m:[93m2267[0m:[93m9[0m
+    [7m2267[0m         children?: ReactNode | undefined;
+    [7m    [0m [96m        ~~~~~~~~[0m
+    'children' is declared here.
+
+Found 41 error(s).
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
