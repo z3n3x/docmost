@@ -11,5 +11,6 @@ import { AiChatRepo } from '@docmost/db/repos/ai-chat/ai-chat.repo';
   imports: [SearchModule, SpaceModule],
   controllers: [AiChatController],
   providers: [AiChatService, AiProviderService, AiRetrievalService, AiChatRepo],
+  exports: [AiChatService, AiChatRepo],
 })
 export class AiChatModule {}
