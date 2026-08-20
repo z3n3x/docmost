@@ -14,7 +14,6 @@ import { Link, useLocation } from "react-router-dom";
 import classes from "./settings.module.css";
 import { useTranslation } from "react-i18next";
 import { isCloud } from "@/lib/config.ts";
-import useUserRole from "@/hooks/use-user-role.tsx";
 import {
   prefetchGroups,
   prefetchShares,
@@ -30,8 +29,6 @@ type DataItem = {
   label: string;
   icon: React.ElementType;
   path: string;
-  role?: "admin" | "owner";
-  env?: "cloud" | "selfhosted";
 };
 
 type DataGroup = {
@@ -67,7 +64,6 @@ export default function SettingsSidebar() {
   const { t } = useTranslation();
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
-  const { isAdmin, isOwner } = useUserRole();
   const { goBack } = useSettingsNavigation();
   const [mobileSidebarOpened] = useAtom(mobileSidebarAtom);
   const toggleMobileSidebar = useToggleSidebar(mobileSidebarAtom);
@@ -75,14 +71,6 @@ export default function SettingsSidebar() {
   useEffect(() => {
     setActive(location.pathname);
   }, [location.pathname]);
-
-  const canShowItem = (item: DataItem) => {
-    if (item.env === "cloud" && !isCloud()) return false;
-    if (item.env === "selfhosted" && isCloud()) return false;
-    if (item.role === "admin" && !isAdmin) return false;
-    if (item.role === "owner" && !isOwner) return false;
-    return true;
-  };
 
   const getPrefetchHandler = (label: string) => {
     switch (label) {
@@ -104,25 +92,21 @@ export default function SettingsSidebar() {
       <Text c="dimmed" className={classes.linkHeader}>
         {t(group.heading)}
       </Text>
-      {group.items.map((item) => {
-        if (!canShowItem(item)) return null;
-
-        return (
-          <Link
-            onMouseEnter={getPrefetchHandler(item.label)}
-            className={classes.link}
-            data-active={active.startsWith(item.path) || undefined}
-            key={item.label}
-            to={item.path}
-            onClick={() => {
-              if (mobileSidebarOpened) toggleMobileSidebar();
-            }}
-          >
-            <item.icon className={classes.linkIcon} stroke={2} />
-            <span>{t(item.label)}</span>
-          </Link>
-        );
-      })}
+      {group.items.map((item) => (
+        <Link
+          onMouseEnter={getPrefetchHandler(item.label)}
+          className={classes.link}
+          data-active={active.startsWith(item.path) || undefined}
+          key={item.label}
+          to={item.path}
+          onClick={() => {
+            if (mobileSidebarOpened) toggleMobileSidebar();
+          }}
+        >
+          <item.icon className={classes.linkIcon} stroke={2} />
+          <span>{t(item.label)}</span>
+        </Link>
+      ))}
     </div>
   ));
 
