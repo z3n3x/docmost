@@ -1,7 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { InjectKysely } from 'nestjs-kysely';
 import { SearchService } from '../../search/search.service';
 import { PagePermissionRepo } from '@docmost/db/repos/page/page-permission.repo';
 import { PageRepo } from '@docmost/db/repos/page/page.repo';
+import { KyselyDB } from '@docmost/db/types/kysely.types';
 
 export interface RetrievalResult {
   pageId: string;
@@ -10,20 +12,20 @@ export interface RetrievalResult {
   spaceId: string;
   content: string;
   rank: number;
+  isFallback?: boolean;
 }
 
 @Injectable()
 export class AiRetrievalService {
+  private readonly logger = new Logger(AiRetrievalService.name);
+
   constructor(
-    private searchService: SearchService,
-    private pagePermissionRepo: PagePermissionRepo,
-    private pageRepo: PageRepo,
+    private readonly searchService: SearchService,
+    private readonly pagePermissionRepo: PagePermissionRepo,
+    private readonly pageRepo: PageRepo,
+    @InjectKysely() private readonly db: KyselyDB,
   ) {}
 
-  /**
-   * Поиск релевантных страниц с учетом прав доступа
-   * Использует существующую модель авторизации Docmost
-   */
   async retrieveContext(params: {
     query: string;
     userId: string;
@@ -32,63 +34,80 @@ export class AiRetrievalService {
     limit?: number;
     maxContentLength?: number;
   }): Promise<RetrievalResult[]> {
-    const { query, userId, workspaceId, spaceId, limit = 5, maxContentLength = 3000 } = params;
+    const {
+      query,
+      userId,
+      workspaceId,
+      spaceId,
+      limit = 5,
+      maxContentLength = 3000,
+    } = params;
 
-    // Если запрос пустой, пробуем вернуть последние страницы из Space (fallback)
-    const isQueryEmpty = !query || query.trim().length === 0;
-    
-    // Используем существующий поиск с permission filtering
-    const searchResults = await this.searchService.searchPage(
-      {
-        query: isQueryEmpty ? '' : query.trim(),
-        limit: isQueryEmpty ? limit : limit * 2, // Берем больше для поиска, потом отфильтруем
-        spaceId: spaceId,
-      },
-      {
-        userId,
-        workspaceId,
-      },
+    this.logger.log(
+      `Retrieval started: space=${spaceId ?? 'none'} user=${userId} queryLength=${query.length}`,
     );
 
-    let items = searchResults.items || [];
+    const trimmedQuery = query?.trim() || '';
+    const searchResults = await this.searchService.searchPage(
+      {
+        query: trimmedQuery,
+        limit: Math.min(limit * 2, 20),
+        spaceId,
+      },
+      { userId, workspaceId },
+    );
 
-    // Fallback: если поиск ничего не дал, берем последние страницы из Space
+    let items = (searchResults.items || []).map((item) => ({
+      id: item.id,
+      title: item.title,
+      slugId: item.slugId,
+      rank: item.rank || 0,
+      isFallback: false,
+    }));
+
+    this.logger.log(`Search returned ${items.length} accessible pages`);
+
     if (items.length === 0 && spaceId) {
-      this.logger.log(`No search results for "${query}", fetching recent pages from space ${spaceId}`);
-      
-      try {
-        // Получаем страницы пространства напрямую через репозиторий
-        const recentPagesResult = await this.pageRepo.getRecentPagesInSpace(spaceId, {
-          limit: limit,
-        });
-        
-        const recentPages = recentPagesResult.items || [];
-        
-        // Фильтруем по правам доступа
-        const pageIds = recentPages.map(p => p.id);
-        const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
-          pageIds,
-          userId,
-        });
-        
-        items = recentPages
-          .filter(p => accessibleIds.includes(p.id))
-          .map(page => ({
-            id: page.id,
-            title: page.title,
-            slugId: page.slugId,
-            rank: 0,
-          }));
-      } catch (error) {
-        this.logger.error(`Failed to fetch recent pages: ${error.message}`);
-      }
+      this.logger.log(`No exact results; loading recent pages from space=${spaceId}`);
+
+      const recentPages = await this.db
+        .selectFrom('pages')
+        .select(['id', 'title', 'slugId'])
+        .where('spaceId', '=', spaceId)
+        .where('workspaceId', '=', workspaceId)
+        .where('deletedAt', 'is', null)
+        .orderBy('updatedAt', 'desc')
+        .limit(limit)
+        .execute();
+
+      const pageIds = recentPages.map((page) => page.id);
+      const accessibleIds = pageIds.length
+        ? await this.pagePermissionRepo.filterAccessiblePageIds({
+            pageIds,
+            userId,
+            spaceId,
+          })
+        : [];
+      const accessibleSet = new Set(accessibleIds);
+
+      items = recentPages
+        .filter((page) => accessibleSet.has(page.id))
+        .map((page) => ({
+          id: page.id,
+          title: page.title,
+          slugId: page.slugId,
+          rank: 0,
+          isFallback: true,
+        }));
+
+      this.logger.log(`Fallback returned ${items.length} accessible pages`);
     }
 
     if (items.length === 0) {
+      this.logger.log('Retrieval completed with no accessible pages');
       return [];
     }
 
-    // Загружаем полный контент для доступных страниц
     const results: RetrievalResult[] = [];
     for (const item of items) {
       try {
@@ -97,31 +116,40 @@ export class AiRetrievalService {
           includeTextContent: true,
         });
 
-        if (page) {
-          const truncatedContent = page.textContent || '';
-          results.push({
-            pageId: page.id,
-            title: page.title || 'Untitled',
-            slugId: page.slugId,
-            spaceId: page.spaceId,
-            content: truncatedContent.slice(0, maxContentLength),
-            rank: item.rank || 0,
-          });
+        if (!page || page.spaceId !== spaceId) {
+          continue;
         }
+
+        const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
+          pageIds: [page.id],
+          userId,
+          spaceId,
+        });
+        if (!accessibleIds.includes(page.id)) {
+          continue;
+        }
+
+        results.push({
+          pageId: page.id,
+          title: page.title || 'Untitled',
+          slugId: page.slugId,
+          spaceId: page.spaceId,
+          content: (page.textContent || '').slice(0, maxContentLength),
+          rank: item.rank,
+          isFallback: item.isFallback,
+        });
       } catch (error) {
-        // Пропускаем страницы, которые не удалось загрузить
-        continue;
+        this.logger.warn(
+          `Failed to load page ${item.id}: ${error instanceof Error ? error.message : String(error)}`,
+        );
       }
     }
 
-    // Возвращаем топ-N результатов
-    return results.slice(0, limit);
+    const finalResults = results.slice(0, limit);
+    this.logger.log(`Retrieval completed with ${finalResults.length} pages`);
+    return finalResults;
   }
 
-  /**
-   * Проверка доступа пользователя к странице
-   * AI использует ту же модель прав, что и пользователь
-   */
   async canAccessPage(pageId: string, userId: string): Promise<boolean> {
     const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
       pageIds: [pageId],
@@ -130,22 +158,13 @@ export class AiRetrievalService {
     return accessibleIds.includes(pageId);
   }
 
-  /**
-   * Формирование контекста для LLM из найденных страниц
-   */
   buildContextPrompt(retrievedPages: RetrievalResult[]): string {
     if (retrievedPages.length === 0) {
       return '';
     }
 
     const contextParts = retrievedPages.map((page, index) => {
-      return `---
-Page ${index + 1}: ${page.title}
-Space ID: ${page.spaceId}
-Slug: ${page.slugId}
-
-${page.content}
----`;
+      return `---\nPage ${index + 1}: ${page.title}\nSpace ID: ${page.spaceId}\nSlug: ${page.slugId}\n\n${page.content}\n---`;
     });
 
     return `Context from relevant pages:\n\n${contextParts.join('\n\n')}`;
