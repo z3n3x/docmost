@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import DOMPurify from "dompurify";
 import { ActionIcon, Tooltip } from "@mantine/core";
@@ -24,8 +24,6 @@ chatSanitizer.addHook("afterSanitizeAttributes", (node) => {
   if (node.tagName !== "A") return;
   const href = node.getAttribute("href") || "";
 
-  // Recover the canonical /s/{slug}/p/{slugId} path if the model wrapped it
-  // in a fabricated host (https://s/..., https://yoursite.com/s/..., //s/...).
   const m = href.match(PAGE_PATH_RE);
   if (m) {
     node.setAttribute("href", m[0]);
@@ -92,21 +90,13 @@ export default function ChatMessage({
       }[]) || [];
 
     return (
-      <div
-        className={classes.userMessage}
-        role="article"
-        aria-label={t("You said:")}
-      >
+      <div className={classes.userMessage} role="article" aria-label={t("You said:")}>
         <div className={classes.userBubble}>
           {attachments.length > 0 && (
             <div className={classes.messageAttachments}>
               {attachments.map((a) => (
                 <span key={a.id} className={classes.messageAttachmentChip}>
-                  {IMAGE_EXTENSIONS.includes(a.fileExt) ? (
-                    <IconPhoto size={13} />
-                  ) : (
-                    <IconFile size={13} />
-                  )}
+                  {IMAGE_EXTENSIONS.includes(a.fileExt) ? <IconPhoto size={13} /> : <IconFile size={13} />}
                   {a.fileName}
                 </span>
               ))}
@@ -118,8 +108,6 @@ export default function ChatMessage({
     );
   }
 
-  // Only label the article when there's something meaningful to announce.
-  // Tool-only assistant turns (no text) shouldn't announce "Assistant said:" with empty content.
   const hasAnnouncableContent = Boolean(content);
 
   return (
@@ -157,10 +145,7 @@ export default function ChatMessage({
       </div>
       {!isStreaming && message.content && (
         <div className={classes.messageActions}>
-          <CopyTextButton
-            text={message?.content}
-            label={t("Copy assistant response")}
-          />
+          <CopyTextButton text={message?.content} label={t("Copy assistant response")} />
         </div>
       )}
     </div>
