@@ -15,6 +15,10 @@ export interface RetrievalResult {
   isFallback?: boolean;
 }
 
+const CHUNK_SIZE = 3500;
+const CHUNK_OVERLAP = 400;
+const MAX_CHUNKS_PER_PAGE = 2;
+
 @Injectable()
 export class AiRetrievalService {
   private readonly logger = new Logger(AiRetrievalService.name);
@@ -25,6 +29,69 @@ export class AiRetrievalService {
     private readonly pageRepo: PageRepo,
     @InjectKysely() private readonly db: KyselyDB,
   ) {}
+
+  private chunkContent(content: string): string[] {
+    const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+    if (!normalized) return [];
+
+    const chunks: string[] = [];
+    let start = 0;
+
+    while (start < normalized.length) {
+      let end = Math.min(start + CHUNK_SIZE, normalized.length);
+
+      if (end < normalized.length) {
+        const paragraphBreak = normalized.lastIndexOf('\n\n', end);
+        const sentenceBreak = normalized.lastIndexOf('. ', end);
+        const boundary = Math.max(paragraphBreak, sentenceBreak);
+        if (boundary > start + CHUNK_SIZE * 0.6) {
+          end = boundary + (paragraphBreak === boundary ? 2 : 1);
+        }
+      }
+
+      const chunk = normalized.slice(start, end).trim();
+      if (chunk) chunks.push(chunk);
+      if (end >= normalized.length) break;
+
+      start = Math.max(end - CHUNK_OVERLAP, start + 1);
+    }
+
+    return chunks;
+  }
+
+  private selectRelevantChunks(content: string, query: string): string {
+    const chunks = this.chunkContent(content);
+    if (chunks.length <= MAX_CHUNKS_PER_PAGE) {
+      return chunks.join('\n\n');
+    }
+
+    const terms = query
+      .toLowerCase()
+      .split(/[^\p{L}\p{N}]+/u)
+      .filter((term) => term.length >= 3)
+      .slice(0, 20);
+
+    const scored = chunks.map((chunk, index) => {
+      const lower = chunk.toLowerCase();
+      const score = terms.reduce((total, term) => {
+        let count = 0;
+        let offset = 0;
+        while ((offset = lower.indexOf(term, offset)) !== -1) {
+          count++;
+          offset += term.length;
+        }
+        return total + count;
+      }, 0);
+      return { chunk, index, score };
+    });
+
+    const selected = scored
+      .sort((a, b) => b.score - a.score || a.index - b.index)
+      .slice(0, MAX_CHUNKS_PER_PAGE)
+      .sort((a, b) => a.index - b.index);
+
+    return selected.map((item) => item.chunk).join('\n\n[...chunk boundary...]\n\n');
+  }
 
   async retrieveContext(params: {
     query: string;
@@ -40,7 +107,6 @@ export class AiRetrievalService {
       workspaceId,
       spaceId,
       limit = 5,
-      maxContentLength = 3000,
     } = params;
 
     this.logger.log(
@@ -134,7 +200,7 @@ export class AiRetrievalService {
           title: page.title || 'Untitled',
           slugId: page.slugId,
           spaceId: page.spaceId,
-          content: (page.textContent || '').slice(0, maxContentLength),
+          content: this.selectRelevantChunks(page.textContent || '', trimmedQuery),
           rank: item.rank,
           isFallback: item.isFallback,
         });
