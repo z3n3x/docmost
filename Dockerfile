@@ -1,7 +1,9 @@
 FROM node:26-slim AS base
 LABEL org.opencontainers.image.source="https://github.com/docmost/docmost"
 
-RUN npm install -g pnpm@11.15.1
+# Keep the package manager aligned with the checked-in lockfile.
+# pnpm-lock.yaml is lockfileVersion 6.0, which is compatible with pnpm 8.
+RUN npm install -g pnpm@8.15.9
 
 FROM base AS builder
 
