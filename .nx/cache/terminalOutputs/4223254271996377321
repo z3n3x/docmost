@@ -1,0 +1,4 @@
+
+> @docmost/base-formula@ build /workspace/packages/base-formula
+> tsc --build
+

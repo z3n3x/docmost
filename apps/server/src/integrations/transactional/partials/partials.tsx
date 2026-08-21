@@ -4,7 +4,6 @@ import {
   Container,
   Head,
   Html,
-  Row,
   Section,
   Text,
 } from 'react-email';
@@ -79,11 +78,9 @@ export function EmailButton({ href, children }: EmailButtonProps) {
 export function MailFooter() {
   return (
     <Section style={footer}>
-      <Row>
-        <Text style={{ textAlign: 'center', color: '#706a7b' }}>
-          © {new Date().getFullYear()} Docmost, All Rights Reserved <br />
-        </Text>
-      </Row>
+      <Text style={{ textAlign: 'center', color: '#706a7b' }}>
+        © {new Date().getFullYear()} Docmost, All Rights Reserved <br />
+      </Text>
     </Section>
   );
 }

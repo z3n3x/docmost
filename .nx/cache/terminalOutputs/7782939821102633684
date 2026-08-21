@@ -1,0 +1,6 @@
+
+> server@0.95.0 build /workspace/apps/server
+> nest build
+
+Killed
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 137.[39m

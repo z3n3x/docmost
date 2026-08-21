@@ -11,4 +11,5 @@ export class SearchResponseDto {
   createdAt: Date;
   updatedAt: Date;
   space: Partial<Space>;
+  slugId: string;
 }
