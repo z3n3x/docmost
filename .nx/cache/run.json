@@ -1,40 +1,51 @@
 {
   "run": {
-    "command": "nx run server:build",
-    "startTime": "2026-08-19T13:22:45.431Z",
-    "endTime": "2026-08-19T13:23:30.433Z",
+    "command": "nx run-many -t build",
+    "startTime": "2026-08-21T06:46:08.809Z",
+    "endTime": "2026-08-21T06:47:55.462Z",
     "inner": false
   },
   "tasks": [
     {
-      "taskId": "@docmost/editor-ext:build",
-      "target": "build",
-      "projectName": "@docmost/editor-ext",
-      "hash": "4299701005388505175",
-      "startTime": "2026-08-19T13:22:45.446Z",
-      "endTime": "2026-08-19T13:22:45.505Z",
-      "params": "",
-      "cacheStatus": "local-cache-hit",
-      "status": 0
-    },
-    {
       "taskId": "@docmost/base-formula:build",
       "target": "build",
       "projectName": "@docmost/base-formula",
-      "hash": "12834230023051561921",
-      "startTime": "2026-08-19T13:22:45.446Z",
-      "endTime": "2026-08-19T13:22:45.505Z",
+      "hash": "11937432933100258159",
+      "startTime": "2026-08-21T06:46:08.829Z",
+      "endTime": "2026-08-21T06:46:11.204Z",
       "params": "",
-      "cacheStatus": "local-cache-hit",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "@docmost/editor-ext:build",
+      "target": "build",
+      "projectName": "@docmost/editor-ext",
+      "hash": "751902867590433584",
+      "startTime": "2026-08-21T06:46:08.830Z",
+      "endTime": "2026-08-21T06:46:20.928Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
       "status": 0
     },
     {
       "taskId": "server:build",
       "target": "build",
       "projectName": "server",
-      "hash": "7388538973494561688",
-      "startTime": "2026-08-19T13:22:45.506Z",
-      "endTime": "2026-08-19T13:23:30.432Z",
+      "hash": "7782939821102633684",
+      "startTime": "2026-08-21T06:46:20.951Z",
+      "endTime": "2026-08-21T06:47:36.339Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    },
+    {
+      "taskId": "client:build",
+      "target": "build",
+      "projectName": "client",
+      "hash": "14848841818158397443",
+      "startTime": "2026-08-21T06:46:20.951Z",
+      "endTime": "2026-08-21T06:47:55.457Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

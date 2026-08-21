@@ -4347,15 +4347,6 @@
         "hash": "sha512-7aPGWeqA3uFm43o19umzdl16CEjK/JQGtSXVPevplTaOU3VJA/rseBC1QvYUz9lLDIMBimc4SW/zrW4S89BaCA=="
       }
     },
-    "npm:@remirror/core-constants": {
-      "type": "npm",
-      "name": "npm:@remirror/core-constants",
-      "data": {
-        "version": "3.0.0",
-        "packageName": "@remirror/core-constants",
-        "hash": "sha512-42aWfPrimMfDKDi4YegyS7x+/0tlzaqwPQCULLanv3DMIlu96KTJR0fM5isWX2UViOqlGnX6YFgqWepcX+XMNg=="
-      }
-    },
     "npm:@rolldown/binding-android-arm64": {
       "type": "npm",
       "name": "npm:@rolldown/binding-android-arm64",
@@ -4824,15 +4815,6 @@
         "hash": "sha512-Q2ToPvg0KsVL0ohND9A3zLJWcOXXcO8IDu3fj11KhNt0UlCWyFyvnCIBkd12tidB2lkiVRG8VFqdhcqhqnAQtg=="
       }
     },
-    "npm:@tiptap/core@2.27.2": {
-      "type": "npm",
-      "name": "npm:@tiptap/core@2.27.2",
-      "data": {
-        "version": "2.27.2",
-        "packageName": "@tiptap/core",
-        "hash": "sha512-ABL1N6eoxzDzC1bYvkMbvyexHacszsKdVPYqhl5GwHLOvpZcv9VE9QaKwDILTyz5voCA0lGcAAXZp+qnXOk5lQ=="
-      }
-    },
     "npm:@tiptap/core": {
       "type": "npm",
       "name": "npm:@tiptap/core",
@@ -5044,9 +5026,9 @@
       "type": "npm",
       "name": "npm:@tiptap/extension-list-item",
       "data": {
-        "version": "2.27.2",
+        "version": "3.29.2",
         "packageName": "@tiptap/extension-list-item",
-        "hash": "sha512-eJNee7IEGXMnmygM5SdMGDC8m/lMWmwNGf9fPCK6xk0NxuQRgmZHL6uApKcdH6gyNcRPHCqvTTkhEP7pbny/fg=="
+        "hash": "sha512-s8vBVHHFT0Qpu7CzAZ7S1kYmSiVaDvUNvMNcZUWnxj6VPfiwmx0eXd9FsjePrRCMoM5tFmPnhFTHDxY3D/eZeQ=="
       }
     },
     "npm:@tiptap/extension-list-item@3.30.2": {
@@ -5080,9 +5062,9 @@
       "type": "npm",
       "name": "npm:@tiptap/extension-ordered-list",
       "data": {
-        "version": "2.27.2",
+        "version": "3.29.2",
         "packageName": "@tiptap/extension-ordered-list",
-        "hash": "sha512-M7A4tLGJcLPYdLC4CI2Gwl8LOrENQW59u3cMVa+KkwG1hzSJyPsbDpa1DI6oXPC2WtYiTf22zrbq3gVvH+KA2w=="
+        "hash": "sha512-ndCunC+UsYOpkOtL7vGnDz21UNa45WUlcO9wMT1fbuYow2QnRhsuMlCWENXI52YPPARWuQ0RDgN7q6TaxPERBg=="
       }
     },
     "npm:@tiptap/extension-ordered-list@3.30.2": {
@@ -5236,15 +5218,6 @@
         "version": "3.29.2",
         "packageName": "@tiptap/html",
         "hash": "sha512-hgl2JscI407BxcJG/PUMgyrvW5jNz40wtsZNHiYuVPNYzhSAuC4kFFa7dK7MegZ7OnkDppRy30cr9q5hdAtfqA=="
-      }
-    },
-    "npm:@tiptap/pm@2.27.2": {
-      "type": "npm",
-      "name": "npm:@tiptap/pm@2.27.2",
-      "data": {
-        "version": "2.27.2",
-        "packageName": "@tiptap/pm",
-        "hash": "sha512-kaEg7BfiJPDQMKbjVIzEPO3wlcA+pZb2tlcK9gPrdDnEFaec2QTF1sXz2ak2IIb2curvnIrQ4yrfHgLlVA72wA=="
       }
     },
     "npm:@tiptap/pm": {
@@ -5985,15 +5958,6 @@
         "hash": "sha512-trgaNyfU+Xh2Tc+ABIb44a5AYUpicB3uwirOioeOkNPPbmgRNtcWyDeeFRzjPZENO9Vq8gvVqfhaaXWLlevVwg=="
       }
     },
-    "npm:@types/linkify-it": {
-      "type": "npm",
-      "name": "npm:@types/linkify-it",
-      "data": {
-        "version": "5.0.0",
-        "packageName": "@types/linkify-it",
-        "hash": "sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q=="
-      }
-    },
     "npm:@types/luxon": {
       "type": "npm",
       "name": "npm:@types/luxon",
@@ -6001,24 +5965,6 @@
         "version": "3.7.4",
         "packageName": "@types/luxon",
         "hash": "sha512-V536ZAd6ZJztrrBlLcDFaaZrXNAL2E5uGmssWf/dpSiLkmkLScXUYhUBnWPmtW+cIqnNHzf6//TCMpIc9SCRRQ=="
-      }
-    },
-    "npm:@types/markdown-it": {
-      "type": "npm",
-      "name": "npm:@types/markdown-it",
-      "data": {
-        "version": "14.2.0",
-        "packageName": "@types/markdown-it",
-        "hash": "sha512-NoQ2yGlLWj4wpxMs+TYmRKk3thDrQ97agr7sFqfLsAlvoS8SNQuTrlObhFqG9iugdTtgOE9jpJ6FNM4ZGsa5xQ=="
-      }
-    },
-    "npm:@types/mdurl": {
-      "type": "npm",
-      "name": "npm:@types/mdurl",
-      "data": {
-        "version": "2.0.0",
-        "packageName": "@types/mdurl",
-        "hash": "sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg=="
       }
     },
     "npm:@types/methods": {
@@ -8694,15 +8640,6 @@
         "hash": "sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ=="
       }
     },
-    "npm:crelt": {
-      "type": "npm",
-      "name": "npm:crelt",
-      "data": {
-        "version": "1.0.7",
-        "packageName": "crelt",
-        "hash": "sha512-aK6BbWfhf4U/wCcLHKPJl/xa6VkVstRaPywWtMKGwuOLc/wZTyQYuoxgvZnNsBvv7Kg3YTBQYYBCggcviQczuA=="
-      }
-    },
     "npm:cron-parser": {
       "type": "npm",
       "name": "npm:cron-parser",
@@ -10431,18 +10368,18 @@
         "hash": "sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA=="
       }
     },
-    "npm:fast-uri": {
+    "npm:fast-uri@3.1.5": {
       "type": "npm",
-      "name": "npm:fast-uri",
+      "name": "npm:fast-uri@3.1.5",
       "data": {
         "version": "3.1.5",
         "packageName": "fast-uri",
         "hash": "sha512-gHwA1O9LDIcKunMKhObS/HimwtehO1nPUECKAu5TpKgaO19fcWEl4bliWe1jWxVFvIXztJjjQ4L8XQ1EU9f7Jw=="
       }
     },
-    "npm:fast-uri@4.1.2": {
+    "npm:fast-uri": {
       "type": "npm",
-      "name": "npm:fast-uri@4.1.2",
+      "name": "npm:fast-uri",
       "data": {
         "version": "4.1.2",
         "packageName": "fast-uri",
@@ -10494,13 +10431,22 @@
         "hash": "sha512-fZOty7z3O7vOliF6d8bHE3wiEh1KcNnKEQensSgTk9C1DvN6nRLS++XVd86v33Hw/8u9Un8A1zDrQ8ujcQDHEg=="
       }
     },
-    "npm:fastify": {
+    "npm:fastify@5.10.0": {
       "type": "npm",
-      "name": "npm:fastify",
+      "name": "npm:fastify@5.10.0",
       "data": {
         "version": "5.10.0",
         "packageName": "fastify",
         "hash": "sha512-A9L0ziuWGQHgEEVgF3davQ9vbD93IuX+lo2IsxapQmu5b/Y/ynn9m9K5JHt9dvyJXOFc5iN0Zk5GHEOqnzhWjg=="
+      }
+    },
+    "npm:fastify": {
+      "type": "npm",
+      "name": "npm:fastify",
+      "data": {
+        "version": "5.12.1",
+        "packageName": "fastify",
+        "hash": "sha512-FWi+tQvwxR/PeRX7Z2mhfEF5ozJ3jn9asiiclzKXNSzJRHAYcU924aIOKAdHFJ+YIKieh3cqr1IwCOvTr41B3Q=="
       }
     },
     "npm:fastq": {
@@ -12915,15 +12861,6 @@
         "hash": "sha512-cNOjgCnLB+FnvWWtyRTzmB3POJ+cXxTA81LoW7u8JdmhfXzriropYwpjShnz1QLLWsQwY7nIxoDmcPTwphDK9w=="
       }
     },
-    "npm:linkify-it": {
-      "type": "npm",
-      "name": "npm:linkify-it",
-      "data": {
-        "version": "5.0.2",
-        "packageName": "linkify-it",
-        "hash": "sha512-ONTm2jCMAVZjgQa/Fy1kScXsuOoF5NPTsoFBdE1KVIZ2vAh/r9+Bqo+0jINCBYnavTPQZz38QzFTme79ENoN3Q=="
-      }
-    },
     "npm:linkifyjs": {
       "type": "npm",
       "name": "npm:linkifyjs",
@@ -13284,15 +13221,6 @@
         "hash": "sha512-XlXXkJCYuUuOllW0zedYW+m/lbdFQ/bso1Vz+pJOYkxgjhoGvzN2EXWCS2+0iTOT9Q7WnOwWvHmvpTJN3PxSXw=="
       }
     },
-    "npm:markdown-it": {
-      "type": "npm",
-      "name": "npm:markdown-it",
-      "data": {
-        "version": "14.3.0",
-        "packageName": "markdown-it",
-        "hash": "sha512-RCEsPjR+sr0x+AuYp601tKTkgFG4YEPLCzHST3cQ/fhlJkqAkz1L2/Qbp1j9qw5SBwQHFBoW8+hoN5xssOF0Tw=="
-      }
-    },
     "npm:marked@15.0.12": {
       "type": "npm",
       "name": "npm:marked@15.0.12",
@@ -13336,15 +13264,6 @@
         "version": "2.27.1",
         "packageName": "mdn-data",
         "hash": "sha512-9Yubnt3e8A0OKwxYSXyhLymGW4sCufcLG6VdiDdUGVkPhpqLxlvP5vl1983gQjJl3tqbrM731mjaZaP68AgosQ=="
-      }
-    },
-    "npm:mdurl": {
-      "type": "npm",
-      "name": "npm:mdurl",
-      "data": {
-        "version": "2.1.0",
-        "packageName": "mdurl",
-        "hash": "sha512-1+HBaOx0zi/dQWht8rNv9MYf9qqpqL/kxI0hXImU6Y547zM6Sni8BQibt7ifgMcYtQg41ao3Ivd6cnSM86inpg=="
       }
     },
     "npm:media-typer": {
@@ -14931,15 +14850,6 @@
         "hash": "sha512-96WBLhOaYhJ+kPhLg3uW359Tz6I/MfcrQfL4EGv4SrcqKEMC1gmoGrXHecPE8eOwTVCJ4IwgfzM8fFad25wNfw=="
       }
     },
-    "npm:prosemirror-collab": {
-      "type": "npm",
-      "name": "npm:prosemirror-collab",
-      "data": {
-        "version": "1.3.1",
-        "packageName": "prosemirror-collab",
-        "hash": "sha512-4SnynYR9TTYaQVXd/ieUvsVV4PDMBzrq2xPUWutHivDuOshZXqQ5rGbZM84HEaXKbLdItse7weMGOUdDVcLKEQ=="
-      }
-    },
     "npm:prosemirror-commands": {
       "type": "npm",
       "name": "npm:prosemirror-commands",
@@ -14994,24 +14904,6 @@
         "hash": "sha512-4HucRlpiLd1IPQQXNqeo81BGtkY8Ai5smHhKW9jjPKRc2wQIxksg7Hl1tTI2IfT2B/LgX6bfYvXxEpJl7aKYKw=="
       }
     },
-    "npm:prosemirror-markdown": {
-      "type": "npm",
-      "name": "npm:prosemirror-markdown",
-      "data": {
-        "version": "1.13.6",
-        "packageName": "prosemirror-markdown",
-        "hash": "sha512-dY6g2BXRjkHW2ldNRDKfTF0x0R4ifk5rgPaABd/UhvrymtsGVxTbHn01goEsHAvO9nN0O34cttlW1qg/XUcaIg=="
-      }
-    },
-    "npm:prosemirror-menu": {
-      "type": "npm",
-      "name": "npm:prosemirror-menu",
-      "data": {
-        "version": "1.3.2",
-        "packageName": "prosemirror-menu",
-        "hash": "sha512-6VgUJTYod0nMBlCaYJGhXGLu7Gt4AvcwcOq0YfJCY/6Uh+3S7UsWhpy6rJFCBFOmonq1hD8KyWOtZhkppd4YPg=="
-      }
-    },
     "npm:prosemirror-model": {
       "type": "npm",
       "name": "npm:prosemirror-model",
@@ -15019,15 +14911,6 @@
         "version": "1.25.11",
         "packageName": "prosemirror-model",
         "hash": "sha512-QWg9RhnpLlogAmp3p96uEFrE5txQpFynd4vhBAELkwgOCWQs/X0yCzB3/hrHqiPwf91RG5KyWq6553zs9JqIOQ=="
-      }
-    },
-    "npm:prosemirror-schema-basic": {
-      "type": "npm",
-      "name": "npm:prosemirror-schema-basic",
-      "data": {
-        "version": "1.2.4",
-        "packageName": "prosemirror-schema-basic",
-        "hash": "sha512-ELxP4TlX3yr2v5rM7Sb70SqStq5NvI15c0j9j/gjsrO5vaw+fnnpovCLEGIcpeGfifkuqJwl4fon6b+KdrODYQ=="
       }
     },
     "npm:prosemirror-schema-list": {
@@ -15055,15 +14938,6 @@
         "version": "1.8.5",
         "packageName": "prosemirror-tables",
         "hash": "sha512-V/0cDCsHKHe/tfWkeCmthNUcEp1IVO3p6vwN8XtwE9PZQLAZJigbw3QoraAdfJPir4NKJtNvOB8oYGKRl+t0Dw=="
-      }
-    },
-    "npm:prosemirror-trailing-node": {
-      "type": "npm",
-      "name": "npm:prosemirror-trailing-node",
-      "data": {
-        "version": "3.0.0",
-        "packageName": "prosemirror-trailing-node",
-        "hash": "sha512-xiun5/3q0w5eRnGYfNlW1uU9W6x5MoFKWwq/0TIRgt09lv7Hcser2QYV8t4muXbEr+Fwo0geYn79Xs4GKywrRQ=="
       }
     },
     "npm:prosemirror-transform": {
@@ -15127,15 +15001,6 @@
         "version": "3.0.4",
         "packageName": "pump",
         "hash": "sha512-VS7sjc6KR7e1ukRFhQSY5LM2uBWAUPiOPa/A3mkKmiMwSmRFUITt0xuj+/lesgnCv+dPIEYlkzrcyXgquIHMcA=="
-      }
-    },
-    "npm:punycode.js": {
-      "type": "npm",
-      "name": "npm:punycode.js",
-      "data": {
-        "version": "2.3.1",
-        "packageName": "punycode.js",
-        "hash": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA=="
       }
     },
     "npm:punycode": {
@@ -17287,15 +17152,6 @@
         "version": "3.0.5",
         "packageName": "typesense",
         "hash": "sha512-Pw/yWosbqEOFMM/wQDsnS8FA6r3Qp5ilxuqZTMBoUc95SGCEBflMd39kvDEZZFoTORzNDxCLiiQ+LfYJTl1ulQ=="
-      }
-    },
-    "npm:uc.micro": {
-      "type": "npm",
-      "name": "npm:uc.micro",
-      "data": {
-        "version": "2.1.0",
-        "packageName": "uc.micro",
-        "hash": "sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A=="
       }
     },
     "npm:uglify-js": {
@@ -19856,9 +19712,6 @@
     "@redis/client@5.12.1": [
       "npm:@redis/client"
     ],
-    "@remirror/core-constants@3.0.0": [
-      "npm:@remirror/core-constants"
-    ],
     "@rolldown/binding-android-arm64@1.0.3": [
       "npm:@rolldown/binding-android-arm64"
     ],
@@ -20015,9 +19868,6 @@
     "@testing-library/react@16.1.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3)(@types/react@19.2.17)(react-dom@19.2.7)(react@19.2.7)": [
       "npm:@testing-library/react"
     ],
-    "@tiptap/core@2.27.2(@tiptap/pm@2.27.2)": [
-      "npm:@tiptap/core@2.27.2"
-    ],
     "@tiptap/core@3.29.2(@tiptap/pm@3.29.2)": [
       "npm:@tiptap/core"
     ],
@@ -20087,7 +19937,7 @@
     "@tiptap/extension-link@3.29.2(@tiptap/core@3.29.2)(@tiptap/pm@3.29.2)": [
       "npm:@tiptap/extension-link"
     ],
-    "@tiptap/extension-list-item@2.27.2(@tiptap/core@2.27.2)": [
+    "@tiptap/extension-list-item@3.29.2(@tiptap/extension-list@3.29.2)": [
       "npm:@tiptap/extension-list-item"
     ],
     "@tiptap/extension-list-item@3.30.2(@tiptap/extension-list@3.29.2)": [
@@ -20099,7 +19949,7 @@
     "@tiptap/extension-list@3.29.2(@tiptap/core@3.29.2)(@tiptap/pm@3.29.2)": [
       "npm:@tiptap/extension-list"
     ],
-    "@tiptap/extension-ordered-list@2.27.2(@tiptap/core@2.27.2)": [
+    "@tiptap/extension-ordered-list@3.29.2(@tiptap/extension-list@3.29.2)": [
       "npm:@tiptap/extension-ordered-list"
     ],
     "@tiptap/extension-ordered-list@3.30.2(@tiptap/extension-list@3.29.2)": [
@@ -20152,9 +20002,6 @@
     ],
     "@tiptap/html@3.29.2(@tiptap/core@3.29.2)(@tiptap/pm@3.29.2)(happy-dom@20.8.9)": [
       "npm:@tiptap/html"
-    ],
-    "@tiptap/pm@2.27.2": [
-      "npm:@tiptap/pm@2.27.2"
     ],
     "@tiptap/pm@3.29.2": [
       "npm:@tiptap/pm"
@@ -20402,17 +20249,8 @@
     "@types/katex@0.16.8": [
       "npm:@types/katex"
     ],
-    "@types/linkify-it@5.0.0": [
-      "npm:@types/linkify-it"
-    ],
     "@types/luxon@3.7.4": [
       "npm:@types/luxon"
-    ],
-    "@types/markdown-it@14.2.0": [
-      "npm:@types/markdown-it"
-    ],
-    "@types/mdurl@2.0.0": [
-      "npm:@types/mdurl"
     ],
     "@types/methods@1.1.4": [
       "npm:@types/methods"
@@ -21308,9 +21146,6 @@
     "create-require@1.1.1": [
       "npm:create-require"
     ],
-    "crelt@1.0.7": [
-      "npm:crelt"
-    ],
     "cron-parser@4.9.0": [
       "npm:cron-parser"
     ],
@@ -21888,10 +21723,10 @@
       "npm:fast-safe-stringify"
     ],
     "fast-uri@3.1.5": [
-      "npm:fast-uri"
+      "npm:fast-uri@3.1.5"
     ],
     "fast-uri@4.1.2": [
-      "npm:fast-uri@4.1.2"
+      "npm:fast-uri"
     ],
     "fast-xml-builder@1.3.1": [
       "npm:fast-xml-builder"
@@ -21909,6 +21744,9 @@
       "npm:fastify-plugin@6.0.0"
     ],
     "fastify@5.10.0": [
+      "npm:fastify@5.10.0"
+    ],
+    "fastify@5.12.1": [
       "npm:fastify"
     ],
     "fastq@1.20.1": [
@@ -22715,9 +22553,6 @@
     "lines-and-columns@2.0.3": [
       "npm:lines-and-columns"
     ],
-    "linkify-it@5.0.2": [
-      "npm:linkify-it"
-    ],
     "linkifyjs@4.3.2": [
       "npm:linkifyjs"
     ],
@@ -22838,9 +22673,6 @@
     "mantine-form-zod-resolver@1.3.0(@mantine/form@9.3.2)(zod@4.3.6)": [
       "npm:mantine-form-zod-resolver"
     ],
-    "markdown-it@14.3.0": [
-      "npm:markdown-it"
-    ],
     "marked@15.0.12": [
       "npm:marked@15.0.12"
     ],
@@ -22855,9 +22687,6 @@
     ],
     "mdn-data@2.27.1": [
       "npm:mdn-data"
-    ],
-    "mdurl@2.1.0": [
-      "npm:mdurl"
     ],
     "media-typer@1.1.1": [
       "npm:media-typer"
@@ -23387,9 +23216,6 @@
     "prosemirror-changeset@2.4.1": [
       "npm:prosemirror-changeset"
     ],
-    "prosemirror-collab@1.3.1": [
-      "npm:prosemirror-collab"
-    ],
     "prosemirror-commands@1.7.2": [
       "npm:prosemirror-commands"
     ],
@@ -23408,17 +23234,8 @@
     "prosemirror-keymap@1.2.3": [
       "npm:prosemirror-keymap"
     ],
-    "prosemirror-markdown@1.13.6": [
-      "npm:prosemirror-markdown"
-    ],
-    "prosemirror-menu@1.3.2": [
-      "npm:prosemirror-menu"
-    ],
     "prosemirror-model@1.25.11": [
       "npm:prosemirror-model"
-    ],
-    "prosemirror-schema-basic@1.2.4": [
-      "npm:prosemirror-schema-basic"
     ],
     "prosemirror-schema-list@1.5.1": [
       "npm:prosemirror-schema-list"
@@ -23428,9 +23245,6 @@
     ],
     "prosemirror-tables@1.8.5": [
       "npm:prosemirror-tables"
-    ],
-    "prosemirror-trailing-node@3.0.0(prosemirror-model@1.25.11)(prosemirror-state@1.4.4)(prosemirror-view@1.42.2)": [
-      "npm:prosemirror-trailing-node"
     ],
     "prosemirror-transform@1.12.0": [
       "npm:prosemirror-transform"
@@ -23452,9 +23266,6 @@
     ],
     "pump@3.0.4": [
       "npm:pump"
-    ],
-    "punycode.js@2.3.1": [
-      "npm:punycode.js"
     ],
     "punycode@2.3.1": [
       "npm:punycode"
@@ -24164,9 +23975,6 @@
     ],
     "typesense@3.0.5(@babel/runtime@7.29.7)": [
       "npm:typesense"
-    ],
-    "uc.micro@2.1.0": [
-      "npm:uc.micro"
     ],
     "uglify-js@3.19.3": [
       "npm:uglify-js"

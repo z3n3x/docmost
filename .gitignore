@@ -1,49 +1,30 @@
-```ts
-// Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-dist/
-build/
-target/
+```
+# Nx cache and workspace data
+.nx/cache/
+.nx/workspace-data/
 
-// Dependencies
+# Dependencies
 node_modules/
-.venv/
-venv/
+.pnpm-store/
+.nx/daemon/
+
+# Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-// Logs and temp files
+# Logs and temporary files
 *.log
 *.tmp
-*.swp
-*.swo
 
-// Editors
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-// System files
-.DS_Store
-Thumbs.db
-
-// Coverage
-coverage/
-htmlcov/
-.coverage
-
-// Cache directories
-.mypy_cache/
-.pytest_cache/
-.gradle/
+# Build outputs
+dist/
+build/
+target/
 ```
