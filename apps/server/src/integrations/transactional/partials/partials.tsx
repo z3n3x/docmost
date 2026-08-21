@@ -10,7 +10,7 @@ import {
 import * as React from 'react';
 
 interface MailBodyProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function MailBody({ children }: MailBodyProps) {
@@ -36,7 +36,7 @@ export function MailHeader() {
 
 interface EmailButtonProps {
   href: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function EmailButton({ href, children }: EmailButtonProps) {
