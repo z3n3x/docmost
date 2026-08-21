@@ -46,6 +46,7 @@ export class AiChatService {
   private readonly userRequestTimestamps = new Map<string, number[]>();
   private readonly maxQueryLength = 5000;
   private readonly maxRetrievedPages = 8;
+  private readonly maxHistoryMessages = 10;
 
   constructor(
     private readonly aiChatRepo: AiChatRepo,
@@ -62,11 +63,20 @@ export class AiChatService {
     );
 
     if (validTimestamps.length >= this.rateLimitMaxRequests) {
+      this.userRequestTimestamps.set(userId, validTimestamps);
       throw new BadRequestException('Rate limit exceeded. Please try again later.');
     }
 
     validTimestamps.push(now);
     this.userRequestTimestamps.set(userId, validTimestamps);
+
+    if (this.userRequestTimestamps.size > 10000) {
+      for (const [key, values] of this.userRequestTimestamps) {
+        if (values.length === 0 || now - values[values.length - 1] >= this.rateLimitWindowMs) {
+          this.userRequestTimestamps.delete(key);
+        }
+      }
+    }
   }
 
   async createChat(user: User, workspace: Workspace, params: CreateChatParams) {
@@ -149,7 +159,15 @@ export class AiChatService {
       throw new NotFoundException('Chat not found');
     }
 
-    return this.aiChatRepo.update(chatId, { title });
+    const normalizedTitle = title?.trim() || '';
+    if (!normalizedTitle) {
+      throw new BadRequestException('Title is required');
+    }
+    if (normalizedTitle.length > 200) {
+      throw new BadRequestException('Title is too long. Maximum length is 200 characters.');
+    }
+
+    return this.aiChatRepo.update(chatId, { title: normalizedTitle });
   }
 
   async sendMessageStream(
@@ -161,7 +179,7 @@ export class AiChatService {
   ): Promise<void> {
     this.checkRateLimit(user.id);
 
-    const content = params.content.trim();
+    const content = params.content?.trim() || '';
     if (content.length === 0) {
       throw new BadRequestException('Content is required');
     }
@@ -230,13 +248,13 @@ export class AiChatService {
     });
 
     const recentMessages = await this.aiChatRepo.findMessages(chat.id, {
-      limit: 10,
+      limit: this.maxHistoryMessages,
       query: '',
       adminView: false,
     });
     const messageHistory: ChatMessage[] = recentMessages.items.map((msg) => ({
       role: msg.role as 'user' | 'assistant' | 'system',
-      content: msg.content || '',
+      content: (msg.content || '').slice(0, 12000),
     }));
 
     const assistantMessage = await this.aiChatRepo.createMessage({
@@ -360,7 +378,7 @@ export class AiChatService {
     }
 
     const messages = await this.aiChatRepo.findMessages(chat.id, {
-      limit: limit || 50,
+      limit: Math.min(Math.max(limit || 50, 1), 100),
       query: '',
       adminView: false,
     });
