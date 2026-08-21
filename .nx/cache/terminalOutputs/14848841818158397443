@@ -1,0 +1,13 @@
+
+> client@0.95.0 build /workspace/apps/client
+> tsc && vite build
+
+src/ee/ai-chat/components/chat-input.tsx(8,32): error TS2307: Cannot find module '@tiptap/extensions' or its corresponding type declarations.
+src/ee/ai-chat/components/chat-message.tsx(2,29): error TS2307: Cannot find module 'react-router' or its corresponding type declarations.
+src/features/editor/components/table/handle/cell-chevron.tsx(7,55): error TS2307: Cannot find module '@floating-ui/react' or its corresponding type declarations.
+src/features/editor/components/table/handle/column-handle.tsx(4,55): error TS2307: Cannot find module '@floating-ui/react' or its corresponding type declarations.
+src/features/editor/components/table/handle/row-handle.tsx(4,55): error TS2307: Cannot find module '@floating-ui/react' or its corresponding type declarations.
+src/features/editor/extensions/extensions.ts(4,22): error TS2307: Cannot find module '@tiptap/extension-code' or its corresponding type declarations.
+src/features/editor/extensions/extensions.ts(7,42): error TS2307: Cannot find module '@tiptap/extensions' or its corresponding type declarations.
+src/features/editor/extensions/placeholder.ts(4,50): error TS2307: Cannot find module '@tiptap/extensions' or its corresponding type declarations.
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 2.[39m
