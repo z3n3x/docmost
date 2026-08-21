@@ -4056,7 +4056,7 @@
   },
   {
     "source": "npm:@fastify/ajv-compiler",
-    "target": "npm:fast-uri@4.1.2",
+    "target": "npm:fast-uri",
     "type": "static"
   },
   {
@@ -6251,7 +6251,7 @@
   },
   {
     "source": "npm:@nestjs/platform-fastify",
-    "target": "npm:fastify",
+    "target": "npm:fastify@5.10.0",
     "type": "static"
   },
   {
@@ -9735,11 +9735,6 @@
     "type": "static"
   },
   {
-    "source": "npm:@tiptap/core@2.27.2",
-    "target": "npm:@tiptap/pm@2.27.2",
-    "type": "static"
-  },
-  {
     "source": "npm:@tiptap/core",
     "target": "npm:@tiptap/pm",
     "type": "static"
@@ -9926,7 +9921,7 @@
   },
   {
     "source": "npm:@tiptap/extension-list-item",
-    "target": "npm:@tiptap/core@2.27.2",
+    "target": "npm:@tiptap/extension-list",
     "type": "static"
   },
   {
@@ -9951,7 +9946,7 @@
   },
   {
     "source": "npm:@tiptap/extension-ordered-list",
-    "target": "npm:@tiptap/core@2.27.2",
+    "target": "npm:@tiptap/extension-list",
     "type": "static"
   },
   {
@@ -10082,96 +10077,6 @@
   {
     "source": "npm:@tiptap/html",
     "target": "npm:happy-dom",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-changeset",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-collab",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-commands",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-dropcursor",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-gapcursor",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-history",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-inputrules",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-keymap",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-markdown",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-menu",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-model",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-schema-basic",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-schema-list",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-state",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-tables",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-trailing-node",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-transform",
-    "type": "static"
-  },
-  {
-    "source": "npm:@tiptap/pm@2.27.2",
-    "target": "npm:prosemirror-view",
     "type": "static"
   },
   {
@@ -10932,16 +10837,6 @@
   {
     "source": "npm:@types/jsonwebtoken",
     "target": "npm:@types/node@25.9.5",
-    "type": "static"
-  },
-  {
-    "source": "npm:@types/markdown-it",
-    "target": "npm:@types/linkify-it",
-    "type": "static"
-  },
-  {
-    "source": "npm:@types/markdown-it",
-    "target": "npm:@types/mdurl",
     "type": "static"
   },
   {
@@ -12021,7 +11916,7 @@
   },
   {
     "source": "npm:ajv@8.18.0",
-    "target": "npm:fast-uri",
+    "target": "npm:fast-uri@3.1.5",
     "type": "static"
   },
   {
@@ -12041,7 +11936,7 @@
   },
   {
     "source": "npm:ajv",
-    "target": "npm:fast-uri",
+    "target": "npm:fast-uri@3.1.5",
     "type": "static"
   },
   {
@@ -15421,7 +15316,7 @@
   },
   {
     "source": "npm:fast-json-stringify",
-    "target": "npm:fast-uri@4.1.2",
+    "target": "npm:fast-uri",
     "type": "static"
   },
   {
@@ -15482,6 +15377,81 @@
   {
     "source": "npm:fastify-ip",
     "target": "npm:fastify-plugin",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:@fastify/ajv-compiler",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:@fastify/error",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:@fastify/fast-json-stringify-compiler",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:@fastify/proxy-addr",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:abstract-logging",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:avvio",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:fast-json-stringify",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:find-my-way",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:light-my-request",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:pino",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:process-warning",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:rfdc",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:secure-json-parse",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:semver",
+    "type": "static"
+  },
+  {
+    "source": "npm:fastify@5.10.0",
+    "target": "npm:toad-cache",
     "type": "static"
   },
   {
@@ -18425,11 +18395,6 @@
     "type": "static"
   },
   {
-    "source": "npm:linkify-it",
-    "target": "npm:uc.micro",
-    "type": "static"
-  },
-  {
     "source": "npm:locate-path@5.0.0",
     "target": "npm:p-locate@4.1.0",
     "type": "static"
@@ -18577,36 +18542,6 @@
   {
     "source": "npm:mantine-form-zod-resolver",
     "target": "npm:zod",
-    "type": "static"
-  },
-  {
-    "source": "npm:markdown-it",
-    "target": "npm:argparse@2.0.1",
-    "type": "static"
-  },
-  {
-    "source": "npm:markdown-it",
-    "target": "npm:entities@4.5.0",
-    "type": "static"
-  },
-  {
-    "source": "npm:markdown-it",
-    "target": "npm:linkify-it",
-    "type": "static"
-  },
-  {
-    "source": "npm:markdown-it",
-    "target": "npm:mdurl",
-    "type": "static"
-  },
-  {
-    "source": "npm:markdown-it",
-    "target": "npm:punycode.js",
-    "type": "static"
-  },
-  {
-    "source": "npm:markdown-it",
-    "target": "npm:uc.micro",
     "type": "static"
   },
   {
@@ -20420,11 +20355,6 @@
     "type": "static"
   },
   {
-    "source": "npm:prosemirror-collab",
-    "target": "npm:prosemirror-state",
-    "type": "static"
-  },
-  {
     "source": "npm:prosemirror-commands",
     "target": "npm:prosemirror-model",
     "type": "static"
@@ -20515,48 +20445,8 @@
     "type": "static"
   },
   {
-    "source": "npm:prosemirror-markdown",
-    "target": "npm:@types/markdown-it",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-markdown",
-    "target": "npm:markdown-it",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-markdown",
-    "target": "npm:prosemirror-model",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-menu",
-    "target": "npm:crelt",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-menu",
-    "target": "npm:prosemirror-commands",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-menu",
-    "target": "npm:prosemirror-history",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-menu",
-    "target": "npm:prosemirror-state",
-    "type": "static"
-  },
-  {
     "source": "npm:prosemirror-model",
     "target": "npm:orderedmap",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-schema-basic",
-    "target": "npm:prosemirror-model",
     "type": "static"
   },
   {
@@ -20611,31 +20501,6 @@
   },
   {
     "source": "npm:prosemirror-tables",
-    "target": "npm:prosemirror-view",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-trailing-node",
-    "target": "npm:@remirror/core-constants",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-trailing-node",
-    "target": "npm:escape-string-regexp@4.0.0",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-trailing-node",
-    "target": "npm:prosemirror-model",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-trailing-node",
-    "target": "npm:prosemirror-state",
-    "type": "static"
-  },
-  {
-    "source": "npm:prosemirror-trailing-node",
     "target": "npm:prosemirror-view",
     "type": "static"
   },
