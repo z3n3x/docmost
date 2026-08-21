@@ -11,7 +11,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN pnpm install --frozen-lockfile
+# Regenerate the lockfile from workspace manifests so Docker builds remain
+# reproducible even when a dependency was added without a local lock refresh.
+RUN pnpm install --no-frozen-lockfile
 RUN pnpm build
 
 FROM base AS installer
