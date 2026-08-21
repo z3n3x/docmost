@@ -25,12 +25,14 @@ export class AiProviderService {
   private readonly baseUrl: string;
   private readonly model: string;
   private readonly maxTokens: number;
+  private readonly timeoutMs: number;
 
   constructor() {
     this.apiKey = process.env.AI_API_KEY || '';
     this.baseUrl = process.env.AI_BASE_URL || 'http://172.16.0.171:11434/v1';
     this.model = process.env.AI_MODEL || 'nemotron-3-nano-4b';
     this.maxTokens = parseInt(process.env.AI_MAX_TOKENS || '2048', 10);
+    this.timeoutMs = parseInt(process.env.AI_TIMEOUT_MS || '60000', 10);
   }
 
   async generateStream(
@@ -44,7 +46,16 @@ export class AiProviderService {
       ...messages,
     ];
 
+    const requestController = new AbortController();
+    const abortRequest = () => requestController.abort();
+    signal?.addEventListener('abort', abortRequest, { once: true });
+    const timeout = setTimeout(() => requestController.abort(), this.timeoutMs);
+
     try {
+      if (signal?.aborted) {
+        return;
+      }
+
       if (contextPages.length > 0) {
         const suggestions = contextPages.filter((page) => page.isFallback);
         if (suggestions.length > 0) {
@@ -65,12 +76,12 @@ export class AiProviderService {
           stream_options: { include_usage: true },
           max_tokens: this.maxTokens,
         }),
-        signal,
+        signal: requestController.signal,
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`API error: ${response.status} - ${errorText}`);
+        throw new Error(`API error: ${response.status} - ${errorText.slice(0, 1000)}`);
       }
 
       const reader = response.body?.getReader();
@@ -125,9 +136,16 @@ export class AiProviderService {
         reader.releaseLock();
       }
 
+      if (requestController.signal.aborted) {
+        if (!signal?.aborted) {
+          throw new Error(`AI provider timed out after ${this.timeoutMs}ms`);
+        }
+        return;
+      }
+
       await callback.onComplete(usage);
     } catch (error) {
-      if ((error as Error).name === 'AbortError') {
+      if (requestController.signal.aborted && signal?.aborted) {
         return;
       }
       const normalizedError = error instanceof Error ? error : new Error(String(error));
@@ -135,6 +153,9 @@ export class AiProviderService {
         `AI generation failed: model=${this.model} baseUrl=${this.baseUrl} message=${normalizedError.message}`,
       );
       await callback.onError(normalizedError);
+    } finally {
+      clearTimeout(timeout);
+      signal?.removeEventListener('abort', abortRequest);
     }
   }
 
@@ -161,6 +182,7 @@ export class AiProviderService {
         headers: {
           ...(this.apiKey && { Authorization: `Bearer ${this.apiKey}` }),
         },
+        signal: AbortSignal.timeout(Math.min(this.timeoutMs, 10000)),
       });
       return response.ok;
     } catch {
