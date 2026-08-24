@@ -4,6 +4,7 @@ import { SearchService } from '../../search/search.service';
 import { PagePermissionRepo } from '@docmost/db/repos/page/page-permission.repo';
 import { PageRepo } from '@docmost/db/repos/page/page.repo';
 import { KyselyDB } from '@docmost/db/types/kysely.types';
+import { AiVectorService } from './ai-vector.service';
 
 export interface RetrievalResult {
   pageId: string;
@@ -27,6 +28,7 @@ export class AiRetrievalService {
     private readonly searchService: SearchService,
     private readonly pagePermissionRepo: PagePermissionRepo,
     private readonly pageRepo: PageRepo,
+    private readonly vectorService: AiVectorService,
     @InjectKysely() private readonly db: KyselyDB,
   ) {}
 
@@ -61,9 +63,7 @@ export class AiRetrievalService {
 
   private selectRelevantChunks(content: string, query: string): string {
     const chunks = this.chunkContent(content);
-    if (chunks.length <= MAX_CHUNKS_PER_PAGE) {
-      return chunks.join('\n\n');
-    }
+    if (chunks.length <= MAX_CHUNKS_PER_PAGE) return chunks.join('\n\n');
 
     const terms = query
       .toLowerCase()
@@ -101,13 +101,7 @@ export class AiRetrievalService {
     limit?: number;
     maxContentLength?: number;
   }): Promise<RetrievalResult[]> {
-    const {
-      query,
-      userId,
-      workspaceId,
-      spaceId,
-      limit = 5,
-    } = params;
+    const { query, userId, workspaceId, spaceId, limit = 5 } = params;
 
     this.logger.log(
       `Retrieval started: space=${spaceId ?? 'none'} user=${userId} queryLength=${query.length}`,
@@ -123,7 +117,7 @@ export class AiRetrievalService {
       { userId, workspaceId },
     );
 
-    let items = (searchResults.items || []).map((item) => ({
+    const lexicalItems = (searchResults.items || []).map((item) => ({
       id: item.id,
       title: item.title,
       slugId: item.slugId,
@@ -131,7 +125,39 @@ export class AiRetrievalService {
       isFallback: false,
     }));
 
-    this.logger.log(`Search returned ${items.length} accessible pages`);
+    let semanticItems: Array<{
+      id: string;
+      rank: number;
+      isFallback: boolean;
+    }> = [];
+
+    if (spaceId && trimmedQuery) {
+      try {
+        const semanticHits = await this.vectorService.search(trimmedQuery, spaceId, Math.min(limit * 3, 15));
+        semanticItems = semanticHits.map((hit) => ({
+          id: hit.pageId,
+          rank: hit.score,
+          isFallback: false,
+        }));
+        this.logger.log(`Vector search returned ${semanticItems.length} chunks`);
+      } catch (error) {
+        this.logger.warn(
+          `Vector search unavailable; continuing with lexical retrieval: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+        );
+      }
+    }
+
+    const merged = new Map<string, { id: string; rank: number; isFallback: boolean }>();
+    for (const item of semanticItems) merged.set(item.id, item);
+    for (const item of lexicalItems) {
+      const existing = merged.get(item.id);
+      merged.set(item.id, existing ? { ...existing, rank: Math.max(existing.rank, item.rank) } : item);
+    }
+
+    let items = Array.from(merged.values()).slice(0, Math.min(limit * 2, 20));
+    this.logger.log(`Retrieval candidates: ${items.length}`);
 
     if (items.length === 0 && spaceId) {
       this.logger.log(`No exact results; loading recent pages from space=${spaceId}`);
@@ -148,23 +174,13 @@ export class AiRetrievalService {
 
       const pageIds = recentPages.map((page) => page.id);
       const accessibleIds = pageIds.length
-        ? await this.pagePermissionRepo.filterAccessiblePageIds({
-            pageIds,
-            userId,
-            spaceId,
-          })
+        ? await this.pagePermissionRepo.filterAccessiblePageIds({ pageIds, userId, spaceId })
         : [];
       const accessibleSet = new Set(accessibleIds);
 
       items = recentPages
         .filter((page) => accessibleSet.has(page.id))
-        .map((page) => ({
-          id: page.id,
-          title: page.title,
-          slugId: page.slugId,
-          rank: 0,
-          isFallback: true,
-        }));
+        .map((page) => ({ id: page.id, rank: 0, isFallback: true }));
 
       this.logger.log(`Fallback returned ${items.length} accessible pages`);
     }
@@ -182,28 +198,33 @@ export class AiRetrievalService {
           includeTextContent: true,
         });
 
-        if (!page || page.spaceId !== spaceId) {
-          continue;
-        }
+        if (!page || page.spaceId !== spaceId) continue;
 
         const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
           pageIds: [page.id],
           userId,
           spaceId,
         });
-        if (!accessibleIds.includes(page.id)) {
-          continue;
-        }
+        if (!accessibleIds.includes(page.id)) continue;
 
+        const textContent = page.textContent || '';
         results.push({
           pageId: page.id,
           title: page.title || 'Untitled',
           slugId: page.slugId,
           spaceId: page.spaceId,
-          content: this.selectRelevantChunks(page.textContent || '', trimmedQuery),
+          content: this.selectRelevantChunks(textContent, trimmedQuery),
           rank: item.rank,
           isFallback: item.isFallback,
         });
+
+        if (spaceId && textContent) {
+          void this.vectorService.indexPage({ id: page.id, spaceId: page.spaceId, textContent }).catch((error) => {
+            this.logger.warn(
+              `Failed to index page ${page.id}: ${error instanceof Error ? error.message : String(error)}`,
+            );
+          });
+        }
       } catch (error) {
         this.logger.warn(
           `Failed to load page ${item.id}: ${error instanceof Error ? error.message : String(error)}`,
@@ -217,17 +238,12 @@ export class AiRetrievalService {
   }
 
   async canAccessPage(pageId: string, userId: string): Promise<boolean> {
-    const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
-      pageIds: [pageId],
-      userId,
-    });
+    const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({ pageIds: [pageId], userId });
     return accessibleIds.includes(pageId);
   }
 
   buildContextPrompt(retrievedPages: RetrievalResult[]): string {
-    if (retrievedPages.length === 0) {
-      return '';
-    }
+    if (retrievedPages.length === 0) return '';
 
     const contextParts = retrievedPages.map((page, index) => {
       return `---\nPage ${index + 1}: ${page.title}\nSpace ID: ${page.spaceId}\nSlug: ${page.slugId}\n\n${page.content}\n---`;
