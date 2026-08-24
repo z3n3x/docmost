@@ -5,6 +5,7 @@ import { AiProviderService } from './services/ai-provider.service';
 import { AiRetrievalService } from './services/ai-retrieval.service';
 import { AiEmbeddingService } from './services/ai-embedding.service';
 import { AiVectorService } from './services/ai-vector.service';
+import { AiPageIndexListener } from './services/ai-page-index.listener';
 import { SearchModule } from '../search/search.module';
 import { SpaceModule } from '../space/space.module';
 import { AiChatRepo } from '@docmost/db/repos/ai-chat/ai-chat.repo';
@@ -18,6 +19,7 @@ import { AiChatRepo } from '@docmost/db/repos/ai-chat/ai-chat.repo';
     AiRetrievalService,
     AiEmbeddingService,
     AiVectorService,
+    AiPageIndexListener,
     AiChatRepo,
   ],
   exports: [AiChatService, AiChatRepo],
