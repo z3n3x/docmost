@@ -1,5 +1,4 @@
 import { Kysely, sql } from 'kysely';
-import { KyselyDB } from '../types/kysely.types';
 
 export async function up(db: Kysely<unknown>): Promise<void> {
   await sql`CREATE EXTENSION IF NOT EXISTS vector`.execute(db);
@@ -19,16 +18,8 @@ export async function up(db: Kysely<unknown>): Promise<void> {
     )
   `.execute(db);
 
-  await sql`
-    CREATE INDEX IF NOT EXISTS ai_page_chunks_page_id_idx
-    ON ai_page_chunks(page_id)
-  `.execute(db);
-
-  await sql`
-    CREATE INDEX IF NOT EXISTS ai_page_chunks_space_id_idx
-    ON ai_page_chunks(space_id)
-  `.execute(db);
-
+  await sql`CREATE INDEX IF NOT EXISTS ai_page_chunks_page_id_idx ON ai_page_chunks(page_id)`.execute(db);
+  await sql`CREATE INDEX IF NOT EXISTS ai_page_chunks_space_id_idx ON ai_page_chunks(space_id)`.execute(db);
   await sql`
     CREATE INDEX IF NOT EXISTS ai_page_chunks_embedding_idx
     ON ai_page_chunks USING hnsw (embedding vector_cosine_ops)
