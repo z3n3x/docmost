@@ -5,7 +5,7 @@ export async function up(db: Kysely<unknown>): Promise<void> {
 
   await sql`
     CREATE TABLE IF NOT EXISTS ai_page_chunks (
-      id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+      id uuid PRIMARY KEY DEFAULT gen_uuid_v7(),
       page_id uuid NOT NULL REFERENCES pages(id) ON DELETE CASCADE,
       space_id uuid NOT NULL REFERENCES spaces(id) ON DELETE CASCADE,
       chunk_index integer NOT NULL,
