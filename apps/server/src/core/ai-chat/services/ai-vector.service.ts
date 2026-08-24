@@ -14,6 +14,7 @@ export interface VectorChunkHit {
 
 const CHUNK_SIZE = 1800;
 const CHUNK_OVERLAP = 250;
+const EMBEDDING_DIMENSIONS = 1024;
 
 @Injectable()
 export class AiVectorService {
@@ -50,7 +51,7 @@ export class AiVectorService {
   async indexPage(page: { id: string; spaceId: string; textContent: string }): Promise<void> {
     const chunks = this.chunkContent(page.textContent);
     if (!chunks.length) {
-      await sql`DELETE FROM ai_page_chunks WHERE page_id = ${page.id}`.execute(this.db);
+      await this.removePage(page.id);
       return;
     }
 
@@ -70,12 +71,16 @@ export class AiVectorService {
       const embeddings = await this.embeddings.embed(changedIndexes.map((item) => item.chunk));
       for (let i = 0; i < changedIndexes.length; i++) {
         const item = changedIndexes[i];
-        const vector = `[${embeddings[i].join(',')}]`;
+        const vector = embeddings[i];
+        if (vector.length !== EMBEDDING_DIMENSIONS) {
+          throw new Error(`Embedding dimension mismatch: expected ${EMBEDDING_DIMENSIONS}, received ${vector.length}`);
+        }
+        const vectorLiteral = `[${vector.join(',')}]`;
         await sql`
           INSERT INTO ai_page_chunks
             (page_id, space_id, chunk_index, content, content_hash, embedding, updated_at)
           VALUES
-            (${page.id}, ${page.spaceId}, ${item.index}, ${item.chunk}, ${item.hash}, ${vector}::vector, now())
+            (${page.id}, ${page.spaceId}, ${item.index}, ${item.chunk}, ${item.hash}, ${vectorLiteral}::vector, now())
           ON CONFLICT (page_id, chunk_index) DO UPDATE SET
             space_id = EXCLUDED.space_id,
             content = EXCLUDED.content,
@@ -92,8 +97,15 @@ export class AiVectorService {
     `.execute(this.db);
   }
 
+  async removePage(pageId: string): Promise<void> {
+    await sql`DELETE FROM ai_page_chunks WHERE page_id = ${pageId}`.execute(this.db);
+  }
+
   async search(query: string, spaceId: string, limit = 12): Promise<VectorChunkHit[]> {
     const [embedding] = await this.embeddings.embed(query);
+    if (!embedding || embedding.length !== EMBEDDING_DIMENSIONS) {
+      throw new Error(`Embedding dimension mismatch: expected ${EMBEDDING_DIMENSIONS}, received ${embedding?.length || 0}`);
+    }
     const vector = `[${embedding.join(',')}]`;
 
     const result = await sql<{
@@ -102,11 +114,8 @@ export class AiVectorService {
       content: string;
       score: number;
     }>`
-      SELECT
-        page_id,
-        chunk_index,
-        content,
-        1 - (embedding <=> ${vector}::vector) AS score
+      SELECT page_id, chunk_index, content,
+             1 - (embedding <=> ${vector}::vector) AS score
       FROM ai_page_chunks
       WHERE space_id = ${spaceId}
       ORDER BY embedding <=> ${vector}::vector
