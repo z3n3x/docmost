@@ -9,8 +9,18 @@ import {
   Stack,
   Text,
   Textarea,
+  Tooltip,
 } from "@mantine/core";
-import { IconArrowUp, IconFileText, IconSparkles, IconX } from "@tabler/icons-react";
+import {
+  IconArrowUp,
+  IconCheck,
+  IconCopy,
+  IconFileText,
+  IconPlayerStop,
+  IconRefresh,
+  IconSparkles,
+  IconX,
+} from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -32,8 +42,10 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   const [suggestions, setSuggestions] = useState<AiChatSource[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const chatIdRef = useRef<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const lastPromptRef = useRef("");
 
   useEffect(() => {
     chatIdRef.current = null;
@@ -44,6 +56,8 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     setSuggestions([]);
     setError(null);
     setMessage("");
+    setCopied(false);
+    lastPromptRef.current = "";
   }, [spaceId]);
 
   const submit = async (prompt = message) => {
@@ -57,6 +71,8 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     setSources([]);
     setSuggestions([]);
     setMessage(content);
+    setCopied(false);
+    lastPromptRef.current = content;
     abortRef.current = new AbortController();
 
     try {
@@ -86,6 +102,27 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     }
   };
 
+  const stop = () => {
+    abortRef.current?.abort();
+    abortRef.current = null;
+    setLoading(false);
+  };
+
+  const retry = () => {
+    if (lastPromptRef.current) void submit(lastPromptRef.current);
+  };
+
+  const copyAnswer = async () => {
+    if (!answer) return;
+    try {
+      await navigator.clipboard.writeText(answer);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1500);
+    } catch {
+      setError("Unable to copy the answer");
+    }
+  };
+
   return (
     <Box
       pos="fixed"
@@ -97,30 +134,72 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
         transform: "translateX(-50%)",
       }}
     >
-      <Collapse expanded={open}>
-        <Paper withBorder shadow="md" radius="lg" mb={8} p="md">
+      <Collapse expanded={open} transitionDuration={180}>
+        <Paper withBorder shadow="md" radius="md" mb={8} p="md">
           <Group justify="space-between" mb="xs">
             <Group gap="xs">
               <IconSparkles size={18} />
               <Text fw={600}>Ask this space</Text>
             </Group>
-            <ActionIcon
-              variant="subtle"
-              onClick={() => setOpen(false)}
-              aria-label="Close AI chat"
-            >
-              <IconX size={18} />
-            </ActionIcon>
+            <Group gap={4}>
+              {answer && !loading && (
+                <Tooltip label={copied ? "Copied" : "Copy answer"}>
+                  <ActionIcon variant="subtle" onClick={() => void copyAnswer()} aria-label="Copy answer">
+                    {copied ? <IconCheck size={17} /> : <IconCopy size={17} />}
+                  </ActionIcon>
+                </Tooltip>
+              )}
+              <ActionIcon
+                variant="subtle"
+                onClick={() => setOpen(false)}
+                aria-label="Close AI chat"
+              >
+                <IconX size={18} />
+              </ActionIcon>
+            </Group>
           </Group>
 
           <ScrollArea.Autosize mah={360}>
             {answer ? (
               <Text style={{ whiteSpace: "pre-wrap" }}>{answer}</Text>
             ) : loading ? (
-              <Text c="dimmed">Thinking…</Text>
+              <Group gap="xs" c="dimmed" py="xs">
+                <Text size="sm">Thinking</Text>
+                <Text component="span" aria-label="AI is thinking">
+                  <span className="ai-chat-thinking-dots">•••</span>
+                </Text>
+              </Group>
             ) : null}
 
-            {error && <Text c="red" mt="sm">{error}</Text>}
+            {loading && (
+              <Group justify="flex-end" mt="sm">
+                <Button
+                  variant="subtle"
+                  size="xs"
+                  leftSection={<IconPlayerStop size={14} />}
+                  onClick={stop}
+                >
+                  Stop
+                </Button>
+              </Group>
+            )}
+
+            {error && (
+              <Group justify="space-between" align="center" mt="sm" gap="sm">
+                <Text c="red" size="sm">{error}</Text>
+                {lastPromptRef.current && (
+                  <Button
+                    variant="light"
+                    color="red"
+                    size="xs"
+                    leftSection={<IconRefresh size={14} />}
+                    onClick={retry}
+                  >
+                    Retry
+                  </Button>
+                )}
+              </Group>
+            )}
 
             {suggestions.length > 0 && !loading && (
               <Stack gap="xs" mt="md">
@@ -163,7 +242,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
         </Paper>
       </Collapse>
 
-      <Paper withBorder shadow="sm" radius="xl" p={6}>
+      <Paper withBorder shadow="sm" radius="md" p={6}>
         <Textarea
           autosize
           minRows={1}
@@ -181,7 +260,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
           rightSection={
             <ActionIcon
               variant="filled"
-              radius="xl"
+              radius="sm"
               size="sm"
               onClick={() => void submit()}
               loading={loading}
@@ -192,7 +271,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
             </ActionIcon>
           }
           rightSectionWidth={42}
-          radius="xl"
+          radius="sm"
         />
       </Paper>
     </Box>
