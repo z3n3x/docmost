@@ -9,6 +9,12 @@ services:
       APP_SECRET: 'REPLACE_WITH_LONG_SECRET'
       DATABASE_URL: 'postgresql://docmost:STRONG_DB_PASSWORD@db:5432/docmost'
       REDIS_URL: 'redis://redis:6379'
+      AI_BASE_URL: 'http://172.16.0.171:11434/v1'
+      AI_MODEL: 'nemotron-3-nano-4b'
+      AI_EMBEDDINGS_BASE_URL: 'http://172.16.0.171:11432/v1'
+      AI_EMBEDDINGS_MODEL: 'bge-m3-Q8_0.gguf'
+      AI_RERANKING_BASE_URL: 'http://172.16.0.171:11433/v1'
+      AI_RERANKING_MODEL: 'bge-reranker-v2-m3-Q8_0.gguf'
     ports:
       - "3000:3000"
     restart: unless-stopped
@@ -16,7 +22,7 @@ services:
       - docmost:/app/data/storage
 
   db:
-    image: postgres:18
+    image: pgvector/pgvector:pg18
     environment:
       POSTGRES_DB: docmost
       POSTGRES_USER: docmost
