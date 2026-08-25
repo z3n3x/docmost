@@ -34,6 +34,8 @@ interface SpaceAiChatProps {
   spaceSlug: string;
 }
 
+const STREAM_RENDER_INTERVAL_MS = 32;
+
 export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
@@ -47,9 +49,66 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   const abortRef = useRef<AbortController | null>(null);
   const lastPromptRef = useRef("");
 
+  // Streaming can produce many tiny chunks per second. Keep the generated text
+  // outside React state and publish it at most once per animation frame. This
+  // prevents the whole message tree from re-rendering for every token/chunk.
+  const streamedAnswerRef = useRef("");
+  const pendingStreamTextRef = useRef("");
+  const streamFrameRef = useRef<number | null>(null);
+  const lastStreamRenderRef = useRef(0);
+
+  const flushStream = (force = false) => {
+    if (!pendingStreamTextRef.current) return;
+
+    const now = performance.now();
+    if (!force && now - lastStreamRenderRef.current < STREAM_RENDER_INTERVAL_MS) {
+      return;
+    }
+
+    streamedAnswerRef.current += pendingStreamTextRef.current;
+    pendingStreamTextRef.current = "";
+    lastStreamRenderRef.current = now;
+    setAnswer(streamedAnswerRef.current);
+  };
+
+  const scheduleStreamFlush = () => {
+    if (streamFrameRef.current !== null) return;
+
+    streamFrameRef.current = requestAnimationFrame(() => {
+      streamFrameRef.current = null;
+      flushStream();
+
+      // If another chunk arrived while the frame was being processed, make sure
+      // it is not left waiting indefinitely when the browser is busy.
+      if (pendingStreamTextRef.current) {
+        streamFrameRef.current = requestAnimationFrame(() => {
+          streamFrameRef.current = null;
+          flushStream(true);
+        });
+      }
+    });
+  };
+
+  const appendStreamText = (text: string) => {
+    if (!text) return;
+    pendingStreamTextRef.current += text;
+    scheduleStreamFlush();
+  };
+
+  const resetStream = () => {
+    if (streamFrameRef.current !== null) {
+      cancelAnimationFrame(streamFrameRef.current);
+      streamFrameRef.current = null;
+    }
+    pendingStreamTextRef.current = "";
+    streamedAnswerRef.current = "";
+    lastStreamRenderRef.current = 0;
+  };
+
   useEffect(() => {
     chatIdRef.current = null;
     abortRef.current?.abort();
+    resetStream();
     setLoading(false);
     setAnswer("");
     setSources([]);
@@ -58,6 +117,8 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     setMessage("");
     setCopied(false);
     lastPromptRef.current = "";
+
+    return () => resetStream();
   }, [spaceId]);
 
   const submit = async (prompt = message) => {
@@ -67,6 +128,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
     setOpen(true);
     setLoading(true);
     setError(null);
+    resetStream();
     setAnswer("");
     setSources([]);
     setSuggestions([]);
@@ -86,13 +148,19 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
         {
           onSources: setSources,
           onSuggestions: setSuggestions,
-          onContent: (text) => setAnswer((current) => current + text),
-          onError: (message) => setError(message),
+          onContent: appendStreamText,
+          onDone: () => flushStream(true),
+          onError: (message) => {
+            flushStream(true);
+            setError(message);
+          },
         },
         abortRef.current.signal,
       );
+      flushStream(true);
       setMessage("");
     } catch (err) {
+      flushStream(true);
       if (!(err instanceof DOMException && err.name === "AbortError")) {
         setError(err instanceof Error ? err.message : "AI request failed");
       }
@@ -103,6 +171,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
   };
 
   const stop = () => {
+    flushStream(true);
     abortRef.current?.abort();
     abortRef.current = null;
     setLoading(false);
@@ -219,7 +288,7 @@ export function SpaceAiChat({ spaceId, spaceSlug }: SpaceAiChatProps) {
                     </Button>
                   ))}
                 </Group>
-              </Stack>
+              </Group>
             )}
 
             {sources.length > 0 && (
