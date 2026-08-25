@@ -19,6 +19,7 @@ export interface RetrievalResult {
 const CHUNK_SIZE = 3500;
 const CHUNK_OVERLAP = 400;
 const MAX_CHUNKS_PER_PAGE = 2;
+const RRF_K = 60;
 
 @Injectable()
 export class AiRetrievalService {
@@ -108,20 +109,19 @@ export class AiRetrievalService {
     );
 
     const trimmedQuery = query?.trim() || '';
+    const candidateLimit = Math.min(limit * 3, 20);
     const searchResults = await this.searchService.searchPage(
       {
         query: trimmedQuery,
-        limit: Math.min(limit * 2, 20),
+        limit: candidateLimit,
         spaceId,
       },
       { userId, workspaceId },
     );
 
-    const lexicalItems = (searchResults.items || []).map((item) => ({
+    const lexicalItems = (searchResults.items || []).map((item, index) => ({
       id: item.id,
-      title: item.title,
-      slugId: item.slugId,
-      rank: item.rank || 0,
+      rank: index + 1,
       isFallback: false,
     }));
 
@@ -133,13 +133,22 @@ export class AiRetrievalService {
 
     if (spaceId && trimmedQuery) {
       try {
-        const semanticHits = await this.vectorService.search(trimmedQuery, spaceId, Math.min(limit * 3, 15));
-        semanticItems = semanticHits.map((hit) => ({
-          id: hit.pageId,
-          rank: hit.score,
+        const semanticHits = await this.vectorService.search(trimmedQuery, spaceId, candidateLimit);
+
+        // Multiple chunks can belong to one page. Keep the best semantic rank per page.
+        const bestSemanticRank = new Map<string, number>();
+        for (const [index, hit] of semanticHits.entries()) {
+          const rank = index + 1;
+          const current = bestSemanticRank.get(hit.pageId);
+          if (current === undefined || rank < current) bestSemanticRank.set(hit.pageId, rank);
+        }
+
+        semanticItems = Array.from(bestSemanticRank.entries()).map(([id, rank]) => ({
+          id,
+          rank,
           isFallback: false,
         }));
-        this.logger.log(`Vector search returned ${semanticItems.length} chunks`);
+        this.logger.log(`Vector search returned ${semanticItems.length} unique pages`);
       } catch (error) {
         this.logger.warn(
           `Vector search unavailable; continuing with lexical retrieval: ${
@@ -149,15 +158,30 @@ export class AiRetrievalService {
       }
     }
 
-    const merged = new Map<string, { id: string; rank: number; isFallback: boolean }>();
-    for (const item of semanticItems) merged.set(item.id, item);
+    // Fuse lexical and semantic rankings with Reciprocal Rank Fusion instead of
+    // comparing unrelated score scales from PostgreSQL FTS and vector similarity.
+    const fused = new Map<string, { id: string; score: number; isFallback: boolean }>();
     for (const item of lexicalItems) {
-      const existing = merged.get(item.id);
-      merged.set(item.id, existing ? { ...existing, rank: Math.max(existing.rank, item.rank) } : item);
+      fused.set(item.id, {
+        id: item.id,
+        score: 1 / (RRF_K + item.rank),
+        isFallback: false,
+      });
+    }
+    for (const item of semanticItems) {
+      const existing = fused.get(item.id);
+      const contribution = 1 / (RRF_K + item.rank);
+      fused.set(item.id, {
+        id: item.id,
+        score: (existing?.score ?? 0) + contribution,
+        isFallback: false,
+      });
     }
 
-    let items = Array.from(merged.values()).slice(0, Math.min(limit * 2, 20));
-    this.logger.log(`Retrieval candidates: ${items.length}`);
+    let items = Array.from(fused.values())
+      .sort((a, b) => b.score - a.score)
+      .slice(0, candidateLimit);
+    this.logger.log(`Hybrid retrieval candidates: ${items.length}`);
 
     if (items.length === 0 && spaceId) {
       this.logger.log(`No exact results; loading recent pages from space=${spaceId}`);
@@ -180,7 +204,7 @@ export class AiRetrievalService {
 
       items = recentPages
         .filter((page) => accessibleSet.has(page.id))
-        .map((page) => ({ id: page.id, rank: 0, isFallback: true }));
+        .map((page) => ({ id: page.id, score: 0, isFallback: true }));
 
       this.logger.log(`Fallback returned ${items.length} accessible pages`);
     }
@@ -214,7 +238,7 @@ export class AiRetrievalService {
           slugId: page.slugId,
           spaceId: page.spaceId,
           content: this.selectRelevantChunks(textContent, trimmedQuery),
-          rank: item.rank,
+          rank: item.score,
           isFallback: item.isFallback,
         });
 
