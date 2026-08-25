@@ -26,6 +26,7 @@ export class AiProviderService {
   private readonly model: string;
   private readonly maxTokens: number;
   private readonly timeoutMs: number;
+  private readonly contextMaxChars: number;
 
   constructor() {
     this.apiKey = process.env.AI_API_KEY || '';
@@ -33,6 +34,10 @@ export class AiProviderService {
     this.model = process.env.AI_MODEL || 'nemotron-3-nano-4b';
     this.maxTokens = parseInt(process.env.AI_MAX_TOKENS || '2048', 10);
     this.timeoutMs = parseInt(process.env.AI_TIMEOUT_MS || '60000', 10);
+    this.contextMaxChars = Math.max(
+      4000,
+      parseInt(process.env.AI_CONTEXT_MAX_CHARS || '18000', 10),
+    );
   }
 
   async generateStream(
@@ -164,10 +169,24 @@ export class AiProviderService {
 
     if (contextPages.length > 0) {
       prompt += '=== WIKI CONTEXT ===\n\n';
-      contextPages.forEach((page, index) => {
-        prompt += `[Page ${index + 1}] ${page.title}\nSlug: ${page.slugId}\n\n`;
-        prompt += `${page.content.slice(0, 3000)}\n\n`;
-      });
+      let remaining = this.contextMaxChars;
+
+      for (const [index, page] of contextPages.entries()) {
+        if (remaining <= 0) break;
+
+        const header = `[Page ${index + 1}] ${page.title}\nSlug: ${page.slugId}\n\n`;
+        const separator = '\n\n';
+        const available = remaining - header.length - separator.length;
+        if (available <= 0) break;
+
+        const content = page.content.slice(0, available);
+        prompt += header + content + separator;
+        remaining -= header.length + content.length + separator.length;
+      }
+
+      if (remaining <= 0) {
+        prompt += '[Context truncated to stay within the configured context budget.]\n\n';
+      }
       prompt += '=== END WIKI CONTEXT ===\n';
     } else {
       prompt += '=== WIKI CONTEXT ===\nNo matching wiki pages were found.\n=== END WIKI CONTEXT ===\n';
