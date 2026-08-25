@@ -5,6 +5,7 @@ import { PagePermissionRepo } from '@docmost/db/repos/page/page-permission.repo'
 import { PageRepo } from '@docmost/db/repos/page/page.repo';
 import { KyselyDB } from '@docmost/db/types/kysely.types';
 import { AiVectorService } from './ai-vector.service';
+import { AiRerankerService } from './ai-reranker.service';
 
 export interface RetrievalResult {
   pageId: string;
@@ -30,6 +31,7 @@ export class AiRetrievalService {
     private readonly pagePermissionRepo: PagePermissionRepo,
     private readonly pageRepo: PageRepo,
     private readonly vectorService: AiVectorService,
+    private readonly reranker: AiRerankerService,
     @InjectKysely() private readonly db: KyselyDB,
   ) {}
 
@@ -39,10 +41,8 @@ export class AiRetrievalService {
 
     const chunks: string[] = [];
     let start = 0;
-
     while (start < normalized.length) {
       let end = Math.min(start + CHUNK_SIZE, normalized.length);
-
       if (end < normalized.length) {
         const paragraphBreak = normalized.lastIndexOf('\n\n', end);
         const sentenceBreak = normalized.lastIndexOf('. ', end);
@@ -51,14 +51,11 @@ export class AiRetrievalService {
           end = boundary + (paragraphBreak === boundary ? 2 : 1);
         }
       }
-
       const chunk = normalized.slice(start, end).trim();
       if (chunk) chunks.push(chunk);
       if (end >= normalized.length) break;
-
       start = Math.max(end - CHUNK_OVERLAP, start + 1);
     }
-
     return chunks;
   }
 
@@ -86,12 +83,12 @@ export class AiRetrievalService {
       return { chunk, index, score };
     });
 
-    const selected = scored
+    return scored
       .sort((a, b) => b.score - a.score || a.index - b.index)
       .slice(0, MAX_CHUNKS_PER_PAGE)
-      .sort((a, b) => a.index - b.index);
-
-    return selected.map((item) => item.chunk).join('\n\n[...chunk boundary...]\n\n');
+      .sort((a, b) => a.index - b.index)
+      .map((item) => item.chunk)
+      .join('\n\n[...chunk boundary...]\n\n');
   }
 
   async retrieveContext(params: {
@@ -103,89 +100,60 @@ export class AiRetrievalService {
     maxContentLength?: number;
   }): Promise<RetrievalResult[]> {
     const { query, userId, workspaceId, spaceId, limit = 5 } = params;
+    const trimmedQuery = query?.trim() || '';
 
     this.logger.log(
       `Retrieval started: space=${spaceId ?? 'none'} user=${userId} queryLength=${query.length}`,
     );
 
-    const trimmedQuery = query?.trim() || '';
     const candidateLimit = Math.min(limit * 3, 20);
     const searchResults = await this.searchService.searchPage(
-      {
-        query: trimmedQuery,
-        limit: candidateLimit,
-        spaceId,
-      },
+      { query: trimmedQuery, limit: candidateLimit, spaceId },
       { userId, workspaceId },
     );
 
     const lexicalItems = (searchResults.items || []).map((item, index) => ({
       id: item.id,
       rank: index + 1,
-      isFallback: false,
     }));
 
-    let semanticItems: Array<{
-      id: string;
-      rank: number;
-      isFallback: boolean;
-    }> = [];
-
+    let semanticItems: Array<{ id: string; rank: number }> = [];
     if (spaceId && trimmedQuery) {
       try {
         const semanticHits = await this.vectorService.search(trimmedQuery, spaceId, candidateLimit);
-
-        // Multiple chunks can belong to one page. Keep the best semantic rank per page.
         const bestSemanticRank = new Map<string, number>();
         for (const [index, hit] of semanticHits.entries()) {
           const rank = index + 1;
           const current = bestSemanticRank.get(hit.pageId);
           if (current === undefined || rank < current) bestSemanticRank.set(hit.pageId, rank);
         }
-
-        semanticItems = Array.from(bestSemanticRank.entries()).map(([id, rank]) => ({
-          id,
-          rank,
-          isFallback: false,
-        }));
+        semanticItems = Array.from(bestSemanticRank.entries()).map(([id, rank]) => ({ id, rank }));
         this.logger.log(`Vector search returned ${semanticItems.length} unique pages`);
       } catch (error) {
         this.logger.warn(
-          `Vector search unavailable; continuing with lexical retrieval: ${
-            error instanceof Error ? error.message : String(error)
-          }`,
+          `Vector search unavailable; continuing with lexical retrieval: ${error instanceof Error ? error.message : String(error)}`,
         );
       }
     }
 
-    // Fuse lexical and semantic rankings with Reciprocal Rank Fusion instead of
-    // comparing unrelated score scales from PostgreSQL FTS and vector similarity.
     const fused = new Map<string, { id: string; score: number; isFallback: boolean }>();
     for (const item of lexicalItems) {
-      fused.set(item.id, {
-        id: item.id,
-        score: 1 / (RRF_K + item.rank),
-        isFallback: false,
-      });
+      fused.set(item.id, { id: item.id, score: 1 / (RRF_K + item.rank), isFallback: false });
     }
     for (const item of semanticItems) {
       const existing = fused.get(item.id);
-      const contribution = 1 / (RRF_K + item.rank);
       fused.set(item.id, {
         id: item.id,
-        score: (existing?.score ?? 0) + contribution,
+        score: (existing?.score ?? 0) + 1 / (RRF_K + item.rank),
         isFallback: false,
       });
     }
 
-    let items = Array.from(fused.values())
-      .sort((a, b) => b.score - a.score)
-      .slice(0, candidateLimit);
+    let items = Array.from(fused.values()).sort((a, b) => b.score - a.score).slice(0, candidateLimit);
     this.logger.log(`Hybrid retrieval candidates: ${items.length}`);
 
     if (items.length === 0 && spaceId) {
       this.logger.log(`No exact results; loading recent pages from space=${spaceId}`);
-
       const recentPages = await this.db
         .selectFrom('pages')
         .select(['id', 'title', 'slugId'])
@@ -195,17 +163,14 @@ export class AiRetrievalService {
         .orderBy('updatedAt', 'desc')
         .limit(limit)
         .execute();
-
       const pageIds = recentPages.map((page) => page.id);
       const accessibleIds = pageIds.length
         ? await this.pagePermissionRepo.filterAccessiblePageIds({ pageIds, userId, spaceId })
         : [];
       const accessibleSet = new Set(accessibleIds);
-
       items = recentPages
         .filter((page) => accessibleSet.has(page.id))
         .map((page) => ({ id: page.id, score: 0, isFallback: true }));
-
       this.logger.log(`Fallback returned ${items.length} accessible pages`);
     }
 
@@ -221,7 +186,6 @@ export class AiRetrievalService {
           includeContent: true,
           includeTextContent: true,
         });
-
         if (!page || page.spaceId !== spaceId) continue;
 
         const accessibleIds = await this.pagePermissionRepo.filterAccessiblePageIds({
@@ -244,19 +208,25 @@ export class AiRetrievalService {
 
         if (spaceId && textContent) {
           void this.vectorService.indexPage({ id: page.id, spaceId: page.spaceId, textContent }).catch((error) => {
-            this.logger.warn(
-              `Failed to index page ${page.id}: ${error instanceof Error ? error.message : String(error)}`,
-            );
+            this.logger.warn(`Failed to index page ${page.id}: ${error instanceof Error ? error.message : String(error)}`);
           });
         }
       } catch (error) {
-        this.logger.warn(
-          `Failed to load page ${item.id}: ${error instanceof Error ? error.message : String(error)}`,
-        );
+        this.logger.warn(`Failed to load page ${item.id}: ${error instanceof Error ? error.message : String(error)}`);
       }
     }
 
-    const finalResults = results.slice(0, limit);
+    // Rerank only permission-checked page content. The reranker never receives
+    // pages from another space or pages the current user cannot access.
+    let orderedResults = results;
+    if (trimmedQuery && results.length > 1 && process.env.AI_RERANKING_ENABLED !== 'false') {
+      const documents = results.map((page) => `${page.title}\n\n${page.content}`);
+      const order = await this.reranker.rerank(trimmedQuery, documents, Math.min(limit, results.length));
+      orderedResults = order.map((index) => results[index]).filter(Boolean);
+      this.logger.log(`Reranking completed: ${orderedResults.length} pages`);
+    }
+
+    const finalResults = orderedResults.slice(0, limit);
     this.logger.log(`Retrieval completed with ${finalResults.length} pages`);
     return finalResults;
   }
@@ -268,11 +238,9 @@ export class AiRetrievalService {
 
   buildContextPrompt(retrievedPages: RetrievalResult[]): string {
     if (retrievedPages.length === 0) return '';
-
-    const contextParts = retrievedPages.map((page, index) => {
-      return `---\nPage ${index + 1}: ${page.title}\nSpace ID: ${page.spaceId}\nSlug: ${page.slugId}\n\n${page.content}\n---`;
-    });
-
+    const contextParts = retrievedPages.map((page, index) =>
+      `---\nPage ${index + 1}: ${page.title}\nSpace ID: ${page.spaceId}\nSlug: ${page.slugId}\n\n${page.content}\n---`,
+    );
     return `Context from relevant pages:\n\n${contextParts.join('\n\n')}`;
   }
 }
